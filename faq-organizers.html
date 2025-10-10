@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主催者向けよくある質問 | カフェ会＠！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        :root { --md-primary:#f97316; --md-on-surface:#1d1b20; --md-on-surface-variant:#49454f; --md-outline:#cac4d0; }
+        html, body { color: var(--md-on-surface); letter-spacing: 0.01em; }
+        h1, h2, h3, h4, h5, h6 { color: var(--md-on-surface); font-weight: 700; letter-spacing: -0.015em; }
+        h3, h4, h5, h6 { font-weight: 600; }
+        a { color: var(--md-primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        a:hover { color: #ea580c; }
+        .text-gray-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; }
+        .border-gray-200 { border-color: var(--md-outline) !important; }
+        .border-gray-300 { border-color: var(--md-outline) !important; }
+        .faq-q { cursor:pointer; }
+        .faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease, padding .2s ease; }
+        .faq-a.open { max-height:600px; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="homepage.html" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="faq-participants.html" class="text-gray-600 hover:text-orange-600">参加者向けFAQ</a>
+                    <a href="faq-organizers.html" class="text-orange-600 font-medium">主催者向けFAQ</a>
+                    <a href="faqpage.html" class="text-gray-600 hover:text-orange-600">旧FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-3">主催者向け よくある質問</h1>
+            <p class="opacity-90">加盟・運営・決済・集客など、主催者の方向けのFAQです</p>
+        </div>
+    </section>
+
+    <main class="py-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 divide-y divide-gray-200">
+                <div class="p-5">
+                    <div class="faq-q flex items-center justify-between">
+                        <h3 class="text-lg font-semibold">Q. 企画や運営のサポートはありますか？</h3>
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-a text-gray-600">
+                        <p class="pt-3">はい。企画テンプレート、集客ノウハウ、運営チェックリストなどを提供し、継続的に伴走支援します。</p>
+                    </div>
+                </div>
+
+                <div class="p-5">
+                    <div class="faq-q flex items-center justify-between">
+                        <h3 class="text-lg font-semibold">Q. 決済やロイヤリティはどのように管理しますか？</h3>
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-a text-gray-600">
+                        <p class="pt-3">管理画面からStripe連携で自動管理できます。未払いアラートやレポート機能もあります。</p>
+                    </div>
+                </div>
+
+                <div class="p-5">
+                    <div class="faq-q flex items-center justify-between">
+                        <h3 class="text-lg font-semibold">Q. 集客が不安です。サポートはありますか？</h3>
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-a text-gray-600">
+                        <p class="pt-3">SNSテンプレート、告知スケジュール例、口コミ獲得施策など実践的な支援をご用意しています。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="Joinaffiliate recruitment page.html" class="text-orange-600 hover:text-orange-700 font-medium">主催者募集の詳細を見る →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-10 mt-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">&copy; 2024 カフェ会＠！ All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                const a = q.parentElement.querySelector('.faq-a');
+                a.classList.toggle('open');
+                if (a.classList.contains('open')) { a.style.paddingTop = '0.75rem'; }
+                else { a.style.paddingTop = '0'; }
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>決済管理 - カフェ会＠！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
+                    <span class="ml-3 px-3 py-1 bg-orange-100 text-orange-800 text-sm font-medium rounded-full">主催者</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="/owner/dashboard" class="text-gray-600 hover:text-orange-600 transition-colors">ダッシュボード</a>
+                    <a href="/owner/event/create" class="text-gray-600 hover:text-orange-600 transition-colors">イベント作成</a>
+                    <a href="/owner/profile" class="text-gray-600 hover:text-orange-600 transition-colors">プロフィール</a>
+                    <a href="/owner/payment" class="text-orange-600 font-medium border-b-2 border-orange-600 pb-1">決済管理</a>
+                </nav>
+                
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center space-x-3">
+                        <img src="./img/ava_mana.png" alt="プロフィール" class="w-8 h-8 rounded-full">
+                        <span class="text-sm text-gray-700">田中 太郎さん</span>
+                    </div>
+                    <button class="p-2 text-gray-600 hover:text-orange-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 000-15h-5m5 5l5-5-5-5"></path>
+                        </svg>
+                    </button>
+                    <button class="md:hidden p-2">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header Section -->
+        <div class="mb-8">
+            <div class="flex items-center mb-4">
+                <a href="/owner/dashboard" class="text-gray-600 hover:text-orange-600 mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </a>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">決済管理</h1>
+            </div>
+            <p class="text-gray-600">加盟金・月額ロイヤリティの支払い状況を確認できます</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Current Status -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-6">現在の契約状況</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Membership Status -->
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-medium text-gray-900">加盟契約</h3>
+                                <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">有効</span>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">契約開始日</span>
+                                    <span class="font-medium">2024年1月15日</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">担当エリア</span>
+                                    <span class="font-medium">東京都渋谷区</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">加盟金</span>
+                                    <span class="font-medium text-green-600">¥50,000 (支払済)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subscription Status -->
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-medium text-gray-900">月額ロイヤリティ</h3>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">自動課金中</span>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">月額料金</span>
+                                    <span class="font-medium">¥5,000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">次回請求日</span>
+                                    <span class="font-medium">2024年12月15日</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">支払方法</span>
+                                    <span class="font-medium">**** 1234</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                        <button class="flex-1 bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium">
+                            支払方法を変更
+                        </button>
+                        <button class="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium">
+                            請求書をダウンロード
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payment History -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-lg font-semibold text-gray-900">支払履歴</h2>
+                        <div class="flex items-center space-x-3">
+                            <select class="text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                                <option>全期間</option>
+                                <option>過去3ヶ月</option>
+                                <option>過去6ヶ月</option>
+                                <option>過去1年</option>
+                            </select>
+                            <button class="text-sm text-orange-600 hover:text-orange-700 font-medium">
+                                CSVダウンロード
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment History Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">日付</th>
+                                    <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">種別</th>
+                                    <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">金額</th>
+                                    <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">ステータス</th>
+                                    <th class="text-left py-3 px-2 text-sm font-medium text-gray-600">詳細</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-4 px-2 text-sm text-gray-900">2024/11/15</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">月額ロイヤリティ</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm font-medium text-gray-900">¥5,000</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">完了</span>
+                                    </td>
+                                    <td class="py-4 px-2">
+                                        <button class="text-orange-600 hover:text-orange-700 text-sm font-medium">領収書</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-4 px-2 text-sm text-gray-900">2024/10/15</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">月額ロイヤリティ</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm font-medium text-gray-900">¥5,000</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">完了</span>
+                                    </td>
+                                    <td class="py-4 px-2">
+                                        <button class="text-orange-600 hover:text-orange-700 text-sm font-medium">領収書</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-4 px-2 text-sm text-gray-900">2024/09/15</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">月額ロイヤリティ</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm font-medium text-gray-900">¥5,000</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">完了</span>
+                                    </td>
+                                    <td class="py-4 px-2">
+                                        <button class="text-orange-600 hover:text-orange-700 text-sm font-medium">領収書</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-4 px-2 text-sm text-gray-900">2024/08/15</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">月額ロイヤリティ</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm font-medium text-gray-900">¥5,000</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">完了</span>
+                                    </td>
+                                    <td class="py-4 px-2">
+                                        <button class="text-orange-600 hover:text-orange-700 text-sm font-medium">領収書</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-4 px-2 text-sm text-gray-900">2024/01/15</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">初期加盟金</span>
+                                    </td>
+                                    <td class="py-4 px-2 text-sm font-medium text-gray-900">¥50,000</td>
+                                    <td class="py-4 px-2">
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">完了</span>
+                                    </td>
+                                    <td class="py-4 px-2">
+                                        <button class="text-orange-600 hover:text-orange-700 text-sm font-medium">領収書</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-between mt-6">
+                        <p class="text-sm text-gray-600">1-5件 / 全15件</p>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50 transition-colors">前へ</button>
+                            <button class="px-3 py-1 bg-orange-600 text-white rounded text-sm">1</button>
+                            <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50 transition-colors">2</button>
+                            <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50 transition-colors">3</button>
+                            <button class="px-3 py-1 border border-gray-300 rounded text-sm text-gray-600 hover:bg-gray-50 transition-colors">次へ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method Management -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-6">支払方法の管理</h2>
+                    
+                    <!-- Current Payment Method -->
+                    <div class="border border-gray-200 rounded-lg p-4 mb-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-8 bg-blue-600 rounded flex items-center justify-center">
+                                    <span class="text-white text-xs font-bold">VISA</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">**** **** **** 1234</p>
+                                    <p class="text-sm text-gray-600">有効期限: 12/26</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">メイン</span>
+                                <button class="text-orange-600 hover:text-orange-700 text-sm font-medium">編集</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add New Payment Method -->
+                    <button class="w-full border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-orange-400 transition-colors">
+                        <svg class="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <p class="text-gray-600 font-medium">新しい支払方法を追加</p>
+                        <p class="text-sm text-gray-500">クレジットカード・デビットカード</p>
+                    </button>
+                    
+                    <div class="mt-4 p-3 bg-yellow-50 rounded-lg">
+                        <p class="text-sm text-yellow-800">⚠️ 支払方法の変更は次回請求から適用されます</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-8 space-y-6">
+                    <!-- Payment Summary -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">支払サマリー</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">今月の支払額</span>
+                                <span class="text-lg font-bold text-gray-900">¥5,000</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">累計支払額</span>
+                                <span class="text-lg font-bold text-orange-600">¥95,000</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">次回請求額</span>
+                                <span class="text-lg font-bold text-blue-600">¥5,000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <div class="text-center">
+                                <p class="text-sm text-gray-600 mb-2">次回請求まで</p>
+                                <p class="text-2xl font-bold text-gray-900">15日</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Billing Information -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">請求先情報</h3>
+                        
+                        <div class="space-y-3 text-sm">
+                            <div>
+                                <span class="text-gray-600">請求先名</span>
+                                <p class="font-medium">田中 太郎</p>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">住所</span>
+                                <p class="font-medium">東京都渋谷区渋谷1-1-1</p>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">メールアドレス</span>
+                                <p class="font-medium">tanaka@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full mt-4 text-orange-600 hover:text-orange-700 text-sm font-medium border border-orange-600 rounded-lg py-2 hover:bg-orange-50 transition-colors">
+                            請求先情報を編集
+                        </button>
+                    </div>
+                    
+                    <!-- Support -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">サポート</h3>
+                        
+                        <div class="space-y-3">
+                            <a href="#" class="flex items-center text-sm text-gray-600 hover:text-orange-600 transition-colors">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                よくある質問
+                            </a>
+                            <a href="#" class="flex items-center text-sm text-gray-600 hover:text-orange-600 transition-colors">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                お問い合わせ
+                            </a>
+                            <a href="#" class="flex items-center text-sm text-gray-600 hover:text-orange-600 transition-colors">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                利用規約
+                            </a>
+                            <a href="#" class="flex items-center text-sm text-gray-600 hover:text-orange-600 transition-colors">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                                セキュリティ
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Contact -->
+                    <div class="bg-red-50 rounded-xl p-6 border border-red-200">
+                        <h3 class="text-lg font-semibold text-red-900 mb-2">緊急時のお問い合わせ</h3>
+                        <p class="text-sm text-red-700 mb-4">決済に関する緊急のトラブルがございましたら、すぐにご連絡ください。</p>
+                        <button class="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium">
+                            緊急連絡先に電話
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <span class="text-lg font-bold text-orange-600 mr-4">カフェ会＠！</span>
+                    <span class="text-sm text-gray-500">主催者ダッシュボード</span>
+                </div>
+                
+                <div class="flex space-x-6 text-sm">
+                    <a href="/terms" class="text-gray-600 hover:text-orange-600 transition-colors">利用規約</a>
+                    <a href="/privacy" class="text-gray-600 hover:text-orange-600 transition-colors">プライバシーポリシー</a>
+                    <a href="/contact" class="text-gray-600 hover:text-orange-600 transition-colors">お問い合わせ</a>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-400">&copy; 2024 カフェ会＠！ All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>よくある質問 - カフェ会＠！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        /* Custom styles for accordion */
+        .faq-question {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #f9fafb; /* Tailwind gray-50 */
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .faq-question:hover {
+            background-color: #f3f4f6; /* Tailwind gray-100 */
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s;
+            padding: 0 1.5rem;
+            background-color: #fafafa; /* Tailwind gray-100 */
+        }
+        .faq-answer.open {
+            padding: 1rem 1.5rem;
+            max-height: 1000px; /* large enough to show content */
+        }
+        .rotate-90 {
+            transform: rotate(90deg);
+            transition: transform 0.3s;
+        }
+        .rotate-0 {
+            transform: rotate(0deg);
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Your existing header, hero, and main content go here -->
+
+<!-- Replace your FAQ content with this accordion -->
+<section class="py-8 md:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">よくある質問</h2>
+        <div class="space-y-4">
+
+            <!-- Example FAQ Item -->
+            <div class="border rounded-lg shadow-sm bg-white">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Q. 初めてでも参加できますか？</span>
+                    <!-- Arrow Icon -->
+                    <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="mt-2 text-gray-700">
+                        もちろん大歓迎です！<br>初めての方も多く、過半数の方が「初参加」です。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Repeat for all FAQ items, replacing content as needed -->
+            <div class="border rounded-lg shadow-sm bg-white">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Q. 一人で行くのが少し不安です…</span>
+                    <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="mt-2 text-gray-700">
+                        参加者のほとんどがお一人でのご参加です。<br>最初はどなたでも緊張されますが、主催者がしっかりフォローしますのでご安心ください。
+                    </p>
+                </div>
+            </div>
+
+            <!-- さらに多くのFAQ項目を追加してください -->
+            <!-- 例： -->
+            <div class="border rounded-lg shadow-sm bg-white">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Q. 年齢層はどのくらいですか？</span>
+                    <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="mt-2 text-gray-700">
+                        イベント内容によって異なりますが、20代～60代まで幅広くご参加いただいています。<br>内容に合わせてご参加ください。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 例：動画や画像を追加したい場合も、この中にHTMLを入れられます -->
+            <div class="border rounded-lg shadow-sm bg-white">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Q. 会の雰囲気はどうですか？</span>
+                    <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+                <div class="faq-answer">
+                    <p class="mt-2 text-gray-700">
+                        堅苦しさはなく、リラックスした雰囲気で自然に会話が広がります。
+                    </p>
+                    <!-- 画像や動画もここに追加できます -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleFaq(element) {
+    const answer = element.nextElementSibling;
+    const icon = element.querySelector('svg');
+    const isOpen = answer.classList.contains('open');
+
+    // すべてのFAQを閉じる
+    document.querySelectorAll('.faq-answer').forEach(ans => {
+        ans.classList.remove('open');
+        // アイコンを初期位置に戻す
+        ans.previousElementSibling.querySelector('svg').classList.remove('rotate-90');
+        ans.previousElementSibling.querySelector('svg').classList.add('rotate-0');
+    });
+
+    if (!isOpen) {
+        answer.classList.add('open');
+        // アイコンを回転させる
+        icon.classList.remove('rotate-0');
+        icon.classList.add('rotate-90');
+    } else {
+        answer.classList.remove('open');
+        // 元の位置に戻す
+        icon.classList.remove('rotate-90');
+        icon.classList.add('rotate-0');
+    }
+}
+</script>
+
+<!-- 既存のフッターはそのままです -->
+<!-- 以降にあなたのフッターコードを貼り付けてください -->
+
+</body>
+</html>

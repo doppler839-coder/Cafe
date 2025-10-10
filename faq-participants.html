@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問 - カフェ会＠！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        
+        /* FAQ Accordion Animations */
+        .faq-accordion {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-color: rgba(251, 146, 60, 0.2);
+        }
+        
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faq-question::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 146, 60, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .faq-question:hover::before {
+            left: 100%;
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.05), rgba(239, 68, 68, 0.05));
+        }
+        
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        
+        .faq-question:hover h3 {
+            color: #ea580c;
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #6b7280;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #ea580c;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        .faq-answer-content {
+            padding: 0 24px 24px 24px;
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        /* Category Tabs Animation */
+        .category-tab {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 12px 16px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .category-tab.active {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(239, 68, 68, 0.1));
+            color: #ea580c;
+            font-weight: 600;
+        }
+        
+        .category-tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f97316, #ef4444);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .category-tab.active::after {
+            width: 100%;
+        }
+        
+        /* Search Animation */
+        .search-container {
+            position: relative;
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        .search-input {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-input:focus {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(251, 146, 60, 0.2);
+        }
+        
+        /* Hero Section Animation */
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* FAQ Section Animation */
+        .faq-section {
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        /* Sidebar Animation */
+        .sidebar-item {
+            animation: slideInRight 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .sidebar-item:nth-child(1) { animation-delay: 0.1s; }
+        .sidebar-item:nth-child(2) { animation-delay: 0.2s; }
+        .sidebar-item:nth-child(3) { animation-delay: 0.3s; }
+        
+        /* Keyframe Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Stagger Animation for FAQ Items */
+        .faq-item {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .faq-item:nth-child(1) { animation-delay: 0.1s; }
+        .faq-item:nth-child(2) { animation-delay: 0.15s; }
+        .faq-item:nth-child(3) { animation-delay: 0.2s; }
+        .faq-item:nth-child(4) { animation-delay: 0.25s; }
+        .faq-item:nth-child(5) { animation-delay: 0.3s; }
+        .faq-item:nth-child(6) { animation-delay: 0.35s; }
+        .faq-item:nth-child(7) { animation-delay: 0.4s; }
+        .faq-item:nth-child(8) { animation-delay: 0.45s; }
+        .faq-item:nth-child(9) { animation-delay: 0.5s; }
+        .faq-item:nth-child(10) { animation-delay: 0.55s; }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(251, 146, 60, 0.3);
+            border-radius: 50%;
+            border-top-color: #f97316;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-animate-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-animate-left.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scroll-animate-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-animate-right.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scroll-animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-animate-scale.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .scroll-animate-rotate {
+            opacity: 0;
+            transform: rotate(-10deg) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-animate-rotate.animate {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+        
+        /* Enhanced Search Area */
+        .search-container {
+            position: relative;
+            animation: slideInUp 0.6s ease-out;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-input {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-input:focus {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(251, 146, 60, 0.3);
+            border-color: rgba(251, 146, 60, 0.5);
+            background: white;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(0, 0, 0, 0.6);
+            font-weight: 500;
+        }
+        
+        .search-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus + .search-icon {
+            transform: scale(1.1);
+            color: #ea580c;
+        }
+        
+        /* Enhanced FAQ Items with Scroll Animation */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .faq-item:nth-child(1) { animation-delay: 0.1s; }
+        .faq-item:nth-child(2) { animation-delay: 0.15s; }
+        .faq-item:nth-child(3) { animation-delay: 0.2s; }
+        .faq-item:nth-child(4) { animation-delay: 0.25s; }
+        .faq-item:nth-child(5) { animation-delay: 0.3s; }
+        .faq-item:nth-child(6) { animation-delay: 0.35s; }
+        .faq-item:nth-child(7) { animation-delay: 0.4s; }
+        .faq-item:nth-child(8) { animation-delay: 0.45s; }
+        .faq-item:nth-child(9) { animation-delay: 0.5s; }
+        .faq-item:nth-child(10) { animation-delay: 0.55s; }
+        
+        /* Enhanced Responsive Design */
+        @media (max-width: 1024px) {
+            .faq-question {
+                padding: 20px;
+            }
+            
+            .faq-question h3 {
+                font-size: 17px;
+            }
+            
+            .faq-answer-content {
+                padding: 0 20px 20px 20px;
+                font-size: 15px;
+            }
+            
+            .search-container {
+                padding: 15px;
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .faq-question {
+                padding: 18px;
+            }
+            
+            .faq-question h3 {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+            
+            .faq-answer-content {
+                padding: 0 18px 18px 18px;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .search-container {
+                padding: 12px;
+                margin: 0 5px;
+                border-radius: 15px;
+            }
+            
+            .search-input {
+                padding: 12px 16px;
+                font-size: 16px;
+            }
+            
+            .category-tab {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .sidebar-item {
+                margin-bottom: 1rem;
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .faq-question {
+                padding: 16px;
+            }
+            
+            .faq-question h3 {
+                font-size: 15px;
+            }
+            
+            .faq-answer-content {
+                padding: 0 16px 16px 16px;
+                font-size: 13px;
+            }
+            
+            .search-container {
+                padding: 10px;
+                margin: 0;
+            }
+            
+            .search-input {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+            
+            .category-tab {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            
+            .grid {
+                gap: 1rem;
+            }
+            
+            .sidebar-item {
+                padding: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .faq-question {
+                padding: 14px;
+            }
+            
+            .faq-question h3 {
+                font-size: 14px;
+            }
+            
+            .faq-answer-content {
+                padding: 0 14px 14px 14px;
+                font-size: 12px;
+            }
+            
+            .search-container {
+                padding: 8px;
+            }
+            
+            .search-input {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+            
+            .sidebar-item {
+                padding: 0.5rem;
+            }
+        }
+        
+        /* Enhanced Mobile Navigation */
+        @media (max-width: 768px) {
+            .category-tab {
+                flex-shrink: 0;
+                min-width: fit-content;
+            }
+            
+            nav {
+                padding-bottom: 0.5rem;
+            }
+        }
+        
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .faq-question {
+                padding: 20px;
+            }
+            
+            .faq-question:active {
+                background: linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(239, 68, 68, 0.1));
+            }
+            
+            .search-input:focus {
+                transform: scale(1.01);
+            }
+        }
+        
+        /* Flowing background for main FAQ area */
+        .faq-flow {
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .faq-flow::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('./img/map4.png');
+            background-repeat: no-repeat;
+            background-size: 140% auto;
+            background-position: 0% 0%;
+            opacity: 0.06;
+            filter: saturate(1.1) contrast(1.05);
+            animation: faqFlow 40s linear infinite alternate;
+            pointer-events: none;
+            z-index: -1;
+            transform: translateZ(0);
+        }
+        @keyframes faqFlow {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 50% 10%; }
+            100% { background-position: 100% 0%; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="homepage.html" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="Event searchlist pages.html" class="text-gray-600 hover:text-orange-600 transition-colors">イベント検索</a>
+                    <a href="Joinaffiliate recruitment page.html" class="text-gray-600 hover:text-orange-600 transition-colors">主催者募集</a>
+                    <a href="faqpage.html" class="text-orange-600 font-medium">よくある質問</a>
+                    <a href="contactpage.html" class="text-gray-600 hover:text-orange-600 transition-colors">お問い合わせ</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="loginpage.html" class="hidden sm:block bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                        主催者ログイン
+                    </a>
+                    <button class="md:hidden text-gray-600">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-12 md:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="hero-content">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">よくある質問</h1>
+                <p class="text-lg md:text-xl opacity-90 mb-8">
+                    カフェ会＠！に関するよくある質問をまとめました
+                </p>
+            </div>
+            
+            <!-- Enhanced Search Box -->
+            <div class="max-w-2xl mx-auto search-container scroll-animate-scale">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-orange-400/20 to-red-400/20 rounded-2xl blur-sm"></div>
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="質問を検索..." class="search-input w-full px-6 py-4 pl-14 text-gray-900 rounded-xl border-0 focus:ring-2 focus:ring-white focus:outline-none text-lg">
+                        <svg class="search-icon absolute left-5 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                            <div class="search-loading hidden">
+                                <div class="loading"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <p class="text-white/80 text-sm">💡 ヒント: 「参加費」「キャンセル」「主催者」などのキーワードで検索できます</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="py-8 md:py-12 faq-flow">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Category Tabs -->
+            <div class="mb-8 scroll-animate">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-8 overflow-x-auto">
+                        <button class="category-tab active border-orange-500 text-orange-600 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm" data-category="participant">
+                            参加者向け
+                        </button>
+                        <button class="category-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm" data-category="organizer">
+                            主催者向け
+                        </button>
+                        <button class="category-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm" data-category="payment">
+                            決済・料金
+                        </button>
+                        <button class="category-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm" data-category="technical">
+                            技術的な問題
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- FAQ Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main FAQ Content -->
+                <div class="lg:col-span-2 faq-section scroll-animate-left">
+                    <!-- General User FAQs -->
+                    <div id="participant-faqs" class="faq-category">
+                        <div class="faq-accordion">
+                            <!-- Basic Participation Questions -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>カフェ会とは何ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        カフェ会は、カフェなどの気軽な場所で開催される交流イベントです。同じ趣味や興味を持つ人たちが集まり、コーヒーを飲みながら楽しく会話を楽しむことができます。初対面の方でも参加しやすい雰囲気作りを心がけており、新しい出会いや友達作りの場として多くの方にご利用いただいています。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>初めてでも参加できますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        もちろん大歓迎です！初めての方も多く、過半数の方が「初参加」です。主催者が丁寧にフォローしますので、安心してご参加ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>一人で参加しても大丈夫ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        参加者のほとんどがお一人でのご参加です。最初はどなたでも緊張されますが、主催者がしっかりフォローしますのでご安心ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>お友達と一緒に参加してもいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        もちろん歓迎です！お友達と一緒でも、お一人でも、楽しめるように運営しております。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event Details -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>年齢層はどのくらいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        イベント内容によって異なりますが、20代～60代まで幅広くご参加いただいています。特定の年代に限定した会の開催も多くありますので、内容に合わせてご参加ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>男女比はどうなっていますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        イベントの内容によってバランスは異なりますが、男女比が整うよう調整する場合もございます。当日キャンセル等で偏りが出ることもございます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>県外からでも参加できますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        はい、旅行や出張のついでに参加される方もいらっしゃいます。全国どこからでもお気軽にどうぞ。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event Experience -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>カフェ会ってどんな雰囲気ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        堅苦しさは一切なく、リラックスした雰囲気の中で自然に会話が広がります。その日の参加者によって雰囲気が変わるのも楽しみの一つです。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>会の進行はどうなっていますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        開始後、主催者から簡単な説明があります。自己紹介を行った後は、自由なフリートークになります。話題に困ったときは、主催者が話のきっかけを作りますのでご安心ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>自己紹介はありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        お名前・出身・趣味など、可能な範囲での自己紹介となりますのでご安心ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>何を話したらいいか分からないのですが</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        話題が決まっていないフリートーク会では、お互いの趣味や日常について話すことが多いです。テーマが決まっている会（例：アニメ好きの会）では、その話題で自然に盛り上がります。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Registration & Attendance -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>申込みはどうすればいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        各イベントのページ、または公式LINEからお申込みください。満席の場合はキャンセル待ちとなります。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>何分前に行けばいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        開始10分前から入場可能です。直前（3分前）には着席していただけるとスムーズです。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>会場に到着したらどうすればいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        主催者からの事前案内(店内奥の席です。etc.)の内容で、主催者をお探しください。場所がわからない、入店方法に迷っている場合などは、公式LINEにご連絡ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>遅れて参加することは可能ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        可能ですが、事前に必ずご連絡ください。無断遅刻の場合、参加をお断りする場合があります。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>最後までいられないかもしれません</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        途中退席も可能です。事前に主催者へお伝えください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event Rules & Guidelines -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>服装に決まりはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        ありません。普段通りのカジュアルな服装で大丈夫です。異業種交流系のイベント以外で、スーツの方はほとんどいません。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>身分証の提示は必要ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        基本、身分証の提出は不要です。参加者の誠実な自己申告に基づき、イベントを運営しています。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>子供連れで参加は可能ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        原則として大人向けの交流会となっております。お子様連れでのご参加はご遠慮いただいておりますが、イベント内容によってはご相談に応じます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social Interaction -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>名刺交換はできますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        異業種交流系のイベントでは交換する方も多いですが、友活・趣味系ではほとんどいらっしゃいません。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>連絡先の交換はOKですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        会の途中や終了後に自由に交換いただけます。交換しそびれた場合は、主催者経由で確認することも可能です。（いずれも、お相手の同意・了承が必要です）
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>勧誘などが心配です</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        会の中での勧誘は一切禁止しています。後日トラブルがあった場合、主催者までご連絡ください。ブラインド勧誘が確認された場合など、当人には警告・または参加禁止になります。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Privacy & Safety -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>写真に写りたくないのですが…</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        SNS用に参加者全員で記念撮影を行っています。(顔にはぼかし加工をしています) 強制ではありませんので、写りたくない方は御遠慮なくお申し出ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>参加者の連絡先を共有されることはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        いいえ、個人情報の取り扱いには十分配慮しております。ご本人の同意がない限り、他の参加者に連絡先を伝えることは一切ありません。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event Logistics -->
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>会の時間はどのくらいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        基本的に1時間〜1時間15分程度となります。イベント内容によって前後することがありますので、各詳細ページをご確認ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>途中で席替えなどはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        はい、参加者の交流を深めるために、一定時間ごとに席替えを行うことがあります。会の内容によっては固定席の場合もあります。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>途中でグループに分かれることはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        場合により、少人数グループに分かれていただくこともあります。全員と話しやすいよう、主催者が調整いたします。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="participant">
+                                <div class="faq-question">
+                                    <h3>当日急に参加したくなったら？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        空きがあれば当日でも参加可能です！公式LINEで主催者にご確認ください。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin/Organizer FAQs -->
+                    <div id="organizer-faqs" class="faq-category hidden">
+                        <div class="faq-accordion">
+                            <!-- Becoming an Organizer -->
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>主催者になるにはどうすればいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        主催者登録フォームからお申し込みください。審査後、主催者として活動を開始できます。経験やスキルは問いませんが、コミュニケーション能力と責任感が重要です。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>主催者になるための条件はありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        18歳以上で、責任を持ってイベントを運営できる方であればどなたでも応募可能です。面接と研修を経て、適性を確認させていただきます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Financial Information -->
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>初期費用はいくらかかりますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        初期加盟金は30,000円です。これには主催者研修、マニュアル、初期サポートが含まれます。分割払いも可能です。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>月額ロイヤリティについて教えてください</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        売上の10%を月額ロイヤリティとしてお支払いいただきます。システム利用料、サポート、マーケティング支援が含まれます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>収益はどのくらい見込めますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        参加費から会場費を差し引いた金額が主催者の収益となります。月額ロイヤリティ10%を差し引いた金額が手取りとなります。経験豊富な主催者の中には月収20万円以上を稼ぐ方もいらっしゃいます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event Management -->
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>イベント開催の流れを教えてください</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        1. イベント企画・会場選定<br>2. システム上でのイベント登録<br>3. 参加者募集・管理<br>4. 当日運営<br>5. 参加費回収・報告<br>6. フィードバック収集
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>会場選びのコツはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        アクセスしやすく、静かすぎず騒がしすぎない場所を選ぶことが重要です。Wi-Fi環境、電源、トイレの確認も忘れずに。初回は少人数から始めることをお勧めします。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>参加者を集めるにはどうすればいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        魅力的なイベントタイトルと詳細な説明が重要です。SNSでの宣伝、口コミ、リピーターの獲得を心がけましょう。当社のマーケティング支援も活用できます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Support & Training -->
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>主催者向けのサポートはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        専用のサポートチームが24時間体制でサポートいたします。オンライン研修、マニュアル、定期的な勉強会も開催しています。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>トラブルが発生した場合はどうすればいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        緊急時は24時間サポートラインにご連絡ください。トラブル対応マニュアルも提供しており、迅速な解決をサポートします。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System & Tools -->
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>使用できるシステムやツールはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        イベント管理システム、参加者管理ツール、決済システム、マーケティングツールなど、主催に必要なツールをすべて提供しています。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>決済はどのように行いますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        現金、PayPay、クレジットカード決済に対応しています。決済手数料は当社が負担し、主催者には手数料なしでお支払いいただけます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Policies & Guidelines -->
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>主催者として守るべきルールはありますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        参加者の安全とプライバシーを最優先に、誠実で責任感のある運営を心がけてください。勧誘行為の禁止、差別の禁止など、詳細なガイドラインを提供しています。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="organizer">
+                                <div class="faq-question">
+                                    <h3>契約期間や解約について教えてください</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        契約期間は1年で、自動更新されます。解約は30日前の通知で可能です。解約時は未使用の加盟金の返金はありませんが、サポートは継続いたします。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment & Fees FAQs -->
+                    <div id="payment-faqs" class="faq-category hidden">
+                        <div class="faq-accordion">
+                            <!-- General Payment Questions -->
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>参加費はいくらですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        会によって異なりますが、1,000円〜1,500円前後です。ご自身のドリンク代が別途かかります。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>予算はどのくらい見ておけば？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        参加費と飲み物代を合わせて1,500円～2,000円前後を目安にご用意ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>支払い方法は？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        現金またはPayPayでお支払いいただけます。一部の会ではPayPayが使えない場合もあるため、イベント詳細にて「支払方法」をご確認ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>いつお支払いすればいいですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        カフェ会の開始前、または終了後、主催者が参加費を回収いたします。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>領収書はもらえますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        原則、発行しておりません。必要な方は、参加前に主催者にご相談ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cancellation & Refunds -->
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>キャンセルは可能ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        基本的にはかかりませんが、当日直前キャンセルや、会場から請求がある場合はお支払いいただきます。キャンセルされる方は、開始時間の4時間前までに必ずご連絡ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>返金について教えてください</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        キャンセルポリシーに基づいて返金いたします。当日キャンセルの場合は返金対象外となります。返金は1週間以内に指定口座へお振込みいたします。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Organizer Payment Questions -->
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>主催者の月額ロイヤリティについて</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        主催者の売上から10%の月額ロイヤリティをいただいております。毎月末に自動引き落としとなります。システム利用料、サポート、マーケティング支援が含まれます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="payment">
+                                <div class="faq-question">
+                                    <h3>決済手数料はかかりますか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        決済手数料は当社が負担し、主催者には手数料なしでお支払いいただけます。参加者も追加の手数料は発生しません。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Support FAQs -->
+                    <div id="technical-faqs" class="faq-category hidden">
+                        <div class="faq-accordion">
+                            <!-- Account Issues -->
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>ログインできない場合は？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        パスワードリセット機能をご利用ください。それでも解決しない場合はサポートまでご連絡ください。24時間以内に回答いたします。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>パスワードを忘れてしまいました</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        ログインページの「パスワードを忘れた方」から、登録メールアドレスを入力してリセット手続きを行ってください。メールが届かない場合は迷惑メールフォルダをご確認ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Booking Issues -->
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>予約ができない場合の対処法</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        ブラウザのキャッシュをクリアしてから再度お試しください。推奨ブラウザはChrome、Firefox、Safariです。JavaScriptが有効になっているかもご確認ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>予約完了メールが届きません</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        迷惑メールフォルダをご確認ください。それでも見つからない場合は、メールアドレスの登録を確認してください。Gmailの場合は「プロモーション」タブもご確認ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Communication Issues -->
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>会場の連絡が届いていません</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        通常は前日の昼頃にお送りしますが、万一届かない場合は、主催者(公式LINE)までご連絡ください。緊急時は電話でも対応いたします。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>公式LINEが応答しません</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        営業時間内（平日9:00-18:00）であれば通常1時間以内に回答いたします。緊急の場合は電話サポート（03-XXXX-XXXX）までご連絡ください。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Browser & Device Issues -->
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>スマートフォンで表示がおかしいです</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        ブラウザの更新をお試しください。iOSの場合はSafari、Androidの場合はChromeの使用を推奨します。アプリ版もご利用いただけます。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>推奨ブラウザは何ですか？</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        Chrome（最新版）、Firefox（最新版）、Safari（最新版）、Edge（最新版）を推奨しています。Internet Explorerはサポート対象外です。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- System Issues -->
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>サイトが重くて操作できません</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        インターネット接続をご確認ください。Wi-Fiの場合は有線接続をお試しください。それでも改善しない場合は、一時的なサーバー負荷の可能性があります。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item" data-category="technical">
+                                <div class="faq-question">
+                                    <h3>エラーメッセージが表示されます</h3>
+                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </div>
+                                <div class="faq-answer">
+                                    <div class="faq-answer-content">
+                                        エラーメッセージの内容と発生した操作をサポートまでお知らせください。スクリーンショットがあるとより迅速に対応できます。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1 scroll-animate-right">
+                    <!-- Quick Links -->
+                    <div class="sidebar-item bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">クイックリンク</h3>
+                        <div class="space-y-3">
+                            <a href="Event searchlist pages.html" class="flex items-center text-orange-600 hover:text-orange-700 transition-colors group">
+                                <svg class="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                                イベントを探す
+                            </a>
+                            <a href="Joinaffiliate recruitment page.html" class="flex items-center text-orange-600 hover:text-orange-700 transition-colors group">
+                                <svg class="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                                </svg>
+                                主催者になる
+                            </a>
+                            <a href="contactpage.html" class="flex items-center text-orange-600 hover:text-orange-700 transition-colors group">
+                                <svg class="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                お問い合わせ
+                            </a>
+                            <a href="homepage.html" class="flex items-center text-orange-600 hover:text-orange-700 transition-colors group">
+                                <svg class="h-4 w-4 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                利用規約
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Popular Questions -->
+                    <div class="sidebar-item bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">人気の質問</h3>
+                        <div class="space-y-3">
+                            <a href="#participant-faqs" class="block text-sm text-gray-600 hover:text-orange-600 transition-colors hover:translate-x-1 transform">
+                                カフェ会とは何ですか？
+                            </a>
+                            <a href="#participant-faqs" class="block text-sm text-gray-600 hover:text-orange-600 transition-colors hover:translate-x-1 transform">
+                                初めてでも参加できますか？
+                            </a>
+                            <a href="#participant-faqs" class="block text-sm text-gray-600 hover:text-orange-600 transition-colors hover:translate-x-1 transform">
+                                一人で参加しても大丈夫ですか？
+                            </a>
+                            <a href="#organizer-faqs" class="block text-sm text-gray-600 hover:text-orange-600 transition-colors hover:translate-x-1 transform">
+                                主催者になるにはどうすればいいですか？
+                            </a>
+                            <a href="#payment-faqs" class="block text-sm text-gray-600 hover:text-orange-600 transition-colors hover:translate-x-1 transform">
+                                参加費はいくらですか？
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Support -->
+                    <div class="sidebar-item bg-gradient-to-r from-orange-500 to-red-500 rounded-lg p-6 text-white hover:shadow-lg transition-shadow">
+                        <h3 class="text-lg font-medium mb-2">解決しませんでしたか？</h3>
+                        <p class="text-sm opacity-90 mb-4">
+                            お困りのことがございましたら、お気軽にお問い合わせください。
+                        </p>
+                        <a href="contactpage.html" class="bg-white text-orange-600 hover:bg-gray-100 px-4 py-2 rounded-lg text-sm font-medium transition-colors inline-block hover:scale-105 transform">
+                            お問い合わせ
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Additional FAQ Categories Preview -->
+    <section class="py-8 md:py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8">
+                その他のよくある質問
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Organizer FAQs -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <svg class="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">主催者向け</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        カフェ会の主催者になりたい方向けの質問と回答をまとめています。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• 主催者になるには？</li>
+                        <li>• 加盟金について</li>
+                        <li>• イベント開催の流れ</li>
+                        <li>• 収益について</li>
+                    </ul>
+                </div>
+
+                <!-- Payment FAQs -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">決済・料金</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        参加費や加盟金などの決済に関する質問と回答です。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• 支払い方法について</li>
+                        <li>• 返金について</li>
+                        <li>• 領収書の発行</li>
+                        <li>• 月額ロイヤリティ</li>
+                    </ul>
+                </div>
+
+                <!-- Technical FAQs -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">技術的な問題</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        サイトの使い方や技術的なトラブルに関する質問です。
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• ログインできない</li>
+                        <li>• 予約ができない</li>
+                        <li>• メールが届かない</li>
+                        <li>• 推奨ブラウザ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-bold text-orange-400 mb-4">カフェ会＠！</h3>
+                    <p class="text-gray-300 mb-4">
+                        地域に笑顔と出会いの場を広げ、気軽で安心なコミュニティ体験を提供します。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="Event searchlist pages.html" class="hover:text-white transition-colors">イベント検索</a></li>
+                        <li><a href="Joinaffiliate recruitment page.html" class="hover:text-white transition-colors">主催者募集</a></li>
+                        <li><a href="/owner/login" class="hover:text-white transition-colors">主催者ログイン</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">サポート</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="/faq" class="hover:text-white transition-colors">よくある質問</a></li>
+                        <li><a href="/contact" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                        <li><a href="/terms" class="hover:text-white transition-colors">利用規約</a></li>
+                        <li><a href="/privacy" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 カフェ会＠！ All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+        <script>
+            // Scroll Animation Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all scroll animation elements
+            document.addEventListener('DOMContentLoaded', function() {
+                const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale, .scroll-animate-rotate');
+                scrollElements.forEach(el => observer.observe(el));
+
+                // FAQ Accordion Functionality
+                const faqItems = document.querySelectorAll('.faq-item');
+
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    const answer = item.querySelector('.faq-answer');
+
+                    question.addEventListener('click', function() {
+                        const isActive = item.classList.contains('active');
+
+                        // Close all other FAQ items
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+
+                        // Toggle current item
+                        if (isActive) {
+                            item.classList.remove('active');
+                        } else {
+                            item.classList.add('active');
+                        }
+                    });
+                });
+
+                // Category Tab Functionality
+                const categoryTabs = document.querySelectorAll('.category-tab');
+                const faqCategories = document.querySelectorAll('.faq-category');
+
+                categoryTabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const category = this.getAttribute('data-category');
+
+                        // Update active tab
+                        categoryTabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // Show/hide FAQ categories
+                        faqCategories.forEach(cat => {
+                            cat.classList.add('hidden');
+                            if (cat.id === category + '-faqs') {
+                                cat.classList.remove('hidden');
+                            }
+                        });
+                    });
+                });
+
+                // Enhanced Search Functionality
+                const searchInput = document.getElementById('searchInput');
+                const searchLoading = document.querySelector('.search-loading');
+                let searchTimeout;
+
+                if (searchInput) {
+                    searchInput.addEventListener('input', function() {
+                        const searchTerm = this.value.toLowerCase();
+                        const faqItems = document.querySelectorAll('.faq-item');
+
+                        // Show loading animation
+                        if (searchLoading) {
+                            searchLoading.classList.remove('hidden');
+                        }
+
+                        // Clear previous timeout
+                        clearTimeout(searchTimeout);
+
+                        // Debounce search
+                        searchTimeout = setTimeout(() => {
+                            let hasResults = false;
+
+                            faqItems.forEach(item => {
+                                const question = item.querySelector('h3').textContent.toLowerCase();
+                                const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+
+                                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                                    item.style.display = 'block';
+                                    item.style.animation = 'fadeInUp 0.3s ease-out';
+                                    hasResults = true;
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+
+                            // Hide loading animation
+                            if (searchLoading) {
+                                searchLoading.classList.add('hidden');
+                            }
+
+                            // Show no results message if needed
+                            if (!hasResults && searchTerm.length > 0) {
+                                showNoResultsMessage();
+                            } else {
+                                hideNoResultsMessage();
+                            }
+                        }, 300);
+                    });
+
+                    // Add focus/blur effects
+                    searchInput.addEventListener('focus', function() {
+                        this.parentElement.parentElement.style.transform = 'scale(1.02)';
+                    });
+
+                    searchInput.addEventListener('blur', function() {
+                        this.parentElement.parentElement.style.transform = 'scale(1)';
+                    });
+                }
+
+                // Smooth scroll for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+
+                // Parallax effect for hero section
+                window.addEventListener('scroll', function() {
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero-section');
+                    if (hero) {
+                        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                    }
+                });
+
+                // Add keyboard navigation for FAQ items
+                faqItems.forEach((item, index) => {
+                    const question = item.querySelector('.faq-question');
+                    
+                    question.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            question.click();
+                        } else if (e.key === 'ArrowDown') {
+                            e.preventDefault();
+                            const nextItem = faqItems[index + 1];
+                            if (nextItem) {
+                                nextItem.querySelector('.faq-question').focus();
+                            }
+                        } else if (e.key === 'ArrowUp') {
+                            e.preventDefault();
+                            const prevItem = faqItems[index - 1];
+                            if (prevItem) {
+                                prevItem.querySelector('.faq-question').focus();
+                            }
+                        }
+                    });
+                });
+
+                // Make FAQ questions focusable
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    question.setAttribute('tabindex', '0');
+                    question.setAttribute('role', 'button');
+                    question.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // No results message functions
+            function showNoResultsMessage() {
+                let noResultsMsg = document.querySelector('.no-results-message');
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.className = 'no-results-message bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center mb-6';
+                    noResultsMsg.innerHTML = `
+                        <div class="text-yellow-600 mb-2">
+                            <svg class="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.009-5.824-2.709"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-yellow-800 mb-2">検索結果が見つかりません</h3>
+                        <p class="text-yellow-700">別のキーワードで検索してみてください。</p>
+                    `;
+                    
+                    const faqSection = document.querySelector('.faq-section');
+                    if (faqSection) {
+                        faqSection.insertBefore(noResultsMsg, faqSection.firstChild);
+                    }
+                }
+                noResultsMsg.style.display = 'block';
+            }
+
+            function hideNoResultsMessage() {
+                const noResultsMsg = document.querySelector('.no-results-message');
+                if (noResultsMsg) {
+                    noResultsMsg.style.display = 'none';
+                }
+            }
+        </script>
+</body>
+</html>
+</html>

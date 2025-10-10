@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渋谷で気軽なカフェ会 - 新しい出会いを求める方歓迎 | カフェ会＠！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        /* Material-style typography and colors */
+        :root {
+            --md-primary: #f97316;
+            --md-on-surface: #1d1b20;
+            --md-on-surface-variant: #49454f;
+            --md-outline: #cac4d0;
+        }
+        html, body { color: var(--md-on-surface); letter-spacing: 0.01em; }
+        h1, h2, h3, h4, h5, h6 { color: var(--md-on-surface); font-weight: 700; letter-spacing: -0.015em; }
+        h3, h4, h5, h6 { font-weight: 600; }
+        small, .text-sm { color: var(--md-on-surface-variant); }
+        a { color: var(--md-primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        a:hover { color: #ea580c; }
+        .text-gray-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; }
+        .border-gray-200 { border-color: var(--md-outline) !important; }
+        .border-gray-300 { border-color: var(--md-outline) !important; }
+        .text-gray-900 { color: var(--md-on-surface) !important; }
+        /* Material-inspired search UI */
+        .elev-1 { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .elev-2 { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .search-surface {
+            background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            backdrop-filter: saturate(1.2) blur(8px);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+        .chip { transition: all 160ms ease; }
+        .chip.selected { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(249,115,22,0.25); }
+        .field-focus:focus { box-shadow: 0 0 0 4px rgba(249,115,22,0.15); }
+        .glass-input { background: rgba(255,255,255,0.85); }
+        @media (prefers-reduced-motion: reduce) {
+            .chip, .elev-1, .elev-2 { transition: none !important; }
+        }
+
+        /* Scroll-driven motion */
+        .reveal-smooth { opacity: 0; transform: translateY(24px) scale(0.98); transition: opacity 600ms ease, transform 800ms cubic-bezier(0.22, 1, 0.36, 1); will-change: transform, opacity; }
+        .reveal-smooth.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+        .tilt { transform-style: preserve-3d; transition: transform 300ms ease, box-shadow 300ms ease; will-change: transform; }
+        .parallax-lite { will-change: transform; }
+        
+        /* Rhythmic letter motion */
+        .rhythm-char { display: inline-block; will-change: transform; }
+        @media (prefers-reduced-motion: reduce) {
+            .rhythm-char { transform: none !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-smooth { transition: none !important; }
+            .tilt { transition: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="homepage.html" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="Event searchlist pages.html" class="text-gray-600 hover:text-orange-600 transition-colors">イベント検索</a>
+                    <a href="Joinaffiliate recruitment page.html" class="text-gray-600 hover:text-orange-600 transition-colors">主催者募集</a>
+                    <a href="loginpage.html" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors">主催者ログイン</a>
+                </nav>
+                <button class="md:hidden p-2">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b border-gray-200 py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                <a href="homepage.html" class="hover:text-orange-600 transition-colors">ホーム</a>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <a href="Event searchlist pages.html" class="hover:text-orange-600 transition-colors">イベント検索</a>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <a href="/event/tokyo" class="hover:text-orange-600 transition-colors">東京都</a>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-gray-900">渋谷区</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Toolbar -->
+    <section class="py-6 sm:py-8 bg-gradient-to-br from-orange-50 to-rose-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="search-surface elev-1 rounded-2xl p-4 sm:p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
+                    <!-- Query -->
+                    <div class="lg:col-span-5">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">キーワード検索</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            </div>
+                            <input id="searchQuery" type="text" placeholder="例: 渋谷 カフェ会 読書会" class="glass-input field-focus w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none" />
+                        </div>
+                    </div>
+                    <!-- Area -->
+                    <div class="lg:col-span-3">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">エリア</label>
+                        <select id="searchArea" class="glass-input field-focus w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none">
+                            <option value="">指定なし</option>
+                            <option value="東京">東京</option>
+                            <option value="大阪">大阪</option>
+                            <option value="神奈川">神奈川</option>
+                            <option value="愛知">愛知</option>
+                            <option value="福岡">福岡</option>
+                        </select>
+                    </div>
+                    <!-- Date -->
+                    <div class="lg:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">開催日</label>
+                        <input id="searchDate" type="date" class="glass-input field-focus w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none" />
+                    </div>
+                    <!-- Price -->
+                    <div class="lg:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2 flex items-center justify-between">
+                            <span>上限価格</span>
+                            <span id="priceLabel" class="text-gray-500 text-xs">—</span>
+                        </label>
+                        <input id="searchPrice" type="range" min="0" max="5000" step="500" value="5000" class="w-full" />
+                    </div>
+                </div>
+
+                <!-- Categories as chips -->
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <button data-chip="カフェ会" class="chip px-3 py-1.5 rounded-full bg-orange-100 text-orange-800 text-sm hover:bg-orange-200">カフェ会</button>
+                    <button data-chip="読書会" class="chip px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm hover:bg-blue-200">読書会</button>
+                    <button data-chip="料理教室" class="chip px-3 py-1.5 rounded-full bg-green-100 text-green-800 text-sm hover:bg-green-200">料理教室</button>
+                    <button data-chip="友活" class="chip px-3 py-1.5 rounded-full bg-rose-100 text-rose-800 text-sm hover:bg-rose-200">友活</button>
+                </div>
+
+                <div class="mt-4 flex items-center gap-3">
+                    <button id="applySearch" class="elev-2 bg-orange-600 hover:bg-orange-700 text-white px-5 py-2.5 rounded-xl font-semibold">検索する</button>
+                    <button id="resetSearch" class="px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50">リセット</button>
+                    <span id="resultCount" class="text-sm text-gray-500 ml-auto">— 件ヒット</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Hero Section -->
+    <section class="bg-white parallax-lite" data-parallax-speed="0.2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal-smooth">
+                <!-- Event Images -->
+                <div class="space-y-4 tilt" data-tilt>
+                    <div class="relative">
+                        <img src="./img/eve (3).png" alt="渋谷カフェ会メイン画像" class="w-full h-80 sm:h-96 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-orange-500 text-white text-sm font-medium px-3 py-1 rounded-full">募集中</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="bg-white bg-opacity-90 p-3 rounded-full hover:bg-opacity-100 transition-all shadow-lg">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Thumbnail Gallery -->
+                    <div class="grid grid-cols-4 gap-2">
+                        <img src="./img/eve (2).png" alt="カフェ内観" class="w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="./img/eve (4).png" alt="コーヒー" class="w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="./img/eve (5).png" alt="参加者の様子" class="w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-full h-20 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-200 transition-colors">
+                            <span class="text-sm text-gray-600 font-medium">+3枚</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Info -->
+                <div class="space-y-6 reveal-smooth">
+                    <div>
+                        <div class="flex items-center mb-3">
+                            <span class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1 rounded-full">カフェ会</span>
+                            <span class="ml-3 text-sm text-gray-500">東京・渋谷区</span>
+                        </div>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">渋谷で気軽なカフェ会 - 新しい出会いを求める方歓迎</h1>
+                        <p class="text-gray-600 leading-relaxed">おしゃれなカフェで気軽に交流できるイベントです。初参加の方も大歓迎！年齢や職業を問わず、新しい出会いや友達作りを求める方にぴったりのイベントです。リラックスした雰囲気の中で、コーヒーを飲みながら楽しい時間を過ごしましょう。</p>
+                    </div>
+
+                    <!-- Event Details -->
+                    <div class="bg-gray-50 rounded-xl p-6 space-y-4 reveal-smooth">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium text-gray-900">開催日時</p>
+                                <p class="text-gray-600">2024年12月25日（月）14:00 - 16:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium text-gray-900">開催場所</p>
+                                <p class="text-gray-600">スターバックス渋谷スカイ店</p>
+                                <p class="text-sm text-gray-500">渋谷駅徒歩3分</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium text-gray-900">参加費</p>
+                                <p class="text-2xl font-bold text-orange-600">¥1,500 <span class="text-sm font-normal text-gray-500">/人</span></p>
+                                <p class="text-sm text-gray-500">ドリンク代別途</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                            <div>
+                                <p class="font-medium text-gray-900">参加者</p>
+                                <p class="text-gray-600"><span class="font-semibold text-gray-900">8名</span> / 12名</p>
+                                <p class="text-sm text-green-600">残り4席</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Organizer Info -->
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 reveal-smooth">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">主催者</h3>
+                        <div class="flex items-center">
+                            <img src="./img/ava_mana.png" alt="田中太郎" class="w-16 h-16 rounded-full mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center mb-1">
+                                    <h4 class="text-lg font-medium text-gray-900 mr-2">田中 太郎</h4>
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-sm text-gray-500 ml-1">本人確認済み</span>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-2">カフェ会主催歴2年。これまで50回以上のイベントを開催し、多くの素敵な出会いをサポートしてきました。</p>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span>開催実績: 52回</span>
+                                    <span>参加者満足度: 4.8/5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Reservation CTA -->
+                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-6 reveal-smooth">
+                        <div class="text-center">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">今すぐ予約する</h3>
+                            <p class="text-sm text-gray-600 mb-4">登録不要で簡単予約！</p>
+                            <button class="w-full bg-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-700 transition-colors text-lg">
+                                予約フォームへ進む
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Description & Map -->
+    <section class="bg-white border-t border-gray-200 parallax-lite" data-parallax-speed="0.12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 reveal-smooth">
+                <!-- Detailed Description -->
+                <div class="reveal-smooth">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">イベント詳細</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">こんな方におすすめ</h3>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center">
+                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    新しい友達を作りたい方
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    転職や転居で新しい環境に慣れたい方
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    気軽に人と話したい方
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    カフェ会初参加の方
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">当日の流れ</h3>
+                            <div class="space-y-3">
+                                <div class="flex">
+                                    <span class="bg-orange-100 text-orange-800 text-sm font-medium px-2 py-1 rounded-full mr-3 mt-0.5">14:00</span>
+                                    <div>
+                                        <p class="font-medium text-gray-900">受付・自己紹介</p>
+                                        <p class="text-sm text-gray-600">簡単な自己紹介とドリンクオーダー</p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <span class="bg-orange-100 text-orange-800 text-sm font-medium px-2 py-1 rounded-full mr-3 mt-0.5">14:15</span>
+                                    <div>
+                                        <p class="font-medium text-gray-900">フリートーク</p>
+                                        <p class="text-sm text-gray-600">気軽に会話を楽しみましょう</p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <span class="bg-orange-100 text-orange-800 text-sm font-medium px-2 py-1 rounded-full mr-3 mt-0.5">15:30</span>
+                                    <div>
+                                        <p class="font-medium text-gray-900">連絡先交換タイム</p>
+                                        <p class="text-sm text-gray-600">希望者同士で連絡先交換</p>
+                                    </div>
+                                </div>
+                                <div class="flex">
+                                    <span class="bg-orange-100 text-orange-800 text-sm font-medium px-2 py-1 rounded-full mr-3 mt-0.5">16:00</span>
+                                    <div>
+                                        <p class="font-medium text-gray-900">終了</p>
+                                        <p class="text-sm text-gray-600">お疲れ様でした！</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">注意事項</h3>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li>• ドリンク代は各自負担となります</li>
+                                <li>• 営業目的での参加はご遠慮ください</li>
+                                <li>• キャンセルは前日までにお願いします</li>
+                                <li>• 当日の連絡先は予約完了後にお知らせします</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map & Location -->
+                <div class="reveal-smooth">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">開催場所</h2>
+                    
+                    <!-- Google Maps Embed -->
+                    <div class="bg-gray-200 rounded-xl h-80 mb-6 flex items-center justify-center tilt" data-tilt>
+                        <div class="text-center text-gray-500">
+                            <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <p class="text-sm">Google Maps</p>
+                            <p class="text-xs">開催確定後に表示されます</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-6 reveal-smooth">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">アクセス情報</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <p class="font-medium text-gray-900">スターバックス渋谷スカイ店</p>
+                                <p class="text-gray-600">東京都渋谷区渋谷2-24-12 渋谷スクランブルスクエア14F</p>
+                            </div>
+                            
+                            <div class="border-t border-gray-200 pt-3">
+                                <h4 class="font-medium text-gray-900 mb-2">最寄り駅</h4>
+                                <ul class="space-y-1 text-sm text-gray-600">
+                                    <li>• JR渋谷駅 徒歩3分</li>
+                                    <li>• 東京メトロ渋谷駅 徒歩3分</li>
+                                    <li>• 東急渋谷駅 徒歩3分</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border-t border-gray-200 pt-3">
+                                <h4 class="font-medium text-gray-900 mb-2">目印</h4>
+                                <p class="text-sm text-gray-600">渋谷スクランブルスクエア東棟14階。渋谷駅直結で雨の日も安心です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Form -->
+    <section class="bg-gray-50 py-12 sm:py-16">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">予約フォーム</h2>
+                <p class="text-gray-600">登録不要で簡単予約！必要な情報を入力してください。</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">お名前 <span class="text-red-500">*</span></label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="山田 太郎">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">フリガナ <span class="text-red-500">*</span></label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="ヤマダ タロウ">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
+                        <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="example@email.com">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">電話番号 <span class="text-red-500">*</span></label>
+                        <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="090-1234-5678">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">参加人数 <span class="text-red-500">*</span></label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                            <option value="">選択してください</option>
+                            <option value="1">1名</option>
+                            <option value="2">2名</option>
+                            <option value="3">3名</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">参加動機・メッセージ（任意）</label>
+                        <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="初参加で緊張していますが、よろしくお願いします！"></textarea>
+                    </div>
+                    
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-2">予約確認</h3>
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <p><span class="font-medium">イベント:</span> 渋谷で気軽なカフェ会</p>
+                            <p><span class="font-medium">日時:</span> 2024年12月25日（月）14:00-16:00</p>
+                            <p><span class="font-medium">場所:</span> スターバックス渋谷スカイ店</p>
+                            <p><span class="font-medium">参加費:</span> ¥1,500/人</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" required class="mt-1 mr-3">
+                        <label for="terms" class="text-sm text-gray-600">
+                            <a href="/terms" class="text-orange-600 hover:underline">利用規約</a>および<a href="/privacy" class="text-orange-600 hover:underline">プライバシーポリシー</a>に同意します <span class="text-red-500">*</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-orange-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-orange-700 transition-colors text-lg">
+                        予約を確定する
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="bg-white py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">参加者レビュー</h2>
+                <div class="flex items-center justify-center mb-4">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                    <span class="ml-2 text-lg font-medium text-gray-900">4.8</span>
+                    <span class="ml-1 text-gray-500">(24件のレビュー)</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="./img/ava2.png" alt="レビュアー" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">M.S.さん</p>
+                            <div class="flex items-center">
+                                <div class="flex">
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                </div>
+                                <span class="ml-1 text-sm text-gray-500">2日前</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">初参加でしたが、とても温かい雰囲気で安心して参加できました。主催者の田中さんも気さくで、他の参加者の方々とも楽しく話すことができました。また参加したいです！</p>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="./img/ava1.jpg" alt="レビュアー" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">T.K.さん</p>
+                            <div class="flex items-center">
+                                <div class="flex">
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                </div>
+                                <span class="ml-1 text-sm text-gray-500">1週間前</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">転職を機に東京に引っ越してきたばかりで友達がいませんでしたが、このイベントで素敵な出会いがありました。同じような境遇の方も多く、共感できる話がたくさんできました。</p>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="./img/ava3.jpg" alt="レビュアー" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-900">A.Y.さん</p>
+                            <div class="flex items-center">
+                                <div class="flex">
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                </div>
+                                <span class="ml-1 text-sm text-gray-500">2週間前</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm">カフェ会は初めてでしたが、想像以上に楽しかったです！渋谷スカイの素敵な景色を見ながら、リラックスして会話できました。次回も絶対参加します。</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button class="text-orange-600 hover:text-orange-700 font-medium">すべてのレビューを見る</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Events -->
+    <section class="bg-gray-50 py-12 sm:py-16 parallax-lite" data-parallax-speed="0.08">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">関連するイベント</h2>
+            
+            <div id="relatedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Related Event 1 -->
+                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow reveal-smooth tilt" data-tilt data-title="新宿読書交流会" data-category="読書会" data-area="東京 新宿区" data-price="2000" data-date="2024-12-28">
+                    <img src="./img/eve (2).png" alt="読書会" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">読書会</span>
+                            <span class="ml-2 text-sm text-gray-500">東京・新宿区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">新宿読書交流会</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/28 (木) 19:00-21:00</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-orange-600">¥2,000</span>
+                            <button class="bg-orange-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-700 transition-colors">詳細</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Event 2 -->
+                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow reveal-smooth tilt" data-tilt data-title="世田谷料理教室" data-category="料理教室" data-area="東京 世田谷区" data-price="3500" data-date="2024-12-29">
+                    <img src="./img/eve (5).png" alt="料理教室" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">料理教室</span>
+                            <span class="ml-2 text-sm text-gray-500">東京・世田谷区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">世田谷料理教室</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/29 (金) 11:00-14:00</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-orange-600">¥3,500</span>
+                            <button class="bg-orange-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-700 transition-colors">詳細</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Event 3 -->
+                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow reveal-smooth tilt" data-tilt data-title="六本木カフェ会" data-category="カフェ会" data-area="東京 港区" data-price="1800" data-date="2024-12-30">
+                    <img src="./img/eve (7).png" alt="カフェ会" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-orange-100 text-orange-800 text-xs font-medium px-2 py-1 rounded-full">カフェ会</span>
+                            <span class="ml-2 text-sm text-gray-500">東京・港区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">六本木カフェ会</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/30 (土) 15:00-17:00</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-orange-600">¥1,800</span>
+                            <button class="bg-orange-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-700 transition-colors">詳細</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-4">カフェ会＠！</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        地域に笑顔と出会いの場を広げ、気軽で安心なコミュニティ体験を提供するプラットフォームです。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2">
+                        <li><a href="Event searchlist pages.html" class="text-gray-300 hover:text-orange-400 transition-colors">イベント検索</a></li>
+                        <li><a href="Joinaffiliate recruitment page.html" class="text-gray-300 hover:text-orange-400 transition-colors">主催者募集</a></li>
+                        <li><a href="faqpage.html" class="text-gray-300 hover:text-orange-400 transition-colors">よくある質問</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">サポート</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contactpage.html" class="text-gray-300 hover:text-orange-400 transition-colors">お問い合わせ</a></li>
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-orange-400 transition-colors">利用規約</a></li>
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-orange-400 transition-colors">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 カフェ会＠！ All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Search Script -->
+    <script>
+        (function(){
+            const q = document.getElementById('searchQuery');
+            const area = document.getElementById('searchArea');
+            const date = document.getElementById('searchDate');
+            const price = document.getElementById('searchPrice');
+            const priceLabel = document.getElementById('priceLabel');
+            const chips = Array.from(document.querySelectorAll('[data-chip]'));
+            const applyBtn = document.getElementById('applySearch');
+            const resetBtn = document.getElementById('resetSearch');
+            const resultCount = document.getElementById('resultCount');
+            const cards = Array.from(document.querySelectorAll('#relatedGrid > div[data-title]'));
+
+            const state = { categories: new Set() };
+
+            function normalize(s){
+                return (s || '').toString().toLowerCase();
+            }
+
+            function matches(card){
+                const t = normalize(card.getAttribute('data-title')) + ' ' + normalize(card.getAttribute('data-category')) + ' ' + normalize(card.getAttribute('data-area'));
+                const query = normalize(q.value);
+                if (query && !t.includes(query)) return false;
+
+                const a = normalize(area.value);
+                if (a && !normalize(card.getAttribute('data-area')).includes(a)) return false;
+
+                const dSel = date.value ? new Date(date.value) : null;
+                if (dSel) {
+                    const dCard = new Date(card.getAttribute('data-date'));
+                    if (isFinite(dCard) && dCard.toDateString() !== dSel.toDateString()) return false;
+                }
+
+                const pMax = parseInt(price.value, 10) || 5000;
+                const pCard = parseInt(card.getAttribute('data-price'), 10) || 0;
+                if (pCard > pMax) return false;
+
+                if (state.categories.size) {
+                    const cat = card.getAttribute('data-category');
+                    if (!state.categories.has(cat)) return false;
+                }
+                return true;
+            }
+
+            function apply(){
+                let visible = 0;
+                cards.forEach(c => {
+                    const ok = matches(c);
+                    c.style.display = ok ? '' : 'none';
+                    if (ok) visible++;
+                });
+                resultCount.textContent = visible + ' 件ヒット';
+                priceLabel.textContent = '¥' + (parseInt(price.value,10)||0).toLocaleString();
+            }
+
+            chips.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.getAttribute('data-chip');
+                    if (state.categories.has(key)) { state.categories.delete(key); btn.classList.remove('selected'); }
+                    else { state.categories.add(key); btn.classList.add('selected'); }
+                    apply();
+                });
+            });
+            applyBtn.addEventListener('click', apply);
+            resetBtn.addEventListener('click', () => {
+                q.value = '';
+                area.value = '';
+                date.value = '';
+                price.value = 5000;
+                state.categories.clear();
+                chips.forEach(b=>b.classList.remove('selected'));
+                apply();
+            });
+            q.addEventListener('input', apply);
+            area.addEventListener('change', apply);
+            date.addEventListener('change', apply);
+            price.addEventListener('input', apply);
+
+            // initial
+            apply();
+        
+            // Scroll-driven motion: reveal/tilt/parallax
+            let lastY = 0;
+            let dir = 'down';
+            const revealObserver = new IntersectionObserver((entries)=>{
+                entries.forEach(entry=>{
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                })
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal-smooth').forEach(el=>revealObserver.observe(el));
+
+            // lightweight parallax
+            const parallaxNodes = Array.from(document.querySelectorAll('.parallax-lite'));
+            function onScroll(){
+                const y = window.scrollY;
+                dir = y > lastY ? 'down' : 'up';
+                lastY = y;
+                if (parallaxNodes.length) {
+                    const vh = window.innerHeight || 800;
+                    parallaxNodes.forEach(node => {
+                        const speed = parseFloat(node.getAttribute('data-parallax-speed')||'0.1');
+                        const rect = node.getBoundingClientRect();
+                        // Offset relative to viewport center, clamped to avoid layout overlap
+                        const rel = (rect.top + rect.height/2) - (vh/2);
+                        const raw = -rel * speed * 0.1; // subtle
+                        const clamped = Math.max(-18, Math.min(18, raw));
+                        node.style.transform = `translate3d(0, ${clamped.toFixed(1)}px, 0)`;
+                    });
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // tilt
+            function initTilt(){
+                const tiltEls = document.querySelectorAll('[data-tilt]');
+                tiltEls.forEach(el=>{
+                    let rect;
+                    const onEnter = ()=>{ rect = el.getBoundingClientRect(); };
+                    const onMove = (e)=>{
+                        const x = (e.clientX - rect.left)/rect.width - 0.5;
+                        const y = (e.clientY - rect.top)/rect.height - 0.5;
+                        el.style.transform = `rotateX(${(-y*6).toFixed(2)}deg) rotateY(${(x*8).toFixed(2)}deg)`;
+                    };
+                    const onLeave = ()=>{ el.style.transform = 'rotateX(0) rotateY(0)'; };
+                    el.addEventListener('mouseenter', onEnter);
+                    el.addEventListener('mousemove', onMove);
+                    el.addEventListener('mouseleave', onLeave);
+                });
+            }
+            initTilt();
+            
+            // Rhythmic letter motion: split target headings into spans and animate on scroll
+            const rhythmTargets = [
+                ...document.querySelectorAll('h1, h2, h3')
+            ];
+            rhythmTargets.forEach(node => {
+                if (node.dataset.rhythmized === '1') return;
+                node.dataset.rhythmized = '1';
+                const text = node.textContent;
+                node.textContent = '';
+                Array.from(text).forEach((ch, idx) => {
+                    const span = document.createElement('span');
+                    span.className = 'rhythm-char';
+                    span.style.transition = 'transform 80ms linear';
+                    span.dataset.i = String(idx);
+                    span.textContent = ch;
+                    node.appendChild(span);
+                });
+            });
+
+            function animateLetters(){
+                const y = window.scrollY || 0;
+                const amp = 4; // px
+                const freq = 0.06; // wave speed
+                const chars = document.querySelectorAll('.rhythm-char');
+                chars.forEach((el) => {
+                    const i = parseInt(el.dataset.i || '0', 10);
+                    const offset = Math.sin((y * freq) + (i * 0.35)) * amp;
+                    el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+                });
+            }
+            window.addEventListener('scroll', animateLetters, { passive: true });
+            animateLetters();
+        })();
+    </script>
+</body>
+</html>

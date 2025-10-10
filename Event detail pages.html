@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イベント検索 - カフェ会＠！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="homepage.html" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="Event searchlist pages.html" class="text-orange-600 font-medium">イベント検索</a>
+                    <a href="Joinaffiliate recruitment page.html" class="text-gray-600 hover:text-orange-600 transition-colors">主催者募集</a>
+                    <a href="loginpage.html" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors">主催者ログイン</a>
+                </nav>
+                <button class="md:hidden p-2">
+                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Search Filters -->
+    <section class="bg-white border-b border-gray-200 py-4 sm:py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-4">
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">イベント検索</h1>
+                <p class="text-gray-600 mt-2">お住まいの地域や興味のあるテーマでイベントを探してみましょう</p>
+            </div>
+            
+            <!-- Filter Form -->
+            <div class="bg-gray-50 rounded-xl p-4 sm:p-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Region Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">地域</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                            <option value="">すべての地域</option>
+                            <option value="tokyo">東京都</option>
+                            <option value="osaka">大阪府</option>
+                            <option value="kanagawa">神奈川県</option>
+                            <option value="aichi">愛知県</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Date Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">開催日</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                            <option value="">すべての日程</option>
+                            <option value="today">今日</option>
+                            <option value="tomorrow">明日</option>
+                            <option value="week">今週</option>
+                            <option value="month">今月</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Topic Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">テーマ</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                            <option value="">すべてのテーマ</option>
+                            <option value="cafe">カフェ会</option>
+                            <option value="book">読書会</option>
+                            <option value="cooking">料理教室</option>
+                            <option value="sports">スポーツ</option>
+                            <option value="business">ビジネス</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Search Button -->
+                    <div class="flex items-end">
+                        <button class="w-full bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors font-medium">
+                            検索
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Active Filters -->
+                <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                        東京都
+                        <button class="ml-1 text-orange-600 hover:text-orange-800">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        カフェ会
+                        <button class="ml-1 text-blue-600 hover:text-blue-800">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Summary -->
+    <section class="py-4 sm:py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                <div class="mb-4 sm:mb-0">
+                    <p class="text-gray-600">
+                        <span class="font-semibold text-gray-900">24件</span>のイベントが見つかりました
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <label class="text-sm text-gray-600">並び順:</label>
+                    <select class="px-3 py-1 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
+                        <option value="date">開催日順</option>
+                        <option value="popular">人気順</option>
+                        <option value="price">料金順</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event List -->
+    <section class="pb-16 sm:pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Event Card 1 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="relative">
+                        <img src="./img/eve (1).png" alt="渋谷カフェ会" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-orange-500 text-white text-xs font-medium px-2 py-1 rounded-full">募集中</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <button class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all">
+                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-orange-100 text-orange-800 text-xs font-medium px-2 py-1 rounded-full">カフェ会</span>
+                            <span class="ml-2 text-sm text-gray-500">東京・渋谷区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">渋谷で気軽なカフェ会 - 新しい出会いを求める方歓迎</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">おしゃれなカフェで気軽に交流できるイベントです。初参加の方も大歓迎！</p>
+                        
+                        <div class="flex items-center mb-4 text-sm text-gray-500">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            12/25 (月) 14:00-16:00
+                        </div>
+                        
+                        <div class="flex items-center mb-4 text-sm text-gray-500">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            渋谷駅徒歩3分
+                        </div>
+                        
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center">
+                                <span class="text-2xl font-bold text-orange-600">¥1,500</span>
+                                <span class="text-sm text-gray-500 ml-1">/人</span>
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium text-gray-700">8/12</span>名参加
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-4">
+                            <img src="./img/ava_mana.png" alt="主催者" class="w-8 h-8 rounded-full mr-2">
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">田中 太郎</p>
+                                <div class="flex items-center">
+                                    <svg class="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-xs text-gray-500">本人確認済み</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+                            詳細を見る
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="relative">
+                        <img src="./img/eve (2).png" alt="読書会" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">残り2席</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <button class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all">
+                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">読書会</span>
+                            <span class="ml-2 text-sm text-gray-500">大阪・梅田</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">梅田読書交流会 - ビジネス書を語ろう</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">ビジネス書好きが集まる知的な交流の場です。お気に入りの一冊をお持ちください。</p>
+                        
+                        <div class="flex items-center mb-4 text-sm text-gray-500">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            12/26 (火) 19:00-21:00
+                        </div>
+                        
+                        <div class="flex items-center mb-4 text-sm text-gray-500">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            梅田駅徒歩5分
+                        </div>
+                        
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center">
+                                <span class="text-2xl font-bold text-orange-600">¥2,000</span>
+                                <span class="text-sm text-gray-500 ml-1">/人</span>
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium text-gray-700">8/10</span>名参加
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-4">
+                            <img src="./img/awesome.png" alt="主催者" class="w-8 h-8 rounded-full mr-2">
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">佐藤 花子</p>
+                                <div class="flex items-center">
+                                    <svg class="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-xs text-gray-500">本人確認済み</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+                            詳細を見る
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="relative">
+                        <img src="./img/eve (3).png" alt="料理教室" class="w-full h-48 object-cover">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-full">募集中</span>
+                        </div>
+                        <div class="absolute top-3 right-3">
+                            <button class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all">
+                                <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">料理教室</span>
+                            <span class="ml-2 text-sm text-gray-500">神奈川・横浜</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">横浜料理教室 - みんなでパスタ作り</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">イタリアンシェフと一緒に本格パスタを作りながら楽しく交流しましょう。</p>
+                        
+                        <div class="flex items-center mb-4 text-sm text-gray-500">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            12/27 (水) 11:00-14:00
+                        </div>
+                        
+                        <div class="flex items-center mb-4 text-sm text-gray-500">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            横浜駅徒歩7分
+                        </div>
+                        
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center">
+                                <span class="text-2xl font-bold text-orange-600">¥3,500</span>
+                                <span class="text-sm text-gray-500 ml-1">/人</span>
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <span class="font-medium text-gray-700">6/8</span>名参加
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-4">
+                            <img src="./img/ava2.png" alt="主催者" class="w-8 h-8 rounded-full mr-2">
+                            <div>
+                                <p class="text-sm font-medium text-gray-900">山田 次郎</p>
+                                <div class="flex items-center">
+                                    <svg class="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-xs text-gray-500">本人確認済み</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+                            詳細を見る
+                        </button>
+                    </div>
+                </div>
+
+                <!-- No Events CTA Card -->
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl border-2 border-dashed border-orange-200 p-6 text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">あなたの地域でイベントを開催しませんか？</h3>
+                    <p class="text-gray-600 text-sm mb-4">まだイベントが開催されていない地域があります。主催者として参加してみませんか？</p>
+                    <button class="bg-orange-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-orange-700 transition-colors">
+                        主催者として参加
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex items-center space-x-2">
+                    <button class="px-3 py-2 text-gray-500 hover:text-gray-700 disabled:opacity-50" disabled>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button class="px-4 py-2 bg-orange-600 text-white rounded-lg">1</button>
+                    <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">2</button>
+                    <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">3</button>
+                    <span class="px-2 text-gray-500">...</span>
+                    <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">8</button>
+                    <button class="px-3 py-2 text-gray-700 hover:text-gray-900">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold text-orange-400 mb-4">カフェ会＠！</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        地域に笑顔と出会いの場を広げ、気軽で安心なコミュニティ体験を提供するプラットフォームです。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2">
+                        <li><a href="Event searchlist pages.html" class="text-gray-300 hover:text-orange-400 transition-colors">イベント検索</a></li>
+                        <li><a href="Joinaffiliate recruitment page.html" class="text-gray-300 hover:text-orange-400 transition-colors">主催者募集</a></li>
+                        <li><a href="faqpage.html" class="text-gray-300 hover:text-orange-400 transition-colors">よくある質問</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">サポート</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contactpage.html" class="text-gray-300 hover:text-orange-400 transition-colors">お問い合わせ</a></li>
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-orange-400 transition-colors">利用規約</a></li>
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-orange-400 transition-colors">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 カフェ会＠！ All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

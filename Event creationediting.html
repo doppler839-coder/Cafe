@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新規イベント作成 - カフェ会＠！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
+                    <span class="ml-3 px-3 py-1 bg-orange-100 text-orange-800 text-sm font-medium rounded-full">主催者</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="/owner/dashboard" class="text-gray-600 hover:text-orange-600 transition-colors">ダッシュボード</a>
+                    <a href="/owner/event/create" class="text-orange-600 font-medium border-b-2 border-orange-600 pb-1">イベント作成</a>
+                    <a href="/owner/profile" class="text-gray-600 hover:text-orange-600 transition-colors">プロフィール</a>
+                    <a href="/owner/payment" class="text-gray-600 hover:text-orange-600 transition-colors">決済管理</a>
+                </nav>
+                
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center space-x-3">
+                        <img src="./img/ava_mana.png" alt="プロフィール" class="w-8 h-8 rounded-full">
+                        <span class="text-sm text-gray-700">田中 太郎さん</span>
+                    </div>
+                    <button class="p-2 text-gray-600 hover:text-orange-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5v-5a7.5 7.5 0 000-15h-5m5 5l5-5-5-5"></path>
+                        </svg>
+                    </button>
+                    <button class="md:hidden p-2">
+                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header Section -->
+        <div class="mb-8">
+            <div class="flex items-center mb-4">
+                <a href="/owner/dashboard" class="text-gray-600 hover:text-orange-600 mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </a>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-900">新規イベント作成</h1>
+            </div>
+            <p class="text-gray-600">素敵なカフェ会を企画して、地域の人々との出会いを創りましょう</p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-orange-600 text-white rounded-full text-sm font-medium">
+                        1
+                    </div>
+                    <span class="ml-2 text-sm font-medium text-orange-600">基本情報</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-200 mx-4">
+                    <div class="h-1 bg-orange-600 w-1/3"></div>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-600 rounded-full text-sm font-medium">
+                        2
+                    </div>
+                    <span class="ml-2 text-sm text-gray-600">詳細設定</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-200 mx-4"></div>
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-600 rounded-full text-sm font-medium">
+                        3
+                    </div>
+                    <span class="ml-2 text-sm text-gray-600">確認・公開</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Form -->
+            <div class="lg:col-span-2">
+                <form class="space-y-8">
+                    <!-- Basic Information -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-6">基本情報</h2>
+                        
+                        <!-- Event Title -->
+                        <div class="mb-6">
+                            <label for="title" class="block text-sm font-medium text-gray-700 mb-2">イベントタイトル *</label>
+                            <input type="text" id="title" name="title" placeholder="例：渋谷カフェ会 - 20代30代交流会" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                            <p class="text-sm text-gray-500 mt-1">魅力的なタイトルで参加者の興味を引きましょう</p>
+                        </div>
+
+                        <!-- Date and Time -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <label for="date" class="block text-sm font-medium text-gray-700 mb-2">開催日 *</label>
+                                <input type="date" id="date" name="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                            </div>
+                            <div>
+                                <label for="time" class="block text-sm font-medium text-gray-700 mb-2">開催時間 *</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <input type="time" id="start_time" name="start_time" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                                    <input type="time" id="end_time" name="end_time" class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="mb-6">
+                            <label for="location" class="block text-sm font-medium text-gray-700 mb-2">開催場所 *</label>
+                            <input type="text" id="location" name="location" placeholder="例：スターバックス渋谷センター街店" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors mb-2">
+                            <input type="text" id="address" name="address" placeholder="詳細住所：東京都渋谷区宇田川町21-6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                            <p class="text-sm text-gray-500 mt-1">参加者が迷わないよう、分かりやすい場所を選びましょう</p>
+                        </div>
+
+                        <!-- Capacity and Price -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div>
+                                <label for="capacity" class="block text-sm font-medium text-gray-700 mb-2">定員 *</label>
+                                <input type="number" id="capacity" name="capacity" placeholder="12" min="1" max="50" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                            </div>
+                            <div>
+                                <label for="price" class="block text-sm font-medium text-gray-700 mb-2">参加費 *</label>
+                                <div class="relative">
+                                    <input type="number" id="price" name="price" placeholder="1500" min="0" class="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                                    <span class="absolute right-3 top-3 text-gray-500">円</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="category" class="block text-sm font-medium text-gray-700 mb-2">カテゴリ *</label>
+                                <select id="category" name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors">
+                                    <option value="">選択してください</option>
+                                    <option value="social">交流・出会い</option>
+                                    <option value="business">ビジネス</option>
+                                    <option value="hobby">趣味・娯楽</option>
+                                    <option value="study">勉強・学習</option>
+                                    <option value="food">グルメ</option>
+                                    <option value="other">その他</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Image -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-6">イベント画像</h2>
+                        
+                        <!-- Image Upload -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">メイン画像 *</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-orange-400 transition-colors">
+                                <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                </svg>
+                                <p class="text-gray-600 mb-2">画像をドラッグ&ドロップまたはクリックして選択</p>
+                                <p class="text-sm text-gray-500">JPG, PNG, GIF (最大5MB)</p>
+                                <input type="file" class="hidden" accept="image/*">
+                                <button type="button" class="mt-4 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors">ファイルを選択</button>
+                            </div>
+                        </div>
+
+                        <!-- Banner Templates -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-4">本部提供バナーテンプレート</label>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="border-2 border-gray-200 rounded-lg p-2 hover:border-orange-400 cursor-pointer transition-colors">
+                                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&h=120&fit=crop" alt="テンプレート1" class="w-full h-20 object-cover rounded">
+                                    <p class="text-xs text-center mt-1">カジュアル</p>
+                                </div>
+                                <div class="border-2 border-gray-200 rounded-lg p-2 hover:border-orange-400 cursor-pointer transition-colors">
+                                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=200&h=120&fit=crop" alt="テンプレート2" class="w-full h-20 object-cover rounded">
+                                    <p class="text-xs text-center mt-1">ビジネス</p>
+                                </div>
+                                <div class="border-2 border-gray-200 rounded-lg p-2 hover:border-orange-400 cursor-pointer transition-colors">
+                                    <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=200&h=120&fit=crop" alt="テンプレート3" class="w-full h-20 object-cover rounded">
+                                    <p class="text-xs text-center mt-1">おしゃれ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Description -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-6">イベント詳細</h2>
+                        
+                        <div class="mb-6">
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">イベント概要 *</label>
+                            <textarea id="description" name="description" rows="6" placeholder="このイベントの魅力や参加者へのメッセージを記入してください..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors resize-none"></textarea>
+                            <p class="text-sm text-gray-500 mt-1">参加者が興味を持つような内容を具体的に書きましょう</p>
+                        </div>
+
+                        <!-- Target Audience -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-3">対象者</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">20代</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">30代</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">40代</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">50代以上</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">男性</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">女性</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">初参加歓迎</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                                    <span class="ml-2 text-sm">一人参加歓迎</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Auto-generated Tags -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-3">自動生成タグ</label>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">#渋谷</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">#交流会</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">#20代30代</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">#カフェ</span>
+                                <span class="px-3 py-1 bg-pink-100 text-pink-800 text-sm rounded-full">#出会い</span>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2">入力内容に基づいて自動的にタグが生成されます</p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button type="button" class="flex-1 bg-gray-200 text-gray-700 py-3 px-6 rounded-lg font-medium hover:bg-gray-300 transition-colors">
+                            下書き保存
+                        </button>
+                        <button type="button" class="flex-1 bg-orange-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-orange-700 transition-colors">
+                            次へ進む
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-8">
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">プレビュー</h3>
+                        
+                        <!-- Event Card Preview -->
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=300&h=180&fit=crop" alt="イベント画像" class="w-full h-32 object-cover">
+                            <div class="p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded-full">交流・出会い</span>
+                                    <span class="text-sm text-gray-500">¥1,500</span>
+                                </div>
+                                <h4 class="font-semibold text-gray-900 mb-2 text-sm">渋谷カフェ会 - 20代30代交流会</h4>
+                                <div class="space-y-1 text-xs text-gray-600">
+                                    <div class="flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <span>2024年1月28日 14:00-16:00</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        </svg>
+                                        <span>スターバックス渋谷センター街店</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        </svg>
+                                        <span>定員12名</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-1 mt-3">
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">#渋谷</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">#交流会</span>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">#20代30代</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                            <p class="text-sm text-blue-800">💡 入力内容がリアルタイムでプレビューに反映されます</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Tips -->
+                    <div class="mt-6 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">成功のコツ</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">魅力的なタイトルで参加者の興味を引く</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">アクセスの良い場所を選ぶ</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">適切な価格設定で参加しやすく</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">詳細な説明で安心感を提供</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <span class="text-lg font-bold text-orange-600 mr-4">カフェ会＠！</span>
+                    <span class="text-sm text-gray-500">主催者ダッシュボード</span>
+                </div>
+                
+                <div class="flex space-x-6 text-sm">
+                    <a href="/terms" class="text-gray-600 hover:text-orange-600 transition-colors">利用規約</a>
+                    <a href="/privacy" class="text-gray-600 hover:text-orange-600 transition-colors">プライバシーポリシー</a>
+                    <a href="/contact" class="text-gray-600 hover:text-orange-600 transition-colors">お問い合わせ</a>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-400">&copy; 2024 カフェ会＠！ All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
