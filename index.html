@@ -35,7 +35,7 @@
         .gradient-bg { background: url("./img/bg1.png"); background-position: center top; background-size: cover; background-attachment: fixed;}
         .takeplace-bg { background: url("./img/city.png"); background-position: center; background-size: cover; background-attachment: fixed;}
         .searchplace-bg { background: url("./img/map4.png"); background-position: center; background-size: cover; background-attachment: fixed;}
-        .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; }
+        .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; border-radius: 50%; }
         .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
         .floating-animation { animation: float 6s ease-in-out infinite; }
         @keyframes float {
@@ -59,6 +59,40 @@
                 transform: translateX(-100%);
             }
         }
+        
+        /* Modern image styling */
+        .img-modern {
+            border-radius: 0.75rem; /* matches rounded-xl */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            transition: transform 300ms ease, box-shadow 300ms ease, filter 300ms ease;
+            will-change: transform, box-shadow, filter;
+        }
+        .group:hover .img-modern {
+            transform: scale(1.03);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+            filter: saturate(1.05) contrast(1.02);
+        }
+        .img-modern-lg {
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+            transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
+            will-change: transform, box-shadow;
+        }
+        .img-modern-lg:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.22);
+        }
+        .vignette-top, .vignette-bottom {
+            position: absolute;
+            left: 0; right: 0;
+            height: 64px;
+            pointer-events: none;
+            opacity: 0.85;
+            transition: opacity 300ms ease;
+        }
+        .vignette-top { top: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0)); }
+        .vignette-bottom { bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.22), rgba(0,0,0,0)); }
+        .group:hover .vignette-top, .group:hover .vignette-bottom { opacity: 1; }
         
         .event-gallery {
             animation: scroll-left 20s linear infinite;
@@ -542,31 +576,139 @@
                 </p>
             </div>
             
-            <!-- Horizontal Scrolling Image Gallery -->
-            <div class="relative overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm p-4 shadow-lg reveal-smooth">
-                <div class="flex event-gallery gap-6 tilt" data-tilt>
-                    <!-- First set of images -->
-                    <img src="./img/eve (1).png" alt="朝活会 - ポジティブが集まる" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (2).png" alt="ビジネス異業種交流会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (3).png" alt="テーマ交流会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (4).png" alt="友活Café会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (5).png" alt="友活女子会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (6).png" alt="Cafe会 20代・30代" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (7).png" alt="恋活パーティー" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    
-                    <!-- Duplicate set for seamless loop -->
-                    <img src="./img/eve (1).png" alt="朝活会 - ポジティブが集まる" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (2).png" alt="ビジネス異業種交流会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (3).png" alt="テーマ交流会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (4).png" alt="友活Café会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (5).png" alt="友活女子会" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (6).png" alt="Cafe会 20代・30代" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
-                    <img src="./img/eve (7).png" alt="恋活パーティー" class="h-[250px] w-auto flex-shrink-0 rounded-xl shadow-md object-cover">
+            <!-- Card Grid replacing horizontal scroller -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-smooth">
+                <!-- Card 1 -->
+                <div class="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow tilt group" data-tilt>
+                    <div class="relative">
+                        <img src="./img/eve (1).png" alt="朝活会 - ポジティブが集まる" class="img-modern w-full h-48 object-cover">
+                        <span class="absolute top-3 left-3 bg-orange-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full">募集中</span>
+                        <div class="vignette-top"></div>
+                        <div class="vignette-bottom"></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="text-xs bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full mr-2">カフェ会</span>
+                            <span class="text-xs text-gray-500">東京・渋谷区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">朝活会 - ポジティブが集まる</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/25 (月) 7:30-9:00</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-orange-600 font-bold">¥1,000</span>
+                            <a href="Event searchlist pages.html" class="text-sm bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition-colors">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow tilt group" data-tilt>
+                    <div class="relative">
+                        <img src="./img/eve (2).png" alt="ビジネス異業種交流会" class="img-modern w-full h-48 object-cover">
+                        <span class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full">開催予定</span>
+                        <div class="vignette-top"></div>
+                        <div class="vignette-bottom"></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full mr-2">交流会</span>
+                            <span class="text-xs text-gray-500">東京・新宿区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">ビジネス異業種交流会</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/28 (木) 19:00-21:00</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-orange-600 font-bold">¥2,000</span>
+                            <a href="Event searchlist pages.html" class="text-sm bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition-colors">詳細</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Gradient overlays for smooth edges -->
-                <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent pointer-events-none z-10"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none z-10"></div>
+                <!-- Card 3 -->
+                <div class="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow tilt group" data-tilt>
+                    <div class="relative">
+                        <img src="./img/eve (3).png" alt="テーマ交流会" class="img-modern w-full h-48 object-cover">
+                        <span class="absolute top-3 left-3 bg-green-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full">募集中</span>
+                        <div class="vignette-top"></div>
+                        <div class="vignette-bottom"></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full mr-2">テーマ交流</span>
+                            <span class="text-xs text-gray-500">東京・世田谷区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">テーマ交流会</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/29 (金) 18:00-20:00</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-orange-600 font-bold">¥1,500</span>
+                            <a href="Event searchlist pages.html" class="text-sm bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition-colors">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow tilt group" data-tilt>
+                    <div class="relative">
+                        <img src="./img/eve (4).png" alt="友活Café会" class="img-modern w-full h-48 object-cover">
+                        <span class="absolute top-3 left-3 bg-rose-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full">募集中</span>
+                        <div class="vignette-top"></div>
+                        <div class="vignette-bottom"></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="text-xs bg-rose-100 text-rose-800 px-2 py-0.5 rounded-full mr-2">友活</span>
+                            <span class="text-xs text-gray-500">東京・港区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">友活Café会</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/30 (土) 15:00-17:00</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-orange-600 font-bold">¥1,800</span>
+                            <a href="Event searchlist pages.html" class="text-sm bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition-colors">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow tilt group" data-tilt>
+                    <div class="relative">
+                        <img src="./img/eve (5).png" alt="友活女子会" class="img-modern w-full h-48 object-cover">
+                        <span class="absolute top-3 left-3 bg-pink-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full">残席わずか</span>
+                        <div class="vignette-top"></div>
+                        <div class="vignette-bottom"></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="text-xs bg-pink-100 text-pink-800 px-2 py-0.5 rounded-full mr-2">女子会</span>
+                            <span class="text-xs text-gray-500">東京・品川区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">友活女子会</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/30 (土) 13:00-15:00</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-orange-600 font-bold">¥1,500</span>
+                            <a href="Event searchlist pages.html" class="text-sm bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition-colors">詳細</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow tilt group" data-tilt>
+                    <div class="relative">
+                        <img src="./img/eve (7).png" alt="恋活パーティー" class="img-modern w-full h-48 object-cover">
+                        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full">新着</span>
+                        <div class="vignette-top"></div>
+                        <div class="vignette-bottom"></div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded-full mr-2">恋活</span>
+                            <span class="text-xs text-gray-500">東京・中央区</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">恋活パーティー</h3>
+                        <p class="text-sm text-gray-600 mb-4">12/31 (日) 18:00-20:30</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-orange-600 font-bold">¥3,000</span>
+                            <a href="Event searchlist pages.html" class="text-sm bg-orange-600 text-white px-3 py-2 rounded-lg hover:bg-orange-700 transition-colors">詳細</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -842,7 +984,7 @@
                 </div>
                 
                 <div class="text-center">
-                    <img src="./img/eve (4).png" alt="主催者イメージ" class="rounded-xl shadow-2xl mx-auto max-w-md w-full">
+                    <img src="./img/eve (4).png" alt="主催者イメージ" class="img-modern-lg rounded-xl shadow-2xl mx-auto max-w-md w-full">
                 </div>
             </div>
         </div>
@@ -938,7 +1080,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="Event searchlist pages.html" class="bg-white hover:bg-gray-100 text-orange-600 font-bold py-4 px-8 transition-all duration-300 transform hover:scale-105 shadow-2xl">
+                <a href="Event searchlist pages.html" class="bg-wshite hover:bg-gray-100 text-orange-600 font-bold py-4 px-8 transition-all duration-300 transform hover:scale-105 shadow-2xl">
                     <span class="flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -1074,19 +1216,37 @@
         }
 
         // Optimized header background change
+        let headerChangeTimeout = null;
+        function setHeaderLinkColors(isSolid) {
+            const header = document.querySelector('header');
+            const navLinks = header ? header.querySelectorAll('nav a') : [];
+            const menuBtn = header ? header.querySelector('button.lg\\:hidden, button.md\\:hidden, button') : null;
+            navLinks.forEach(a => {
+                a.classList.remove('text-white','text-gray-50','text-gray-800','text-gray-900');
+                a.classList.add(isSolid ? 'text-gray-800' : 'text-gray-900');
+            });
+            if (menuBtn) {
+                menuBtn.classList.remove('text-white','text-gray-700','text-gray-800');
+                menuBtn.classList.add(isSolid ? 'text-gray-700' : 'text-gray-800');
+            }
+        }
         function handleHeaderScroll() {
             if (!isPageVisible) return;
-            
             const header = document.querySelector('header');
             const shouldChange = window.scrollY > 100;
-            
+            if (headerChangeTimeout) clearTimeout(headerChangeTimeout);
+            headerChangeTimeout = setTimeout(() => {
+                if (!header) return;
             if (shouldChange && !header.classList.contains('bg-white/98')) {
                 header.classList.add('bg-white/98');
                 header.classList.remove('bg-white/95');
+                    setHeaderLinkColors(true);
             } else if (!shouldChange && header.classList.contains('bg-white/98')) {
                 header.classList.add('bg-white/95');
                 header.classList.remove('bg-white/98');
+                    setHeaderLinkColors(false);
             }
+            }, 250);
         }
 
         // Consolidated scroll handler with throttling (parallax disabled)
@@ -1115,9 +1275,43 @@
         let animationTimeout = null;
         let revealObserver;
         let parallaxNodes = [];
+        let sections = [];
+        
+        function isElementInSection(el, section) {
+            if (!el || !section) return false;
+            return section.contains(el);
+        }
+        function isSectionFullyRevealed(section) {
+            if (!section) return true;
+            const targets = section.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-bounce-in, .scroll-spin-in, .scroll-flip-in, .scroll-wave-in, .reveal-smooth');
+            if (!targets.length) return true;
+            for (const t of targets) {
+                const visibleA = t.classList.contains('visible');
+                const visibleB = t.classList.contains('is-visible');
+                if (!visibleA && !visibleB) return false;
+            }
+            return true;
+        }
+        function getActiveSection() {
+            if (!sections.length) return null;
+            const vh = window.innerHeight || 800;
+            // Prefer the first section that intersects viewport and is not fully revealed
+            for (const s of sections) {
+                const rect = s.getBoundingClientRect();
+                const intersects = rect.top < vh * 0.7 && rect.bottom > vh * 0.15;
+                if (intersects && !isSectionFullyRevealed(s)) return s;
+            }
+            // Otherwise, the first not fully revealed section below viewport
+            for (const s of sections) {
+                if (!isSectionFullyRevealed(s)) return s;
+            }
+            // All revealed
+            return null;
+        }
         
         function initScrollAnimations() {
             animationElements = document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-bounce-in, .scroll-spin-in, .scroll-flip-in, .scroll-wave-in');
+            sections = Array.from(document.querySelectorAll('section'));
             
             // Initial check for elements in viewport
             checkElementsInView();
@@ -1125,7 +1319,8 @@
             // Reveal-on-intersect for subtle elements
             revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    const activeSection = getActiveSection();
+                    if (entry.isIntersecting && (!activeSection || isElementInSection(entry.target, activeSection))) {
                         entry.target.classList.add('is-visible');
                         revealObserver.unobserve(entry.target);
                     }
@@ -1141,8 +1336,12 @@
         function checkElementsInView() {
             const windowHeight = window.innerHeight;
             const scrollY = window.scrollY;
+            const activeSection = getActiveSection();
             
             animationElements.forEach((element, index) => {
+                if (activeSection && !isElementInSection(element, activeSection)) {
+                    return; // Gate: only reveal elements within the active section
+                }
                 const rect = element.getBoundingClientRect();
                 
                 // Check if element is in viewport (with some margin)
@@ -1188,6 +1387,13 @@
             animationTimeout = setTimeout(() => {
                 checkElementsInView();
             }, 16); // ~60fps
+
+            // If current active section is fully revealed, trigger next section on next scroll frame
+            const active = getActiveSection();
+            if (active && isSectionFullyRevealed(active)) {
+                // Nudge to allow next section to become active on subsequent calls
+                // No-op here; getActiveSection will pick the next one once active is fully revealed
+            }
 
             // Lightweight parallax
             if (parallaxNodes.length) {
@@ -1294,6 +1500,8 @@
             animateCounters();
             initTiltEffects();
             initMagnetic();
+            // Initialize header link colors based on initial position
+            setHeaderLinkColors(window.scrollY > 100);
         }
 
         // Initialize when DOM is loaded
