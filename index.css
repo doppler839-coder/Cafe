@@ -1,0 +1,14 @@
+.f_30{
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+}
+.link{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.link a{
+    font-size: 20px;
+    text-transform: uppercase;
+}
