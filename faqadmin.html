@@ -1195,13 +1195,13 @@
             <div class="mb-8 scroll-animate">
                 <div class="border-b border-gray-200">
                     <nav class="-mb-px flex space-x-8 overflow-x-auto">
-                        <button class="category-tab active border-orange-500 text-orange-600 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm text_black" data-category="participant">
-                            参加者向け
-                        </button> 
+                        <button class="category-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm text_black" data-category="organizer">
+                            主催者向け
+                        </button>
                         <button class="category-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm text_black" data-category="payment">
                             決済・料金
                         </button>
-                        <button class="category-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm text_black" data-category="technical">
+                        <button class="category-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm text_black"  data-category="technical">
                             技術的な問題
                         </button>
                     </nav>
@@ -1213,411 +1213,214 @@
                 <!-- Main FAQ Content -->
                 <div class="lg:col-span-2 faq-section scroll-animate-left">
                     <!-- General User FAQs -->
-                    <div id="participant-faqs" class="faq-category">
+
+                    <!-- Admin/Organizer FAQs -->
+                    <div id="organizer-faqs" class="faq-category hidden">
                         <div class="faq-accordion">
-                            <!-- Basic Participation Questions -->
-                            <div class="faq-item" data-category="participant">
+                            <!-- Becoming an Organizer -->
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>カフェ会とは何ですか？</h3>
+                                    <h3>主催者になるにはどうすればいいですか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        カフェ会は、カフェなどの気軽な場所で開催される交流イベントです。同じ趣味や興味を持つ人たちが集まり、コーヒーを飲みながら楽しく会話を楽しむことができます。初対面の方でも参加しやすい雰囲気作りを心がけており、新しい出会いや友達作りの場として多くの方にご利用いただいています。
+                                        主催者登録フォームからお申し込みください。審査後、主催者として活動を開始できます。経験やスキルは問いませんが、コミュニケーション能力と責任感が重要です。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>初めてでも参加できますか？</h3>
+                                    <h3>主催者になるための条件はありますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        もちろん大歓迎です！初めての方も多く、過半数の方が「初参加」です。主催者が丁寧にフォローしますので、安心してご参加ください。
+                                        18歳以上で、責任を持ってイベントを運営できる方であればどなたでも応募可能です。面接と研修を経て、適性を確認させていただきます。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <!-- Financial Information -->
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>一人で参加しても大丈夫ですか？</h3>
+                                    <h3>初期費用はいくらかかりますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        参加者のほとんどがお一人でのご参加です。最初はどなたでも緊張されますが、主催者がしっかりフォローしますのでご安心ください。
+                                        初期加盟金は30,000円です。これには主催者研修、マニュアル、初期サポートが含まれます。分割払いも可能です。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>お友達と一緒に参加してもいいですか？</h3>
+                                    <h3>月額ロイヤリティについて教えてください</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        もちろん歓迎です！お友達と一緒でも、お一人でも、楽しめるように運営しております。
+                                        売上の10%を月額ロイヤリティとしてお支払いいただきます。システム利用料、サポート、マーケティング支援が含まれます。
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Event Details -->
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>年齢層はどのくらいですか？</h3>
+                                    <h3>収益はどのくらい見込めますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        イベント内容によって異なりますが、20代～60代まで幅広くご参加いただいています。特定の年代に限定した会の開催も多くありますので、内容に合わせてご参加ください。
+                                        参加費から会場費を差し引いた金額が主催者の収益となります。月額ロイヤリティ10%を差し引いた金額が手取りとなります。経験豊富な主催者の中には月収20万円以上を稼ぐ方もいらっしゃいます。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <!-- Event Management -->
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>男女比はどうなっていますか？</h3>
+                                    <h3>イベント開催の流れを教えてください</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        イベントの内容によってバランスは異なりますが、男女比が整うよう調整する場合もございます。当日キャンセル等で偏りが出ることもございます。
+                                        1. イベント企画・会場選定<br>2. システム上でのイベント登録<br>3. 参加者募集・管理<br>4. 当日運営<br>5. 参加費回収・報告<br>6. フィードバック収集
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>県外からでも参加できますか？</h3>
+                                    <h3>会場選びのコツはありますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        はい、旅行や出張のついでに参加される方もいらっしゃいます。全国どこからでもお気軽にどうぞ。
+                                        アクセスしやすく、静かすぎず騒がしすぎない場所を選ぶことが重要です。Wi-Fi環境、電源、トイレの確認も忘れずに。初回は少人数から始めることをお勧めします。
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Event Experience -->
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>カフェ会ってどんな雰囲気ですか？</h3>
+                                    <h3>参加者を集めるにはどうすればいいですか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        堅苦しさは一切なく、リラックスした雰囲気の中で自然に会話が広がります。その日の参加者によって雰囲気が変わるのも楽しみの一つです。
+                                        魅力的なイベントタイトルと詳細な説明が重要です。SNSでの宣伝、口コミ、リピーターの獲得を心がけましょう。当社のマーケティング支援も活用できます。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <!-- Support & Training -->
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>会の進行はどうなっていますか？</h3>
+                                    <h3>主催者向けのサポートはありますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        開始後、主催者から簡単な説明があります。自己紹介を行った後は、自由なフリートークになります。話題に困ったときは、主催者が話のきっかけを作りますのでご安心ください。
+                                        専用のサポートチームが24時間体制でサポートいたします。オンライン研修、マニュアル、定期的な勉強会も開催しています。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>自己紹介はありますか？</h3>
+                                    <h3>トラブルが発生した場合はどうすればいいですか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        お名前・出身・趣味など、可能な範囲での自己紹介となりますのでご安心ください。
+                                        緊急時は24時間サポートラインにご連絡ください。トラブル対応マニュアルも提供しており、迅速な解決をサポートします。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <!-- System & Tools -->
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>何を話したらいいか分からないのですが</h3>
+                                    <h3>使用できるシステムやツールはありますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        話題が決まっていないフリートーク会では、お互いの趣味や日常について話すことが多いです。テーマが決まっている会（例：アニメ好きの会）では、その話題で自然に盛り上がります。
+                                        イベント管理システム、参加者管理ツール、決済システム、マーケティングツールなど、主催に必要なツールをすべて提供しています。
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Registration & Attendance -->
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>申込みはどうすればいいですか？</h3>
+                                    <h3>決済はどのように行いますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        各イベントのページ、または公式LINEからお申込みください。満席の場合はキャンセル待ちとなります。
+                                        現金、PayPay、クレジットカード決済に対応しています。決済手数料は当社が負担し、主催者には手数料なしでお支払いいただけます。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <!-- Policies & Guidelines -->
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>何分前に行けばいいですか？</h3>
+                                    <h3>主催者として守るべきルールはありますか？</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        開始10分前から入場可能です。直前（3分前）には着席していただけるとスムーズです。
+                                        参加者の安全とプライバシーを最優先に、誠実で責任感のある運営を心がけてください。勧誘行為の禁止、差別の禁止など、詳細なガイドラインを提供しています。
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="faq-item" data-category="participant">
+                            <div class="faq-item" data-category="organizer">
                                 <div class="faq-question">
-                                    <h3>会場に到着したらどうすればいいですか？</h3>
+                                    <h3>契約期間や解約について教えてください</h3>
                                     <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </div>
                                 <div class="faq-answer">
                                     <div class="faq-answer-content">
-                                        主催者からの事前案内(店内奥の席です。etc.)の内容で、主催者をお探しください。場所がわからない、入店方法に迷っている場合などは、公式LINEにご連絡ください。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>遅れて参加することは可能ですか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        可能ですが、事前に必ずご連絡ください。無断遅刻の場合、参加をお断りする場合があります。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>最後までいられないかもしれません</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        途中退席も可能です。事前に主催者へお伝えください。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Event Rules & Guidelines -->
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>服装に決まりはありますか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        ありません。普段通りのカジュアルな服装で大丈夫です。異業種交流系のイベント以外で、スーツの方はほとんどいません。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>身分証の提示は必要ですか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        基本、身分証の提出は不要です。参加者の誠実な自己申告に基づき、イベントを運営しています。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>子供連れで参加は可能ですか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        原則として大人向けの交流会となっております。お子様連れでのご参加はご遠慮いただいておりますが、イベント内容によってはご相談に応じます。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Social Interaction -->
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>名刺交換はできますか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        異業種交流系のイベントでは交換する方も多いですが、友活・趣味系ではほとんどいらっしゃいません。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>連絡先の交換はOKですか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        会の途中や終了後に自由に交換いただけます。交換しそびれた場合は、主催者経由で確認することも可能です。（いずれも、お相手の同意・了承が必要です）
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>勧誘などが心配です</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        会の中での勧誘は一切禁止しています。後日トラブルがあった場合、主催者までご連絡ください。ブラインド勧誘が確認された場合など、当人には警告・または参加禁止になります。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Privacy & Safety -->
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>写真に写りたくないのですが…</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        SNS用に参加者全員で記念撮影を行っています。(顔にはぼかし加工をしています) 強制ではありませんので、写りたくない方は御遠慮なくお申し出ください。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>参加者の連絡先を共有されることはありますか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        いいえ、個人情報の取り扱いには十分配慮しております。ご本人の同意がない限り、他の参加者に連絡先を伝えることは一切ありません。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Event Logistics -->
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>会の時間はどのくらいですか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        基本的に1時間〜1時間15分程度となります。イベント内容によって前後することがありますので、各詳細ページをご確認ください。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>途中で席替えなどはありますか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        はい、参加者の交流を深めるために、一定時間ごとに席替えを行うことがあります。会の内容によっては固定席の場合もあります。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>途中でグループに分かれることはありますか？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        場合により、少人数グループに分かれていただくこともあります。全員と話しやすいよう、主催者が調整いたします。
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="faq-item" data-category="participant">
-                                <div class="faq-question">
-                                    <h3>当日急に参加したくなったら？</h3>
-                                    <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                                <div class="faq-answer">
-                                    <div class="faq-answer-content">
-                                        空きがあれば当日でも参加可能です！公式LINEで主催者にご確認ください。
+                                        契約期間は1年で、自動更新されます。解約は30日前の通知で可能です。解約時は未使用の加盟金の返金はありませんが、サポートは継続いたします。
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Admin/Organizer FAQs -->
                     <!-- Payment & Fees FAQs -->
                     <div id="payment-faqs" class="faq-category hidden">
                         <div class="faq-accordion">
