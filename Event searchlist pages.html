@@ -6,6 +6,7 @@
     <title>渋谷で気軽なカフェ会 - 新しい出会いを求める方歓迎 | カフェ会＠！</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="animations.css" />
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; }
         .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; border-radius: 50%; }
@@ -597,7 +598,6 @@
                 text-shadow: 2px 3px 2px rgb(255, 255, 255);
             }
     </style>
-    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -641,7 +641,7 @@
                         </svg>
                         主催者ログイン
                     </a>
-                    <button class="lg:hidden text-slate-800 hover:text-orange-600 transition-colors">
+                    <button class="lg:hidden text-slate-800 hover:text-orange-600 transition-colors ">
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -655,15 +655,15 @@
     <nav class="bg-white border-b border-gray-200 py-3">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center space-x-2 text-sm text-gray-500">
-                <a href="index.html" class="hover:text-orange-600 transition-colors">ホーム</a>
+                <a href="index.html" class="hover:text-orange-600 transition-colors text_black">ホーム</a>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <a href="Event searchlist pages.html" class="hover:text-orange-600 transition-colors">イベント検索</a>
+                <a href="Event searchlist pages.html" class="hover:text-orange-600 transition-colors text_black">イベント検索</a>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
-                <a href="#" class="hover:text-orange-600 transition-colors">東京都</a>
+                <a href="#" class="hover:text-orange-600 transition-colors text_black">東京都</a>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
@@ -987,8 +987,8 @@
     </section>
 
     <!-- Reservation Form -->
-    <section class="bg-gray-50 py-12 sm:py-16">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="bg-gray-50 py-12 sm:py-16 animated-section scroll-scale-in  visible">
+        <div class="bg-gray-50 py-12 sm:py-16 animated-section">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">予約フォーム</h2>
                 <p class="text-gray-600">登録不要で簡単予約！必要な情報を入力してください。</p>
@@ -1305,7 +1305,7 @@
     
     <!-- Search Script -->
     <script>
-        (function(){
+        (function(){ 
             const q = document.getElementById('searchQuery');
             const area = document.getElementById('searchArea');
             const date = document.getElementById('searchDate');

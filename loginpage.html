@@ -1,228 +1,1144 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>主催者ログイン - カフェ会＠！</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body { font-family: 'Noto Sans JP', sans-serif; }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+      }
+      .bg-logo {
+        background: url("./img/カフェ会＠！メインロゴ-01.png");
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+      }
+      /* Material-style typography and colors */
+      :root {
+        --md-primary: #f97316; /* aligns with existing orange brand */
+        --md-on-surface: #1d1b20;
+        --md-on-surface-variant: #49454f;
+        --md-outline: #cac4d0;
+        --md-surface: #ffffff;
+        --md-surface-variant: #f5f5f5;
+        --md-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.24);
+        --md-elevation-2: 0 3px 6px rgba(0, 0, 0, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23);
+        --md-elevation-3: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+      }
+      html,
+      body {
+        color: var(--md-on-surface);
+        letter-spacing: 0.01em;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--md-on-surface);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+      }
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+      }
+      small,
+      .text-sm {
+        color: var(--md-on-surface-variant);
+      }
+      a {
+        color: var(--md-primary);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      a:hover {
+        color: #ea580c;
+      }
+      /* Map tailwind grays to Material on-surface-variant subtly */
+      /* .text-slate-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; } */
+      .text-slate-600,
+      .text-gray-500,
+      .text-gray-400 {
+        color: white !important;
+        font-weight: bold;
+      }
+      .border-gray-200 {
+        border-color: var(--md-outline) !important;
+      }
+      .border-gray-300 {
+        border-color: var(--md-outline) !important;
+      }
+      /* .text-slate-800 { color: var(--md-on-surface) !important; } */
+      .text-slate-800 {
+        color: #252525 !important;
+        font-weight: bold;
+      }
+      .takeplace-bg {
+        background: url("./img/city.png");
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .searchplace-bg {
+        background: url("./img/japanese-friends-making-cafe-social-gathering.jpg");
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .organizer-bg {
+        background: url("./img/japanese-business-networking-event-professional-me.jpg");
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .bg-logo {
+        background: url("./img/カフェ会＠！メインロゴ-01.png");
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+      }
+      .glass-effect {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Material Design Elevation */
+      .md-elevation-1 {
+        box-shadow: var(--md-elevation-1);
+      }
+      .md-elevation-2 {
+        box-shadow: var(--md-elevation-2);
+      }
+      .md-elevation-3 {
+        box-shadow: var(--md-elevation-3);
+      }
+
+      /* Material Design Surface */
+      .md-surface {
+        background-color: var(--md-surface);
+      }
+      .md-surface-variant {
+        background-color: var(--md-surface-variant);
+      }
+
+      /* Material Design Rounded Corners */
+      .md-rounded-sm {
+        border-radius: 4px;
+      }
+      .md-rounded-md {
+        border-radius: 8px;
+      }
+      .md-rounded-lg {
+        border-radius: 12px;
+      }
+      .md-rounded-xl {
+        border-radius: 16px;
+      }
+      .floating-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .pulse-glow {
+        animation: pulse-glow 2s infinite;
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+        }
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Event Gallery Animation */
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Modern image styling */
+      .img-modern {
+        /* matches rounded-xl */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        transition: transform 300ms ease, box-shadow 300ms ease,
+          filter 300ms ease;
+        will-change: transform, box-shadow, filter;
+      }
+      .group:hover .img-modern {
+        transform: scale(1.03);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+        filter: saturate(1.05) contrast(1.02);
+      }
+      .img-modern-lg {
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+        transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 300ms ease;
+        will-change: transform, box-shadow;
+      }
+      .img-modern-lg:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
+      }
+      .vignette-top,
+      .vignette-bottom {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 64px;
+        pointer-events: none;
+        opacity: 0.85;
+        transition: opacity 300ms ease;
+      }
+      .vignette-top {
+        top: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.28),
+          rgba(0, 0, 0, 0)
+        );
+      }
+      .vignette-bottom {
+        bottom: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.22),
+          rgba(0, 0, 0, 0)
+        );
+      }
+      .group:hover .vignette-top,
+      .group:hover .vignette-bottom {
+        opacity: 1;
+      }
+
+      .event-gallery {
+        animation: scroll-left 20s linear infinite;
+        will-change: transform;
+      }
+
+      .event-gallery:hover {
+        animation-play-state: paused;
+      }
+
+      .event-gallery img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .event-gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Enhanced Scroll Animation Classes */
+      .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(80px) scale(0.9);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(5px);
+      }
+
+      .scroll-fade-in.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
+
+      .scroll-slide-left {
+        opacity: 0;
+        transform: translateX(-100px) rotate(-10deg) scale(0.8);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(3px);
+      }
+
+      .scroll-slide-left.visible {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+        filter: blur(0px);
+      }
+
+      .scroll-slide-right {
+        opacity: 0;
+        transform: translateX(100px) rotate(10deg) scale(0.8);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(3px);
+      }
+
+      .scroll-slide-right.visible {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+        filter: blur(0px);
+      }
+
+      .scroll-scale-in {
+        opacity: 0;
+        transform: scale(0.3) rotate(180deg);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(8px);
+      }
+
+      .scroll-scale-in.visible {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0px);
+      }
+
+      /* New Strong Animation Classes */
+      .scroll-bounce-in {
+        opacity: 0;
+        transform: translateY(150px) scale(0.5);
+        transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .scroll-bounce-in.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .scroll-spin-in {
+        opacity: 0;
+        transform: rotate(360deg) scale(0.2);
+        transition: all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-spin-in.visible {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+
+      .scroll-flip-in {
+        opacity: 0;
+        transform: rotateY(90deg) translateZ(100px);
+        transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-style: preserve-3d;
+      }
+
+      .scroll-flip-in.visible {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(0px);
+      }
+
+      .scroll-wave-in {
+        opacity: 0;
+        transform: translateY(100px) rotateX(45deg) scale(0.7);
+        transition: all 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-wave-in.visible {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+      }
+
+      /* Enhanced Visual Effects */
+      .scroll-delay-1 {
+        animation-delay: 0.1s;
+      }
+      .scroll-delay-2 {
+        animation-delay: 0.2s;
+      }
+      .scroll-delay-3 {
+        animation-delay: 0.3s;
+      }
+      .scroll-delay-4 {
+        animation-delay: 0.4s;
+      }
+      .scroll-delay-5 {
+        animation-delay: 0.5s;
+      }
+      .scroll-delay-6 {
+        animation-delay: 0.6s;
+      }
+
+      /* Scroll direction responsive animations */
+      .scroll-up-trigger {
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .scroll-down-trigger {
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      /* Enhanced animation states */
+      .scroll-fade-in.visible {
+        animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(80px) scale(0.9);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0px);
+        }
+      }
+
+      /* Scroll direction specific animations */
+      .scroll-down .scroll-slide-left.visible {
+        animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      }
+
+      .scroll-up .scroll-slide-left.visible {
+        animation: slideInFromLeftReverse 1s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+
+      .scroll-down .scroll-slide-right.visible {
+        animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      }
+
+      .scroll-up .scroll-slide-right.visible {
+        animation: slideInFromRightReverse 1s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px) rotate(-10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
+
+      @keyframes slideInFromLeftReverse {
+        from {
+          opacity: 0;
+          transform: translateX(100px) rotate(10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
+
+      @keyframes slideInFromRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px) rotate(10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
+
+      @keyframes slideInFromRightReverse {
+        from {
+          opacity: 0;
+          transform: translateX(-100px) rotate(-10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
+
+      /* Stronger hover effects */
+      .card-hover:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Enhanced floating animation */
+      .floating-animation {
+        animation: float 8s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-15px) rotate(2deg);
+        }
+        50% {
+          transform: translateY(-25px) rotate(0deg);
+        }
+        75% {
+          transform: translateY(-15px) rotate(-2deg);
+        }
+      }
+
+      /* Parallax Background */
+      .parallax-bg {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      /* Scroll Progress Bar */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #ff6b35, #f7931e);
+        z-index: 9999;
+        transition: width 0.1s ease-out;
+      }
+
+      /* Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Staggered animation delays */
+      .scroll-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .scroll-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .scroll-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .scroll-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .scroll-delay-5 {
+        transition-delay: 0.5s;
+      }
+      .scroll-delay-6 {
+        transition-delay: 0.6s;
+      }
+
+      /* Header Typography Improvements */
+      header nav a {
+        letter-spacing: 0.025em;
+        font-weight: 600;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      header h1 {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: -0.025em;
+      }
+
+      header p {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Improve button text readability */
+      .bg-gradient-to-r {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Refined motion system */
+      .reveal-smooth {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+        transition: opacity 600ms ease,
+          transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform, opacity;
+      }
+      .reveal-smooth.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      .tilt {
+        transform-style: preserve-3d;
+        transition: transform 300ms ease, box-shadow 300ms ease;
+        will-change: transform;
+      }
+      .tilt:hover {
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+      }
+      .magnetic {
+        position: relative;
+        transition: transform 160ms ease-out;
+        will-change: transform;
+      }
+      .parallax-lite {
+        will-change: transform;
+      }
+
+      /* Motion accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      .text-white {
+        color: white;
+      }
+      .title {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        padding-bottom: 10px;
+      }
+      .color-main {
+        color: #f97316 !important;
+      }
+      .body_center {
+        transform: translateY(-50%);
+      }
+      .bottom_100 {
+        bottom: 100px !important;
+      }
+      .color_1 {
+        color: #faaa17 !important;
+      }
+      .text_black {
+        color: black !important;
+      }
+      .pointer {
+        cursor: pointer;
+      }
+      .font_30 {
+        font-size: 30px !important;
+      }
+      .color_sub {
+        color: #1f5099 !important;
+      }
+      .color_sub1 {
+        color: rgb(253 224 71) !important;
+      }
+      .h_60 {
+        height: 150px;
+      }
+      .p-5 {
+        height: auto;
+      }
+      .font-20 {
+        font-size: 25px !important;
+        text-shadow: 2px 2px 2px #b1a6a6;
+      }
+      .black_shadow {
+        text-shadow: 2px 3px 2px rgb(87, 84, 84);
+      }
+      .white_shadow {
+        text-shadow: 2px 3px 2px rgb(255, 255, 255);
+      }
         .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; border-radius: 50%; }
+
     </style>
-</head>
-<body class="bg-gray-50 min-h-screen">
+  </head>
+  <body class="bg-gray-50 min-h-screen">
     <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <div class="w-10 h-10 bg-logo mr-3"></div>
-                    <a href="homepage.html" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
-                </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="Event searchlist pages.html" class="text-gray-600 hover:text-orange-600 transition-colors">イベント検索</a>
-                    <a href="Joinaffiliate recruitment page.html" class="text-gray-600 hover:text-orange-600 transition-colors">主催者募集</a>
-                    <a href="loginpage.html" class="text-orange-600 font-medium">主催者ログイン</a>
-                </nav>
-                <button class="md:hidden p-2">
-                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+    <header
+      class="shadow-xl border-b border-orange-200 sticky top-0 z-50 md-elevation-2 bg-white"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 md:h-20">
+          <div class="flex items-center">
+            <a href="" class="flex items-center space-x-3">
+              <div
+                class="w-10 h-10 md:w-16 md:h-16 bg-logo from-orange-500 to-red-500 flex items-center justify-center"
+              ></div>
+              <div>
+                <h1
+                  class="text-xl md:text-2xl font-bold bg-gradient-to-r bg-clip-text text-transparent tracking-tight leading-tight color-main"
+                >
+                  カフェ会＠！
+                </h1>
+                <p
+                  class="text-xs text-slate-600 hidden md:block font-medium tracking-wide text_black"
+                >
+                  地域コミュニティプラットフォーム
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <nav class="hidden lg:flex space-x-8 text-center">
+            <a
+              href="Event searchlist pages.html"
+              class="text-slate-800 hover:text-orange-600 font-semibold text-sm tracking-wide transition-all duration-300 relative group py-2 px-1"
+            >
+              <p class="title">EVENT</p>
+              イベント検索
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="Joinaffiliate recruitment page.html"
+              class="text-slate-800 hover:text-orange-600 font-semibold text-sm tracking-wide transition-all duration-300 relative group py-2 px-1"
+            >
+              <p class="title">RECRUITMENT</p>
+              主催者募集
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="faqpage.html"
+              class="text-slate-800 hover:text-orange-600 font-semibold text-sm tracking-wide transition-all duration-300 relative group py-2 px-1"
+            >
+              <p class="title">FAQ</p>
+              よくある質問
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="contactpage.html"
+              class="text-slate-800 hover:text-orange-600 font-semibold text-sm tracking-wide transition-all duration-300 relative group py-2 px-1"
+            >
+              <p class="title">CONTACT</p>
+              お問い合わせ
+              <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+          </nav>
+
+          <div class="flex items-center space-x-4">
+            <a
+              href="loginpage.html"
+              class="hidden sm:flex items-center bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <svg
+                class="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                ></path>
+              </svg>
+              主催者ログイン
+            </a>
+            <button
+              class="lg:hidden text-slate-800 hover:text-orange-600 transition-colors"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
+      </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
-            <!-- Logo and Title -->
-            <div class="text-center">
-                <div class="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                    </svg>
-                </div>
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">主催者ログイン</h1>
-                <p class="text-gray-600">カフェ会＠！管理画面にアクセス</p>
-            </div>
-
-            <!-- Login Form -->
-            <div class="bg-white rounded-2xl shadow-xl p-8">
-                <form class="space-y-6">
-                    <!-- Email Field -->
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-                            メールアドレス
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
-                                </svg>
-                            </div>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                required
-                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                                placeholder="example@email.com"
-                            >
-                        </div>
-                    </div>
-
-                    <!-- Password Field -->
-                    <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-                            パスワード
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                                </svg>
-                            </div>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                required
-                                class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
-                                placeholder="パスワードを入力"
-                            >
-                            <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                                <svg class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Remember Me & Forgot Password -->
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <input
-                                id="remember-me"
-                                name="remember-me"
-                                type="checkbox"
-                                class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
-                            >
-                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">
-                                ログイン状態を保持
-                            </label>
-                        </div>
-                        <div class="text-sm">
-                            <a href="#" class="text-orange-600 hover:text-orange-700 font-medium">
-                                パスワードを忘れた方
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Login Button -->
-                    <div>
-                        <button
-                            type="submit"
-                            class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-orange-700 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-colors"
-                        >
-                            ログイン
-                        </button>
-                    </div>
-
-                    <!-- Divider -->
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center">
-                            <div class="w-full border-t border-gray-300"></div>
-                        </div>
-                        <div class="relative flex justify-center text-sm">
-                            <span class="px-2 bg-white text-gray-500">または</span>
-                        </div>
-                    </div>
-
-                    <!-- Social Login Options -->
-                    <div class="space-y-3">
-                        <button
-                            type="button"
-                            class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-orange-500 transition-colors"
-                        >
-                            <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                            </svg>
-                            Googleでログイン
-                        </button>
-                        
-                        <button
-                            type="button"
-                            class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-orange-500 transition-colors"
-                        >
-                            <svg class="w-5 h-5 mr-3" fill="#00C300" viewBox="0 0 24 24">
-                                <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391-.685.391-.685.391-.685v-3.169c0-.685-.391-.685-.391-.685s-4.883 0-4.883-4.882c0-4.882 4.883-4.882 4.883-4.882s.391 0 .391.685v3.169s0 0-.391.685c5.765-.766 10.035-4.797 10.035-9.608"/>
-                            </svg>
-                            LINEでログイン
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Registration Link -->
-            <div class="text-center">
-                <p class="text-gray-600">
-                    まだアカウントをお持ちでない方は
-                    <a href="Joinaffiliate recruitment page.html" class="text-orange-600 hover:text-orange-700 font-medium">
-                        主催者応募はこちら
-                    </a>
-                </p>
-            </div>
-
-            <!-- Support Links -->
-            <div class="bg-gray-100 rounded-xl p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">サポート</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="#" class="flex items-center justify-center p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                        <svg class="w-5 h-5 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <span class="text-sm font-medium text-gray-700">ヘルプ</span>
-                    </a>
-                    
-                    <a href="contactpage.html" class="flex items-center justify-center p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors">
-                        <svg class="w-5 h-5 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        <span class="text-sm font-medium text-gray-700">お問い合わせ</span>
-                    </a>
-                </div>
-                
-                <div class="mt-4 text-center">
-                    <p class="text-sm text-gray-600 mb-2">緊急時サポート</p>
-                    <a href="tel:0120-123-456" class="text-orange-600 font-semibold text-lg">0120-123-456</a>
-                    <p class="text-xs text-gray-500 mt-1">平日 9:00-18:00</p>
-                </div>
-            </div>
-
-            <!-- Security Notice -->
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <div class="flex items-start">
-                    <svg class="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                    </svg>
-                    <div>
-                        <h4 class="text-sm font-medium text-blue-900 mb-1">セキュリティについて</h4>
-                        <p class="text-sm text-blue-700">
-                            ログイン情報は暗号化されて安全に保護されています。不審なアクセスを検知した場合は、すぐにお知らせします。
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <main
+      class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+    >
+      <div class="max-w-md w-full space-y-8">
+        <!-- Logo and Title -->
+        <div class="text-center">
+          <div
+            class="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+          >
+            <svg
+              class="w-10 h-10 text-orange-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              ></path>
+            </svg>
+          </div>
+          <h1 class="text-3xl font-bold text-gray-900 mb-2">主催者ログイン</h1>
+          <p class="text-gray-600">カフェ会＠！管理画面にアクセス</p>
         </div>
+
+        <!-- Login Form -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+          <form class="space-y-6">
+            <!-- Email Field -->
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                メールアドレス
+              </label>
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="h-5 w-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+                  placeholder="example@email.com"
+                />
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div>
+              <label
+                for="password"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                パスワード
+              </label>
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                >
+                  <svg
+                    class="h-5 w-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors"
+                  placeholder="パスワードを入力"
+                />
+                <button
+                  type="button"
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  <svg
+                    class="h-5 w-5 text-gray-400 hover:text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    ></path>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input
+                  id="remember-me"
+                  name="remember-me"
+                  type="checkbox"
+                  class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
+                />
+                <label
+                  for="remember-me"
+                  class="ml-2 block text-sm text-gray-700"
+                >
+                  ログイン状態を保持
+                </label>
+              </div>
+              <div class="text-sm">
+                <a
+                  href="/owner/forgot-password"
+                  class="text-orange-600 hover:text-orange-700 font-medium"
+                >
+                  パスワードを忘れた方
+                </a>
+              </div>
+            </div>
+
+            <!-- Login Button -->
+            <div>
+              <button
+                type="submit"
+                class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-orange-700 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-colors"
+              >
+                ログイン
+              </button>
+            </div>
+
+            <!-- Divider -->
+            <div class="relative">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-300"></div>
+              </div>
+              <div class="relative flex justify-center text-sm">
+                <span class="px-2 bg-white text-gray-500">または</span>
+              </div>
+            </div>
+
+            <!-- Social Login Options -->
+            <div class="space-y-3">
+              <button
+                type="button"
+                class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-orange-500 transition-colors"
+              >
+                <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
+                  <path
+                    fill="#4285F4"
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  />
+                  <path
+                    fill="#34A853"
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  />
+                  <path
+                    fill="#FBBC05"
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                  />
+                  <path
+                    fill="#EA4335"
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  />
+                </svg>
+                Googleでログイン
+              </button>
+
+              <button
+                type="button"
+                class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:ring-2 focus:ring-orange-500 transition-colors"
+              >
+                <svg class="w-5 h-5 mr-3" fill="#00C300" viewBox="0 0 24 24">
+                  <path
+                    d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391-.685.391-.685.391-.685v-3.169c0-.685-.391-.685-.391-.685s-4.883 0-4.883-4.882c0-4.882 4.883-4.882 4.883-4.882s.391 0 .391.685v3.169s0 0-.391.685c5.765-.766 10.035-4.797 10.035-9.608"
+                  />
+                </svg>
+                LINEでログイン
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Registration Link -->
+        <div class="text-center">
+          <p class="text-gray-600">
+            まだアカウントをお持ちでない方は
+            <a
+              href="/join"
+              class="text-orange-600 hover:text-orange-700 font-medium"
+            >
+              主催者応募はこちら
+            </a>
+          </p>
+        </div>
+
+        <!-- Support Links -->
+        <div class="bg-gray-100 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4 text-center">
+            サポート
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a
+              href="/owner/help"
+              class="flex items-center justify-center p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <svg
+                class="w-5 h-5 text-orange-600 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <span class="text-sm font-medium text-gray-700">ヘルプ</span>
+            </a>
+
+            <a
+              href="/contact"
+              class="flex items-center justify-center p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <svg
+                class="w-5 h-5 text-orange-600 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              <span class="text-sm font-medium text-gray-700"
+                >お問い合わせ</span
+              >
+            </a>
+          </div>
+
+          <div class="mt-4 text-center">
+            <p class="text-sm text-gray-600 mb-2">緊急時サポート</p>
+            <a
+              href="tel:0120-123-456"
+              class="text-orange-600 font-semibold text-lg"
+              >0120-123-456</a
+            >
+            <p class="text-xs text-gray-500 mt-1">平日 9:00-18:00</p>
+          </div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div class="flex items-start">
+            <svg
+              class="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
+            </svg>
+            <div>
+              <h4 class="text-sm font-medium text-blue-900 mb-1">
+                セキュリティについて
+              </h4>
+              <p class="text-sm text-blue-700">
+                ログイン情報は暗号化されて安全に保護されています。不審なアクセスを検知した場合は、すぐにお知らせします。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <!-- Footer -->
+ <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -277,5 +1193,6 @@
             </div>
         </div>
     </footer>
-</body>
+
+  </body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>カフェ会＠！ - 地域に笑顔と出会いの場を</title>
@@ -9,15 +9,16 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    ,<link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="animations.css" />
     <style>
-       :root {
-        --md-primary: #f97316; /* aligns with existing orange brand */
-        --md-on-surface: #1d1b20;
-        --md-on-surface-variant: #49454f;
-        --md-outline: #cac4d0;
-        --md-surface: #ffffff;
-        --md-surface-variant: #f5f5f5;
+        :root {
+            --md-primary: #f97316; /* aligns with existing orange brand */
+            --md-on-surface: #1d1b20;
+            --md-on-surface-variant: #49454f;
+            --md-outline: #cac4d0;
+            --md-surface: #ffffff;
+            --md-surface-variant: #f5f5f5;
         --md-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12),
           0 1px 2px rgba(0, 0, 0, 0.24);
         --md-elevation-2: 0 3px 6px rgba(0, 0, 0, 0.16),
@@ -58,8 +59,8 @@
       a:hover {
         color: #ea580c;
       }
-      /* Map tailwind grays to Material on-surface-variant subtly */
-      /* .text-slate-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; } */
+        /* Map tailwind grays to Material on-surface-variant subtly */
+        /* .text-slate-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; } */
       .text-slate-600,
       .text-gray-500,
       .text-gray-400 {
@@ -72,7 +73,7 @@
       .border-gray-300 {
         border-color: var(--md-outline) !important;
       }
-      /* .text-slate-800 { color: var(--md-on-surface) !important; } */
+        /* .text-slate-800 { color: var(--md-on-surface) !important; } */
       .text-slate-800 {
         color: #252525 !important;
         font-weight: bold;
@@ -110,8 +111,8 @@
         backdrop-filter: blur(10px);
         background: rgba(255, 255, 255, 0.1);
       }
-
-      /* Material Design Elevation */
+        
+        /* Material Design Elevation */
       .md-elevation-1 {
         box-shadow: var(--md-elevation-1);
       }
@@ -121,16 +122,16 @@
       .md-elevation-3 {
         box-shadow: var(--md-elevation-3);
       }
-
-      /* Material Design Surface */
+        
+        /* Material Design Surface */
       .md-surface {
         background-color: var(--md-surface);
       }
       .md-surface-variant {
         background-color: var(--md-surface-variant);
       }
-
-      /* Material Design Rounded Corners */
+        
+        /* Material Design Rounded Corners */
       .md-rounded-sm {
         border-radius: 4px;
       }
@@ -146,7 +147,7 @@
       .floating-animation {
         animation: float 6s ease-in-out infinite;
       }
-      @keyframes float {
+        @keyframes float {
         0%,
         100% {
           transform: translateY(0px);
@@ -158,7 +159,7 @@
       .pulse-glow {
         animation: pulse-glow 2s infinite;
       }
-      @keyframes pulse-glow {
+        @keyframes pulse-glow {
         0%,
         100% {
           box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
@@ -174,50 +175,50 @@
         transform: translateY(-8px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       }
-
-      /* Event Gallery Animation */
-      @keyframes scroll-left {
-        0% {
-          transform: translateX(100%);
+        
+        /* Event Gallery Animation */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
-
-      /* Modern image styling */
-      .img-modern {
+        
+        /* Modern image styling */
+        .img-modern {
         /* matches rounded-xl */
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
         transition: transform 300ms ease, box-shadow 300ms ease,
           filter 300ms ease;
-        will-change: transform, box-shadow, filter;
-      }
-      .group:hover .img-modern {
-        transform: scale(1.03);
+            will-change: transform, box-shadow, filter;
+        }
+        .group:hover .img-modern {
+            transform: scale(1.03);
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
-        filter: saturate(1.05) contrast(1.02);
-      }
-      .img-modern-lg {
+            filter: saturate(1.05) contrast(1.02);
+        }
+        .img-modern-lg {
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
         transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
           box-shadow 300ms ease;
-        will-change: transform, box-shadow;
-      }
-      .img-modern-lg:hover {
-        transform: translateY(-4px) scale(1.02);
+            will-change: transform, box-shadow;
+        }
+        .img-modern-lg:hover {
+            transform: translateY(-4px) scale(1.02);
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
-      }
+        }
       .vignette-top,
       .vignette-bottom {
-        position: absolute;
+            position: absolute;
         left: 0;
         right: 0;
-        height: 64px;
-        pointer-events: none;
-        opacity: 0.85;
-        transition: opacity 300ms ease;
-      }
+            height: 64px;
+            pointer-events: none;
+            opacity: 0.85;
+            transition: opacity 300ms ease;
+        }
       .vignette-top {
         top: 0;
         background: linear-gradient(
@@ -238,125 +239,125 @@
       .group:hover .vignette-bottom {
         opacity: 1;
       }
-
-      .event-gallery {
-        animation: scroll-left 20s linear infinite;
-        will-change: transform;
-      }
-
-      .event-gallery:hover {
-        animation-play-state: paused;
-      }
-
-      .event-gallery img {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .event-gallery img:hover {
-        transform: scale(1.05);
+        
+        .event-gallery {
+            animation: scroll-left 20s linear infinite;
+            will-change: transform;
+        }
+        
+        .event-gallery:hover {
+            animation-play-state: paused;
+        }
+        
+        .event-gallery img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .event-gallery img:hover {
+            transform: scale(1.05);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Enhanced Scroll Animation Classes */
-      .scroll-fade-in {
-        opacity: 0;
-        transform: translateY(80px) scale(0.9);
-        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        filter: blur(5px);
-      }
-
-      .scroll-fade-in.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0px);
-      }
-
-      .scroll-slide-left {
-        opacity: 0;
-        transform: translateX(-100px) rotate(-10deg) scale(0.8);
-        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        filter: blur(3px);
-      }
-
-      .scroll-slide-left.visible {
-        opacity: 1;
-        transform: translateX(0) rotate(0deg) scale(1);
-        filter: blur(0px);
-      }
-
-      .scroll-slide-right {
-        opacity: 0;
-        transform: translateX(100px) rotate(10deg) scale(0.8);
-        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        filter: blur(3px);
-      }
-
-      .scroll-slide-right.visible {
-        opacity: 1;
-        transform: translateX(0) rotate(0deg) scale(1);
-        filter: blur(0px);
-      }
-
-      .scroll-scale-in {
-        opacity: 0;
-        transform: scale(0.3) rotate(180deg);
-        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        filter: blur(8px);
-      }
-
-      .scroll-scale-in.visible {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-        filter: blur(0px);
-      }
-
-      /* New Strong Animation Classes */
-      .scroll-bounce-in {
-        opacity: 0;
-        transform: translateY(150px) scale(0.5);
-        transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
-
-      .scroll-bounce-in.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .scroll-spin-in {
-        opacity: 0;
-        transform: rotate(360deg) scale(0.2);
-        transition: all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      .scroll-spin-in.visible {
-        opacity: 1;
-        transform: rotate(0deg) scale(1);
-      }
-
-      .scroll-flip-in {
-        opacity: 0;
-        transform: rotateY(90deg) translateZ(100px);
-        transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transform-style: preserve-3d;
-      }
-
-      .scroll-flip-in.visible {
-        opacity: 1;
-        transform: rotateY(0deg) translateZ(0px);
-      }
-
-      .scroll-wave-in {
-        opacity: 0;
-        transform: translateY(100px) rotateX(45deg) scale(0.7);
-        transition: all 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      .scroll-wave-in.visible {
-        opacity: 1;
-        transform: translateY(0) rotateX(0deg) scale(1);
-      }
-
-      /* Enhanced Visual Effects */
+        }
+        
+        /* Enhanced Scroll Animation Classes */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(80px) scale(0.9);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: blur(5px);
+        }
+        
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
+        }
+        
+        .scroll-slide-left {
+            opacity: 0;
+            transform: translateX(-100px) rotate(-10deg) scale(0.8);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: blur(3px);
+        }
+        
+        .scroll-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0) rotate(0deg) scale(1);
+            filter: blur(0px);
+        }
+        
+        .scroll-slide-right {
+            opacity: 0;
+            transform: translateX(100px) rotate(10deg) scale(0.8);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: blur(3px);
+        }
+        
+        .scroll-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0) rotate(0deg) scale(1);
+            filter: blur(0px);
+        }
+        
+        .scroll-scale-in {
+            opacity: 0;
+            transform: scale(0.3) rotate(180deg);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: blur(8px);
+        }
+        
+        .scroll-scale-in.visible {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            filter: blur(0px);
+        }
+        
+        /* New Strong Animation Classes */
+        .scroll-bounce-in {
+            opacity: 0;
+            transform: translateY(150px) scale(0.5);
+            transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .scroll-bounce-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .scroll-spin-in {
+            opacity: 0;
+            transform: rotate(360deg) scale(0.2);
+            transition: all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .scroll-spin-in.visible {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+        
+        .scroll-flip-in {
+            opacity: 0;
+            transform: rotateY(90deg) translateZ(100px);
+            transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+        }
+        
+        .scroll-flip-in.visible {
+            opacity: 1;
+            transform: rotateY(0deg) translateZ(0px);
+        }
+        
+        .scroll-wave-in {
+            opacity: 0;
+            transform: translateY(100px) rotateX(45deg) scale(0.7);
+            transition: all 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .scroll-wave-in.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg) scale(1);
+        }
+        
+        /* Enhanced Visual Effects */
       .scroll-delay-1 {
         animation-delay: 0.1s;
       }
@@ -375,190 +376,190 @@
       .scroll-delay-6 {
         animation-delay: 0.6s;
       }
-
-      /* Scroll direction responsive animations */
-      .scroll-up-trigger {
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      .scroll-down-trigger {
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      /* Enhanced animation states */
-      .scroll-fade-in.visible {
-        animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(80px) scale(0.9);
-          filter: blur(5px);
+        
+        /* Scroll direction responsive animations */
+        .scroll-up-trigger {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-          filter: blur(0px);
+        
+        .scroll-down-trigger {
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-      }
-
-      /* Scroll direction specific animations */
-      .scroll-down .scroll-slide-left.visible {
+        
+        /* Enhanced animation states */
+        .scroll-fade-in.visible {
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(80px) scale(0.9);
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0px);
+            }
+        }
+        
+        /* Scroll direction specific animations */
+        .scroll-down .scroll-slide-left.visible {
         animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
           forwards;
-      }
-
-      .scroll-up .scroll-slide-left.visible {
+        }
+        
+        .scroll-up .scroll-slide-left.visible {
         animation: slideInFromLeftReverse 1s
           cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      }
-
-      .scroll-down .scroll-slide-right.visible {
+        }
+        
+        .scroll-down .scroll-slide-right.visible {
         animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
           forwards;
-      }
-
-      .scroll-up .scroll-slide-right.visible {
+        }
+        
+        .scroll-up .scroll-slide-right.visible {
         animation: slideInFromRightReverse 1s
           cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      }
-
-      @keyframes slideInFromLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-100px) rotate(-10deg) scale(0.8);
-          filter: blur(3px);
         }
-        to {
-          opacity: 1;
-          transform: translateX(0) rotate(0deg) scale(1);
-          filter: blur(0px);
+        
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px) rotate(-10deg) scale(0.8);
+                filter: blur(3px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg) scale(1);
+                filter: blur(0px);
+            }
         }
-      }
-
-      @keyframes slideInFromLeftReverse {
-        from {
-          opacity: 0;
-          transform: translateX(100px) rotate(10deg) scale(0.8);
-          filter: blur(3px);
+        
+        @keyframes slideInFromLeftReverse {
+            from {
+                opacity: 0;
+                transform: translateX(100px) rotate(10deg) scale(0.8);
+                filter: blur(3px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg) scale(1);
+                filter: blur(0px);
+            }
         }
-        to {
-          opacity: 1;
-          transform: translateX(0) rotate(0deg) scale(1);
-          filter: blur(0px);
+        
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px) rotate(10deg) scale(0.8);
+                filter: blur(3px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg) scale(1);
+                filter: blur(0px);
+            }
         }
-      }
-
-      @keyframes slideInFromRight {
-        from {
-          opacity: 0;
-          transform: translateX(100px) rotate(10deg) scale(0.8);
-          filter: blur(3px);
+        
+        @keyframes slideInFromRightReverse {
+            from {
+                opacity: 0;
+                transform: translateX(-100px) rotate(-10deg) scale(0.8);
+                filter: blur(3px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg) scale(1);
+                filter: blur(0px);
+            }
         }
-        to {
-          opacity: 1;
-          transform: translateX(0) rotate(0deg) scale(1);
-          filter: blur(0px);
-        }
-      }
-
-      @keyframes slideInFromRightReverse {
-        from {
-          opacity: 0;
-          transform: translateX(-100px) rotate(-10deg) scale(0.8);
-          filter: blur(3px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0) rotate(0deg) scale(1);
-          filter: blur(0px);
-        }
-      }
-
-      /* Stronger hover effects */
-      .card-hover:hover {
-        transform: translateY(-12px) scale(1.02);
+        
+        /* Stronger hover effects */
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.02);
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Enhanced floating animation */
-      .floating-animation {
-        animation: float 8s ease-in-out infinite;
-      }
-
-      @keyframes float {
+        }
+        
+        /* Enhanced floating animation */
+        .floating-animation {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
         0%,
         100% {
-          transform: translateY(0px) rotate(0deg);
+                transform: translateY(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-15px) rotate(2deg); 
+            }
+            50% { 
+                transform: translateY(-25px) rotate(0deg); 
+            }
+            75% { 
+                transform: translateY(-15px) rotate(-2deg); 
+            }
         }
-        25% {
-          transform: translateY(-15px) rotate(2deg);
+        
+        /* Parallax Background */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
-        50% {
-          transform: translateY(-25px) rotate(0deg);
+        
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
         }
-        75% {
-          transform: translateY(-15px) rotate(-2deg);
+        
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
         }
-      }
-
-      /* Parallax Background */
-      .parallax-bg {
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-
-      /* Scroll Progress Bar */
-      .scroll-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 3px;
-        background: linear-gradient(90deg, #ff6b35, #f7931e);
-        z-index: 9999;
-        transition: width 0.1s ease-out;
-      }
-
-      /* Scroll to Top Button */
-      .scroll-to-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #ff6b35, #f7931e);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 1000;
-        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-      }
-
-      .scroll-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .scroll-to-top:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-      }
-
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Staggered animation delays */
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Staggered animation delays */
       .scroll-delay-1 {
         transition-delay: 0.1s;
       }
@@ -577,94 +578,94 @@
       .scroll-delay-6 {
         transition-delay: 0.6s;
       }
-
-      /* Header Typography Improvements */
-      header nav a {
-        letter-spacing: 0.025em;
-        font-weight: 600;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      header h1 {
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        letter-spacing: -0.025em;
-      }
-
-      header p {
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      /* Improve button text readability */
-      .bg-gradient-to-r {
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-
-      /* Refined motion system */
-      .reveal-smooth {
-        opacity: 0;
-        transform: translateY(24px) scale(0.98);
+        
+        /* Header Typography Improvements */
+        header nav a {
+            letter-spacing: 0.025em;
+            font-weight: 600;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        header h1 {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.025em;
+        }
+        
+        header p {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Improve button text readability */
+        .bg-gradient-to-r {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Refined motion system */
+        .reveal-smooth {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
         transition: opacity 600ms ease,
           transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: transform, opacity;
-      }
-      .reveal-smooth.is-visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-      .tilt {
-        transform-style: preserve-3d;
-        transition: transform 300ms ease, box-shadow 300ms ease;
-        will-change: transform;
-      }
-      .tilt:hover {
+            will-change: transform, opacity;
+        }
+        .reveal-smooth.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .tilt {
+            transform-style: preserve-3d;
+            transition: transform 300ms ease, box-shadow 300ms ease;
+            will-change: transform;
+        }
+        .tilt:hover {
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-      }
-      .magnetic {
-        position: relative;
-        transition: transform 160ms ease-out;
-        will-change: transform;
-      }
-      .parallax-lite {
-        will-change: transform;
-      }
+        }
+        .magnetic {
+            position: relative;
+            transition: transform 160ms ease-out;
+            will-change: transform;
+        }
+        .parallax-lite {
+            will-change: transform;
+        }
 
-      /* Motion accessibility */
-      @media (prefers-reduced-motion: reduce) {
+        /* Motion accessibility */
+        @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
         *::after {
-          animation-duration: 0.001ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.001ms !important;
-          scroll-behavior: auto !important;
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
         }
-      }
       .text-white {
-        color: white;
-      }
+            color: white;
+        }
       .title {
-        font-size: 20px;
-        text-align: center;
-        font-weight: bold;
-        padding-bottom: 10px;
-      }
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
       .color-main {
         color: #f97316 !important;
-      }
+        }
       .body_center {
-        transform: translateY(-50%);
-      }
+            transform: translateY(-50%);
+        }
       .bottom_100 {
-        bottom: 100px !important;
-      }
+            bottom: 100px !important;
+        }
       .color_1 {
         color: #faaa17 !important;
       }
@@ -700,14 +701,13 @@
         text-shadow: 2px 3px 2px rgb(255, 255, 255);
       }
       /* Material-style typography and colors */
-    
     </style>
-  </head>
+</head>
   <body>
     <header class="bg-white shadow-sm border-b border-gray-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-          <div class="flex items-center">
+                <div class="flex items-center">
             <div class="w-10 h-10 bg-logo mr-3 b_50"></div>
             <a
               href="homepage.html"
@@ -715,8 +715,8 @@
             >
               カフェ会＠！
             </a>
-          </div>
-
+                </div>
+                
           <nav class="hidden md:flex space-x-8">
             <a
               href="Event searchlist pages.html"
@@ -738,16 +738,16 @@
               class="text-gray-600 hover:text-orange-600 transition-colors"
             >
               お問い合わせ
-            </a>
-          </nav>
-
-          <div class="flex items-center space-x-4">
+                    </a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
             <a
               href="loginpage.html"
               class="hidden sm:block bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
-              主催者ログイン
-            </a>
+                        主催者ログイン
+                    </a>
             <button class="md:hidden text-gray-600">
               <svg
                 class="h-6 w-6"
@@ -761,11 +761,11 @@
                   stroke-width="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 ></path>
-              </svg>
-            </button>
-          </div>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </header>
     <p class="f_30">デザインチェック</p>
     <div class="link">
@@ -780,7 +780,9 @@
           <a href="dashboardpage.html"><span>3.</span>ダッシュボード</a>
         </li>
         <li>
-          <a href="Event creationediting.html"><span>4.</span>イベント作成リスト</a>
+          <a href="Event creationediting.html"
+            ><span>4.</span>イベント作成リスト</a
+          >
         </li>
         <li>
           <a href="Event detail pages.html"><span>5.</span>イベント詳細</a>
@@ -789,46 +791,56 @@
           <a href="event management.html"><span>6.</span>イベント管理</a>
         </li>
         <li>
-          <a href="Event searchlist pages.html"><span>7.</span>イベント検索リスト</a>
+          <a href="Event searchlist pages.html"
+            ><span>7.</span>イベント検索リスト</a
+          >
         </li>
         <li>
           <a href="faqpage.html"><span>8.</span>Faq</a>
         </li>
         <li>
-          <a href="franchise-terms page.html"><span>9.</span>フランチャイズ契約</a>
+          <a href="faqadmin.html"><span>9.</span>faqadmin </a>
+        </li>
+        <li>
+          <a href="franchise-terms page.html"
+            ><span>10.</span>フランチャイズ契約</a
+          >
         </li>
         <li>
           <a href="Joinaffiliate recruitment page.html"
-            ><span>10.</span>アフィリエイト登録・採用</a
+            ><span>11.</span>アフィリエイト登録・採用</a
           >
         </li>
         <li>
-          <a href="Notification management.html"
-            ><span>11.</span>通知管理</a
+          <a href="Notification management.html"><span>12.</span>通知管理</a>
+        </li>
+        <li>
+          <a href="Owner dashboard.html"
+            ><span>13.</span>オーナーダッシュボード</a
           >
         </li>
         <li>
-          <a href="Owner dashboard.html"><span>12.</span>オーナーダッシュボード</a>
+          <a href="ownermanagement.html"><span>14.</span>オーナー管理</a>
         </li>
         <li>
-          <a href="ownermanagement.html"><span>13.</span>オーナー管理</a>
+          <a href="Payment management.html"><span>15.</span>支払い管理</a>
         </li>
         <li>
-          <a href="Payment management.html"><span>14.</span>支払い管理</a>
+          <a href="Paymentcontract management.html"
+            ><span>16.</span>支払い契約</a
+          >
         </li>
         <li>
-          <a href="Paymentcontract management.html"><span>15.</span>支払い契約</a>
+          <a href="Profile management.html"><span>17.</span>プロフィール管理</a>
         </li>
         <li>
-          <a href="Profile management.html"><span>16.</span>プロフィール管理</a>
+          <a href="homepage.html"><span>18.</span>ホームページ</a>
         </li>
         <li>
-          <a href="homepage.html"><span>17.</span>ホームページ</a>
+          <a href="Admin login.html"><span>19.</span>管理者ログイン</a>
         </li>
-        <li>
-          <a href="Admin login.html"><span>18.</span>管理者ログイン</a>
-        </li>
-      </ul>
-    </div>
-  </body>
+                    </ul>
+                </div>
+    <script src="animations.js"></script>
+</body>
 </html>

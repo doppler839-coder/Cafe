@@ -6,6 +6,7 @@
     <title>主催者向けよくある質問 | カフェ会＠！</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="animations.css" />
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; }
         :root { --md-primary:#f97316; --md-on-surface:#1d1b20; --md-on-surface-variant:#49454f; --md-outline:#cac4d0; }
@@ -20,12 +21,15 @@
         .faq-q { cursor:pointer; }
         .faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease, padding .2s ease; }
         .faq-a.open { max-height:600px; }
+        .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; border-radius: 50%; }
+
     </style>
 </head>
 <body class="bg-gray-50">
     <header class="bg-white shadow-sm border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
+                <div class="w-10 h-10 bg-logo mr-3"></div>
                 <a href="homepage.html" class="text-xl sm:text-2xl font-bold text-orange-600">カフェ会＠！</a>
                 <nav class="hidden md:flex space-x-6">
                     <a href="faq-participants.html" class="text-gray-600 hover:text-orange-600">参加者向けFAQ</a>
@@ -99,6 +103,7 @@
             });
         });
     </script>
+    <script src="animations.js"></script>
 </body>
 </html>
 

@@ -1,0 +1,823 @@
+/* ========================================
+   MATERIAL DESIGN INTERACTION SYSTEM
+   ======================================== */
+
+/* Enhanced CSS Variables for Material Design System */
+:root {
+  --animation-primary: #f97316;
+  --animation-secondary: #ea580c;
+  --animation-accent: #fbbf24;
+  --animation-success: #10b981;
+  --animation-warning: #f59e0b;
+  --animation-error: #ef4444;
+  --animation-info: #3b82f6;
+  
+  /* Material Design Timing Functions */
+  --animation-duration-fast: 0.15s;
+  --animation-duration-normal: 0.3s;
+  --animation-duration-slow: 0.4s;
+  --animation-duration-slower: 0.6s;
+  
+  /* Material Design Easing Curves */
+  --animation-easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --animation-easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --animation-easing-accelerate: cubic-bezier(0.4, 0.0, 1, 1);
+  --animation-easing-sharp: cubic-bezier(0.4, 0.0, 0.6, 1);
+  --animation-easing-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Material Design Elevation */
+  --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --elevation-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --elevation-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  --elevation-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  --elevation-5: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  
+  /* Material Design Surface Colors */
+  --surface-1: #ffffff;
+  --surface-2: #f8f9fa;
+  --surface-3: #f1f3f4;
+  --surface-4: #e8eaed;
+  
+  /* Material Design State Colors */
+  --state-hover: rgba(249, 115, 22, 0.04);
+  --state-focus: rgba(249, 115, 22, 0.12);
+  --state-pressed: rgba(249, 115, 22, 0.16);
+  --state-selected: rgba(249, 115, 22, 0.08);
+}
+
+/* ========================================
+   MATERIAL DESIGN SURFACE STYLING
+   ======================================== */
+.material-surface {
+  background: var(--surface-1);
+  border-radius: 12px;
+  box-shadow: var(--elevation-1);
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.material-surface::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--state-hover);
+  opacity: 0;
+  transition: opacity var(--animation-duration-fast) var(--animation-easing-standard);
+  pointer-events: none;
+}
+
+.material-surface:hover::before {
+  opacity: 1;
+}
+
+.material-surface:hover {
+  box-shadow: var(--elevation-2);
+  transform: translateY(-1px);
+}
+
+.material-surface:active {
+  box-shadow: var(--elevation-1);
+  transform: translateY(0);
+}
+
+/* ========================================
+   MATERIAL DESIGN CARD STYLING
+   ======================================== */
+.material-card {
+  background: var(--surface-1);
+  border-radius: 16px;
+  box-shadow: var(--elevation-1);
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.material-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--state-hover);
+  opacity: 0;
+  transition: opacity var(--animation-duration-fast) var(--animation-easing-standard);
+  pointer-events: none;
+}
+
+.material-card:hover::before {
+  opacity: 1;
+}
+
+.material-card:hover {
+  box-shadow: var(--elevation-3);
+  transform: translateY(-2px);
+}
+
+.material-card:active {
+  box-shadow: var(--elevation-1);
+  transform: translateY(0);
+}
+
+/* ========================================
+   MATERIAL DESIGN INTERACTION CLASSES
+   ======================================== */
+
+/* Material Design Button Styling */
+.material-button {
+  background: var(--animation-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  box-shadow: var(--elevation-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.material-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width var(--animation-duration-slow) var(--animation-easing-decelerate), 
+              height var(--animation-duration-slow) var(--animation-easing-decelerate);
+}
+
+.material-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.material-button:hover {
+  background: var(--animation-secondary);
+  box-shadow: var(--elevation-4);
+  transform: translateY(-2px);
+}
+
+.material-button:active {
+  transform: translateY(0);
+  box-shadow: var(--elevation-1);
+}
+
+/* Material Design Input Styling */
+.material-input {
+  background: var(--surface-1);
+  border: 2px solid var(--surface-4);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+}
+
+.material-input:focus {
+  outline: none;
+  border-color: var(--animation-primary);
+  box-shadow: 0 0 0 3px var(--state-focus), var(--elevation-2);
+  transform: translateY(-1px);
+}
+
+.material-input:hover {
+  border-color: var(--animation-secondary);
+  box-shadow: var(--elevation-2);
+}
+
+/* Material Design List Item Styling */
+.material-list-item {
+  background: var(--surface-1);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px 0;
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.material-list-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--state-hover);
+  opacity: 0;
+  transition: opacity var(--animation-duration-fast) var(--animation-easing-standard);
+  pointer-events: none;
+}
+
+.material-list-item:hover::before {
+  opacity: 1;
+}
+
+.material-list-item:hover {
+  box-shadow: var(--elevation-2);
+  transform: translateY(-1px);
+}
+
+.material-list-item:active {
+  box-shadow: var(--elevation-1);
+  transform: translateY(0);
+}
+
+/* Material Design Navigation Styling */
+.material-nav-item {
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  position: relative;
+  overflow: hidden;
+}
+
+.material-nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--state-hover);
+  opacity: 0;
+  transition: opacity var(--animation-duration-fast) var(--animation-easing-standard);
+  pointer-events: none;
+}
+
+.material-nav-item:hover::before {
+  opacity: 1;
+}
+
+.material-nav-item:hover {
+  background: var(--state-hover);
+  transform: translateY(-1px);
+}
+
+.material-nav-item:active {
+  background: var(--state-pressed);
+  transform: translateY(0);
+}
+
+/* Material Design Scale Animations */
+.scroll-scale-in {
+  opacity: 0;
+  transform: scale(0.8) rotate(5deg);
+  filter: blur(var(--animation-blur-amount));
+  transition: all var(--animation-duration-slow) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-scale-in.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  filter: blur(0);
+  box-shadow: var(--elevation-3);
+}
+
+.scroll-scale-out {
+  opacity: 0;
+  transform: scale(1.1) rotate(-2deg);
+  filter: blur(var(--animation-blur-amount));
+  transition: all var(--animation-duration-slow) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-scale-out.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  filter: blur(0);
+  box-shadow: var(--elevation-2);
+}
+
+/* Material Design Bounce Animations */
+.scroll-bounce-in {
+  opacity: 0;
+  transform: translateY(60px) scale(0.9);
+  transition: all var(--animation-duration-slower) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-bounce-in.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+.scroll-bounce-left {
+  opacity: 0;
+  transform: translateX(-60px) scale(0.95);
+  transition: all var(--animation-duration-slower) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-bounce-left.visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+.scroll-bounce-right {
+  opacity: 0;
+  transform: translateX(60px) scale(0.95);
+  transition: all var(--animation-duration-slower) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-bounce-right.visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+/* Material Design Spin Animations */
+.scroll-spin-in {
+  opacity: 0;
+  transform: rotate(15deg) scale(0.9);
+  transition: all var(--animation-duration-slower) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-spin-in.visible {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+.scroll-spin-reverse {
+  opacity: 0;
+  transform: rotate(-15deg) scale(0.9);
+  transition: all var(--animation-duration-slower) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-spin-reverse.visible {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+/* Material Design Flip Animations */
+.scroll-flip-horizontal {
+  opacity: 0;
+  transform: rotateY(45deg) translateZ(20px);
+  transition: all var(--animation-duration-slow) var(--animation-easing-decelerate);
+  transform-style: preserve-3d;
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-flip-horizontal.visible {
+  opacity: 1;
+  transform: rotateY(0deg) translateZ(0px);
+  box-shadow: var(--elevation-2);
+}
+
+.scroll-flip-vertical {
+  opacity: 0;
+  transform: rotateX(45deg) translateZ(20px);
+  transition: all var(--animation-duration-slow) var(--animation-easing-decelerate);
+  transform-style: preserve-3d;
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-flip-vertical.visible {
+  opacity: 1;
+  transform: rotateX(0deg) translateZ(0px);
+  box-shadow: var(--elevation-2);
+}
+
+/* Material Design Wave Animations */
+.scroll-wave-in {
+  opacity: 0;
+  transform: translateY(40px) rotateX(10deg) scale(0.95);
+  transition: all var(--animation-duration-slower) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-wave-in.visible {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg) scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+.scroll-wave-out {
+  opacity: 0;
+  transform: translateY(-40px) rotateX(-10deg) scale(0.95);
+  transition: all var(--animation-duration-slower) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-wave-out.visible {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg) scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+/* Material Design Elastic Animations */
+.scroll-elastic-in {
+  opacity: 0;
+  transform: scale(0.8) rotate(5deg);
+  transition: all var(--animation-duration-slower) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-elastic-in.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  box-shadow: var(--elevation-3);
+}
+
+.scroll-elastic-out {
+  opacity: 0;
+  transform: scale(1.05) rotate(-3deg);
+  transition: all var(--animation-duration-slower) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-elastic-out.visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  box-shadow: var(--elevation-2);
+}
+
+/* Material Design Zoom Animations */
+.scroll-zoom-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all var(--animation-duration-slow) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-zoom-in.visible {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+.scroll-zoom-out {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all var(--animation-duration-slow) var(--animation-easing-decelerate);
+  box-shadow: var(--elevation-1);
+}
+
+.scroll-zoom-out.visible {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: var(--elevation-2);
+}
+
+/* ========================================
+   STAGGERED ANIMATION DELAYS
+   ======================================== */
+.scroll-delay-1 { transition-delay: 0.1s; }
+.scroll-delay-2 { transition-delay: 0.2s; }
+.scroll-delay-3 { transition-delay: 0.3s; }
+.scroll-delay-4 { transition-delay: 0.4s; }
+.scroll-delay-5 { transition-delay: 0.5s; }
+.scroll-delay-6 { transition-delay: 0.6s; }
+.scroll-delay-7 { transition-delay: 0.7s; }
+.scroll-delay-8 { transition-delay: 0.8s; }
+.scroll-delay-9 { transition-delay: 0.9s; }
+.scroll-delay-10 { transition-delay: 1.0s; }
+
+/* ========================================
+   MATERIAL DESIGN SECTION STYLING
+   ======================================== */
+section {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  transform-style: preserve-3d;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.05), transparent);
+  transition: left var(--animation-duration-slow) var(--animation-easing-decelerate);
+  z-index: 1;
+  pointer-events: none;
+}
+
+section:hover::before {
+  left: 100%;
+}
+
+section.animated-section {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.01), rgba(251, 191, 36, 0.01));
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 0.5rem 0;
+  box-shadow: var(--elevation-1);
+  border: 1px solid rgba(249, 115, 22, 0.08);
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+}
+
+section.animated-section:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--elevation-3);
+  border-color: rgba(249, 115, 22, 0.15);
+}
+
+/* ========================================
+   MATERIAL DESIGN INPUT STYLING
+   ======================================== */
+input, textarea, select {
+  position: relative;
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--elevation-1);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--animation-primary);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1), var(--elevation-2);
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 1);
+}
+
+input:hover, textarea:hover, select:hover {
+  border-color: var(--animation-secondary);
+  transform: translateY(-0.5px);
+  box-shadow: var(--elevation-2);
+}
+
+input.animated-input {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 115, 22, 0.02));
+  border: 2px solid rgba(249, 115, 22, 0.15);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--elevation-1);
+}
+
+input.animated-input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.05), transparent);
+  transition: left var(--animation-duration-slow) var(--animation-easing-decelerate);
+  z-index: 1;
+}
+
+input.animated-input:focus::before {
+  left: 100%;
+}
+
+/* ========================================
+   MATERIAL DESIGN OPTION STYLING
+   ======================================== */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+option {
+  padding: 12px 16px;
+  background: white;
+  color: #374151;
+  border-radius: 6px;
+  margin: 2px 0;
+  transition: all var(--animation-duration-fast) var(--animation-easing-standard);
+  box-shadow: var(--elevation-1);
+}
+
+option:hover {
+  background: linear-gradient(135deg, var(--animation-primary), var(--animation-secondary));
+  color: white;
+  transform: translateX(2px);
+  box-shadow: var(--elevation-2);
+}
+
+option:checked {
+  background: linear-gradient(135deg, var(--animation-primary), var(--animation-secondary));
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--elevation-2);
+}
+
+/* ========================================
+   MATERIAL DESIGN BUTTON ANIMATIONS
+   ======================================== */
+button, .btn {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--elevation-2);
+  transform-style: preserve-3d;
+}
+
+button::before, .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left var(--animation-duration-slow) var(--animation-easing-decelerate);
+  z-index: 1;
+}
+
+button:hover::before, .btn:hover::before {
+  left: 100%;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--elevation-4);
+}
+
+button:active, .btn:active {
+  transform: translateY(0px);
+  box-shadow: var(--elevation-1);
+  transition: all var(--animation-duration-fast) var(--animation-easing-sharp);
+}
+
+/* ========================================
+   CARD HOVER EFFECTS
+   ======================================== */
+.card-animated {
+  transition: all var(--animation-duration-normal) var(--animation-easing-standard);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--elevation-1);
+  transform-style: preserve-3d;
+}
+
+.card-animated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(251, 191, 36, 0.05));
+  opacity: 0;
+  transition: opacity var(--animation-duration-normal) var(--animation-easing-standard);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card-animated:hover::before {
+  opacity: 1;
+}
+
+.card-animated:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--elevation-4);
+}
+
+/* ========================================
+   PARALLAX EFFECTS
+   ======================================== */
+.parallax-element {
+  will-change: transform;
+  transition: transform var(--animation-duration-slow) var(--animation-easing-smooth);
+}
+
+.parallax-slow {
+  transform: translateZ(0);
+}
+
+.parallax-medium {
+  transform: translateZ(0);
+}
+
+.parallax-fast {
+  transform: translateZ(0);
+}
+
+/* ========================================
+   LOADING ANIMATIONS
+   ======================================== */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(249, 115, 22, 0.1);
+  border-left: 4px solid var(--animation-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ========================================
+   RESPONSIVE ANIMATIONS
+   ======================================== */
+@media (max-width: 768px) {
+  .scroll-animate {
+    transition-duration: var(--animation-duration-normal);
+  }
+  
+  .scroll-to-top {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .scroll-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY - REDUCED MOTION
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .scroll-animate {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  
+  .scroll-to-top {
+    transition: none !important;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all var(--animation-duration-slow) var(--animation-easing-smooth);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+.animation-paused {
+  animation-play-state: paused !important;
+}
+
+.animation-running {
+  animation-play-state: running !important;
+}

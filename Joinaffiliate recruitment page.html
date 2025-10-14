@@ -11,567 +11,817 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="animations.css" />
     <style>
-            body {
-              font-family: "Noto Sans JP", sans-serif;
-            }
-            .gradient-bg {
-              backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
-       var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
-              background: url("./img/115.png");
-              background-position: center;
-              background-size: cover;
-              min-height: 100vh;
-            }
-            .flex {
-              display: flex;
-            }
-            .auto {
-              margin: auto;
-            }
-            .bg-logo {
-              background: url("./img/カフェ会＠！メインロゴ-01.png");
-              background-position: center;
-              background-size: cover;
-              border-radius: 50%;
-            }
-            body {
-                      font-family: 'Noto Sans JP', sans-serif;
-                      background: url("./img/115.png");
-                      background-size: cover;
-                      background-attachment: fixed;
-                      background-repeat: no-repeat;
-                      min-height: 100vh;
-                  }
-                  /* Material-style typography and colors */
-                  :root {
-                      --md-primary: #f97316; /* aligns with existing orange brand */
-                      --md-on-surface: #1d1b20;
-                      --md-on-surface-variant: #49454f;
-                      --md-outline: #cac4d0;
-                      --md-surface: #ffffff;
-                      --md-surface-variant: #f5f5f5;
-                      --md-elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-                      --md-elevation-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-                      --md-elevation-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-                  }
-                  html, body { color: var(--md-on-surface); letter-spacing: 0.01em; }
-                  h1, h2, h3, h4, h5, h6 { color: var(--md-on-surface); font-weight: 700; letter-spacing: -0.015em; }
-                  h3, h4, h5, h6 { font-weight: 600; }
-                  small, .text-sm { color: var(--md-on-surface-variant); }
-                  a { color: var(--md-primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-                  a:hover { color: #ea580c; }
-                  /* Map tailwind grays to Material on-surface-variant subtly */
-                  /* .text-slate-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; } */
-                  .text-slate-600, .text-gray-500, .text-gray-400 { color: white !important; font-weight: bold; }
-                  .border-gray-200 { border-color: var(--md-outline) !important; }
-                  .border-gray-300 { border-color: var(--md-outline) !important; }
-                  /* .text-slate-800 { color: var(--md-on-surface) !important; } */
-                  .text-slate-800 { color: #252525!important; font-weight: bold; }
-                  .gradient-bg { background: url("./img/115.png"); background-size: cover; background-attachment: fixed;}
-                  .takeplace-bg { background: url("./img/city.png"); background-position: center; background-size: cover; background-attachment: fixed;}
-                  .searchplace-bg { background: url("./img/japanese-friends-making-cafe-social-gathering.jpg"); background-position: center; background-size: cover; background-attachment: fixed;}
-                  .organizer-bg { background: url("./img/japanese-business-networking-event-professional-me.jpg"); background-position: center; background-size: cover; background-attachment: fixed;}
-                  .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; border-radius: 50%; }
-                  .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+      }
+      .gradient-bg {
+        backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
+          var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
+          var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert)
+          var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
+          var(--tw-backdrop-sepia);
+        background: url("./img/115.png");
+        background-position: center;
+        background-size: cover;
+        min-height: 100vh;
+      }
+      .flex {
+        display: flex;
+      }
+      .auto {
+        margin: auto;
+      }
+      .bg-logo {
+        background: url("./img/カフェ会＠！メインロゴ-01.png");
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+      }
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: transparent;
+        min-height: 100vh;
+        position: relative;
+      }
+    
+      /* Material-style typography and colors */
+      :root {
+        --md-primary: #f97316; /* aligns with existing orange brand */
+        --md-on-surface: #1d1b20;
+        --md-on-surface-variant: #49454f;
+        --md-outline: #cac4d0;
+        --md-surface: #ffffff;
+        --md-surface-variant: #f5f5f5;
+        --md-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.12),
+          0 1px 2px rgba(0, 0, 0, 0.24);
+        --md-elevation-2: 0 3px 6px rgba(0, 0, 0, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23);
+        --md-elevation-3: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+      }
+      html,
+      body {
+        color: var(--md-on-surface);
+        letter-spacing: 0.01em;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--md-on-surface);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 600;
+      }
+      small,
+      .text-sm {
+        color: var(--md-on-surface-variant);
+      }
+      a {
+        color: var(--md-primary);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      a:hover {
+        color: #ea580c;
+      }
+      /* Map tailwind grays to Material on-surface-variant subtly */
+      /* .text-slate-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; } */
+      .text-slate-600,
+      .text-gray-500,
+      .text-gray-400 {
+        color: white !important;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+      .border-gray-200 {
+        border-color: var(--md-outline) !important;
+      }
+      .border-gray-300 {
+        border-color: var(--md-outline) !important;
+      }
+      /* .text-slate-800 { color: var(--md-on-surface) !important; } */
+      .text-slate-800 {
+        color: #252525 !important;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+      }
+      .gradient-bg {
+        background: transparent;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .gradient-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("./img/115.png");
+        background-size: cover;
+        background-attachment: fixed;
+        filter: blur(2px);
+        z-index: -1;
+      }
+      .takeplace-bg {
+        background: url("./img/city.png");
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .searchplace-bg {
+        background: url("./img/japanese-friends-making-cafe-social-gathering.jpg");
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .organizer-bg {
+        background: url("./img/japanese-business-networking-event-professional-me.jpg");
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+      .bg-logo {
+        background: url("./img/カフェ会＠！メインロゴ-01.png");
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+      }
+      .glass-effect {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+      }
 
-                  /* Material Design Elevation */
-                  .md-elevation-1 { box-shadow: var(--md-elevation-1); }
-                  .md-elevation-2 { box-shadow: var(--md-elevation-2); }
-                  .md-elevation-3 { box-shadow: var(--md-elevation-3); }
+      /* Material Design Elevation */
+      .md-elevation-1 {
+        box-shadow: var(--md-elevation-1);
+      }
+      .md-elevation-2 {
+        box-shadow: var(--md-elevation-2);
+      }
+      .md-elevation-3 {
+        box-shadow: var(--md-elevation-3);
+      }
 
-                  /* Material Design Surface */
-                  .md-surface { background-color: var(--md-surface); }
-                  .md-surface-variant { background-color: var(--md-surface-variant); }
+      /* Material Design Surface */
+      .md-surface {
+        background-color: var(--md-surface);
+      }
+      .md-surface-variant {
+        background-color: var(--md-surface-variant);
+      }
 
-                  /* Material Design Rounded Corners */
-                  .md-rounded-sm { border-radius: 4px; }
-                  .md-rounded-md { border-radius: 8px; }
-                  .md-rounded-lg { border-radius: 12px; }
-                  .md-rounded-xl { border-radius: 16px; }
-                  .floating-animation { animation: float 6s ease-in-out infinite; }
-                  @keyframes float {
-                      0%, 100% { transform: translateY(0px); }
-                      50% { transform: translateY(-20px); }
-                  }
-                  .pulse-glow { animation: pulse-glow 2s infinite; }
-                  @keyframes pulse-glow {
-                      0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.4); }
-                      50% { box-shadow: 0 0 30px rgba(255, 107, 53, 0.8); }
-                  }
-                  .card-hover { transition: all 0.3s ease; }
-                  .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+      /* Material Design Rounded Corners */
+      .md-rounded-sm {
+        border-radius: 4px;
+      }
+      .md-rounded-md {
+        border-radius: 8px;
+      }
+      .md-rounded-lg {
+        border-radius: 12px;
+      }
+      .md-rounded-xl {
+        border-radius: 16px;
+      }
+      .floating-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .pulse-glow {
+        animation: pulse-glow 2s infinite;
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+        }
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
 
-                  /* Event Gallery Animation */
-                  @keyframes scroll-left {
-                      0% {
-                          transform: translateX(100%);
-                      }
-                      100% {
-                          transform: translateX(-100%);
-                      }
-                  }
-                  /* Modern image styling */
-                  .img-modern { /* matches rounded-xl */
-                      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-                      transition: transform 300ms ease, box-shadow 300ms ease, filter 300ms ease;
-                      will-change: transform, box-shadow, filter;
-                  }
-                  .group:hover .img-modern {
-                      transform: scale(1.03);
-                      box-shadow: 0 20px 45px rgba(0,0,0,0.18);
-                      filter: saturate(1.05) contrast(1.02);
-                  }
-                  .img-modern-lg {
-                      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-                      transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
-                      will-change: transform, box-shadow;
-                  }
-                  .img-modern-lg:hover {
-                      transform: translateY(-4px) scale(1.02);
-                      box-shadow: 0 30px 60px rgba(0,0,0,0.22);
-                  }
-                  .vignette-top, .vignette-bottom {
-                      position: absolute;
-                      left: 0; right: 0;
-                      height: 64px;
-                      pointer-events: none;
-                      opacity: 0.85;
-                      transition: opacity 300ms ease;
-                  }
-                  .vignette-top { top: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0)); }
-                  .vignette-bottom { bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.22), rgba(0,0,0,0)); }
-                  .group:hover .vignette-top, .group:hover .vignette-bottom { opacity: 1; }
+      /* Event Gallery Animation */
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      /* Modern image styling */
+      .img-modern {
+        /* matches rounded-xl */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        transition: transform 300ms ease, box-shadow 300ms ease,
+          filter 300ms ease;
+        will-change: transform, box-shadow, filter;
+      }
+      .group:hover .img-modern {
+        transform: scale(1.03);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+        filter: saturate(1.05) contrast(1.02);
+      }
+      .img-modern-lg {
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+        transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 300ms ease;
+        will-change: transform, box-shadow;
+      }
+      .img-modern-lg:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
+      }
+      .vignette-top,
+      .vignette-bottom {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 64px;
+        pointer-events: none;
+        opacity: 0.85;
+        transition: opacity 300ms ease;
+      }
+      .vignette-top {
+        top: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.28),
+          rgba(0, 0, 0, 0)
+        );
+      }
+      .vignette-bottom {
+        bottom: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.22),
+          rgba(0, 0, 0, 0)
+        );
+      }
+      .group:hover .vignette-top,
+      .group:hover .vignette-bottom {
+        opacity: 1;
+      }
 
-                  .event-gallery {
-                      animation: scroll-left 20s linear infinite;
-                      will-change: transform;
-                  }
+      .event-gallery {
+        animation: scroll-left 20s linear infinite;
+        will-change: transform;
+      }
 
-                  .event-gallery:hover {
-                      animation-play-state: paused;
-                  }
+      .event-gallery:hover {
+        animation-play-state: paused;
+      }
 
-                  .event-gallery img {
-                      transition: transform 0.3s ease, box-shadow 0.3s ease;
-                  }
+      .event-gallery img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-                  .event-gallery img:hover {
-                      transform: scale(1.05);
-                      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-                  }
+      .event-gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
 
-                  /* Enhanced Scroll Animation Classes */
-                  .scroll-fade-in {
-                      opacity: 0;
-                      transform: translateY(80px) scale(0.9);
-                      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                      filter: blur(5px);
-                  }
+      /* Enhanced Scroll Animation Classes */
+      .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(80px) scale(0.9);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(5px);
+      }
 
-                  .scroll-fade-in.visible {
-                      opacity: 1;
-                      transform: translateY(0) scale(1);
-                      filter: blur(0px);
-                  }
+      .scroll-fade-in.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
 
-                  .scroll-slide-left {
-                      opacity: 0;
-                      transform: translateX(-100px) rotate(-10deg) scale(0.8);
-                      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                      filter: blur(3px);
-                  }
+      .scroll-slide-left {
+        opacity: 0;
+        transform: translateX(-100px) rotate(-10deg) scale(0.8);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(3px);
+      }
 
-                  .scroll-slide-left.visible {
-                      opacity: 1;
-                      transform: translateX(0) rotate(0deg) scale(1);
-                      filter: blur(0px);
-                  }
+      .scroll-slide-left.visible {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+        filter: blur(0px);
+      }
 
-                  .scroll-slide-right {
-                      opacity: 0;
-                      transform: translateX(100px) rotate(10deg) scale(0.8);
-                      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                      filter: blur(3px);
-                  }
+      .scroll-slide-right {
+        opacity: 0;
+        transform: translateX(100px) rotate(10deg) scale(0.8);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(3px);
+      }
 
-                  .scroll-slide-right.visible {
-                      opacity: 1;
-                      transform: translateX(0) rotate(0deg) scale(1);
-                      filter: blur(0px);
-                  }
+      .scroll-slide-right.visible {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg) scale(1);
+        filter: blur(0px);
+      }
 
-                  .scroll-scale-in {
-                      opacity: 0;
-                      transform: scale(0.3) rotate(180deg);
-                      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                      filter: blur(8px);
-                  }
+      .scroll-scale-in {
+        opacity: 0;
+        transform: scale(0.3) rotate(180deg);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: blur(8px);
+      }
 
-                  .scroll-scale-in.visible {
-                      opacity: 1;
-                      transform: scale(1) rotate(0deg);
-                      filter: blur(0px);
-                  }
+      .scroll-scale-in.visible {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0px);
+      }
 
-                  /* New Strong Animation Classes */
-                  .scroll-bounce-in {
-                      opacity: 0;
-                      transform: translateY(150px) scale(0.5);
-                      transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                  }
+      /* New Strong Animation Classes */
+      .scroll-bounce-in {
+        opacity: 0;
+        transform: translateY(150px) scale(0.5);
+        transition: all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
 
-                  .scroll-bounce-in.visible {
-                      opacity: 1;
-                      transform: translateY(0) scale(1);
-                  }
+      .scroll-bounce-in.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
 
-                  .scroll-spin-in {
-                      opacity: 0;
-                      transform: rotate(360deg) scale(0.2);
-                      transition: all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                  }
+      .scroll-spin-in {
+        opacity: 0;
+        transform: rotate(360deg) scale(0.2);
+        transition: all 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
 
-                  .scroll-spin-in.visible {
-                      opacity: 1;
-                      transform: rotate(0deg) scale(1);
-                  }
+      .scroll-spin-in.visible {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
 
-                  .scroll-flip-in {
-                      opacity: 0;
-                      transform: rotateY(90deg) translateZ(100px);
-                      transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                      transform-style: preserve-3d;
-                  }
+      .scroll-flip-in {
+        opacity: 0;
+        transform: rotateY(90deg) translateZ(100px);
+        transition: all 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-style: preserve-3d;
+      }
 
-                  .scroll-flip-in.visible {
-                      opacity: 1;
-                      transform: rotateY(0deg) translateZ(0px);
-                  }
+      .scroll-flip-in.visible {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(0px);
+      }
 
-                  .scroll-wave-in {
-                      opacity: 0;
-                      transform: translateY(100px) rotateX(45deg) scale(0.7);
-                      transition: all 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                  }
+      .scroll-wave-in {
+        opacity: 0;
+        transform: translateY(100px) rotateX(45deg) scale(0.7);
+        transition: all 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
 
-                  .scroll-wave-in.visible {
-                      opacity: 1;
-                      transform: translateY(0) rotateX(0deg) scale(1);
-                  }
+      .scroll-wave-in.visible {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg) scale(1);
+      }
 
-                  /* Enhanced Visual Effects */
-                  .scroll-delay-1 { animation-delay: 0.1s; }
-                  .scroll-delay-2 { animation-delay: 0.2s; }
-                  .scroll-delay-3 { animation-delay: 0.3s; }
-                  .scroll-delay-4 { animation-delay: 0.4s; }
-                  .scroll-delay-5 { animation-delay: 0.5s; }
-                  .scroll-delay-6 { animation-delay: 0.6s; }
+      /* Enhanced Visual Effects */
+      .scroll-delay-1 {
+        animation-delay: 0.1s;
+      }
+      .scroll-delay-2 {
+        animation-delay: 0.2s;
+      }
+      .scroll-delay-3 {
+        animation-delay: 0.3s;
+      }
+      .scroll-delay-4 {
+        animation-delay: 0.4s;
+      }
+      .scroll-delay-5 {
+        animation-delay: 0.5s;
+      }
+      .scroll-delay-6 {
+        animation-delay: 0.6s;
+      }
 
-                  /* Scroll direction responsive animations */
-                  .scroll-up-trigger {
-                      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                  }
+      /* Scroll direction responsive animations */
+      .scroll-up-trigger {
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
 
-                  .scroll-down-trigger {
-                      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                  }
+      .scroll-down-trigger {
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
 
-                  /* Enhanced animation states */
-                  .scroll-fade-in.visible {
-                      animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-                  }
+      /* Enhanced animation states */
+      .scroll-fade-in.visible {
+        animation: fadeInUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
 
-                  @keyframes fadeInUp {
-                      from {
-                          opacity: 0;
-                          transform: translateY(80px) scale(0.9);
-                          filter: blur(5px);
-                      }
-                      to {
-                          opacity: 1;
-                          transform: translateY(0) scale(1);
-                          filter: blur(0px);
-                      }
-                  }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(80px) scale(0.9);
+          filter: blur(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0px);
+        }
+      }
 
-                  /* Scroll direction specific animations */
-                  .scroll-down .scroll-slide-left.visible {
-                      animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-                  }
+      /* Scroll direction specific animations */
+      .scroll-down .scroll-slide-left.visible {
+        animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      }
 
-                  .scroll-up .scroll-slide-left.visible {
-                      animation: slideInFromLeftReverse 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-                  }
+      .scroll-up .scroll-slide-left.visible {
+        animation: slideInFromLeftReverse 1s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
 
-                  .scroll-down .scroll-slide-right.visible {
-                      animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-                  }
+      .scroll-down .scroll-slide-right.visible {
+        animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      }
 
-                  .scroll-up .scroll-slide-right.visible {
-                      animation: slideInFromRightReverse 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-                  }
+      .scroll-up .scroll-slide-right.visible {
+        animation: slideInFromRightReverse 1s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
 
-                  @keyframes slideInFromLeft {
-                      from {
-                          opacity: 0;
-                          transform: translateX(-100px) rotate(-10deg) scale(0.8);
-                          filter: blur(3px);
-                      }
-                      to {
-                          opacity: 1;
-                          transform: translateX(0) rotate(0deg) scale(1);
-                          filter: blur(0px);
-                      }
-                  }
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px) rotate(-10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
 
-                  @keyframes slideInFromLeftReverse {
-                      from {
-                          opacity: 0;
-                          transform: translateX(100px) rotate(10deg) scale(0.8);
-                          filter: blur(3px);
-                      }
-                      to {
-                          opacity: 1;
-                          transform: translateX(0) rotate(0deg) scale(1);
-                          filter: blur(0px);
-                      }
-                  }
+      @keyframes slideInFromLeftReverse {
+        from {
+          opacity: 0;
+          transform: translateX(100px) rotate(10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
 
-                  @keyframes slideInFromRight {
-                      from {
-                          opacity: 0;
-                          transform: translateX(100px) rotate(10deg) scale(0.8);
-                          filter: blur(3px);
-                      }
-                      to {
-                          opacity: 1;
-                          transform: translateX(0) rotate(0deg) scale(1);
-                          filter: blur(0px);
-                      }
-                  }
+      @keyframes slideInFromRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px) rotate(10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
 
-                  @keyframes slideInFromRightReverse {
-                      from {
-                          opacity: 0;
-                          transform: translateX(-100px) rotate(-10deg) scale(0.8);
-                          filter: blur(3px);
-                      }
-                      to {
-                          opacity: 1;
-                          transform: translateX(0) rotate(0deg) scale(1);
-                          filter: blur(0px);
-                      }
-                  }
+      @keyframes slideInFromRightReverse {
+        from {
+          opacity: 0;
+          transform: translateX(-100px) rotate(-10deg) scale(0.8);
+          filter: blur(3px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) rotate(0deg) scale(1);
+          filter: blur(0px);
+        }
+      }
 
-                  /* Stronger hover effects */
-                  .card-hover:hover {
-                      transform: translateY(-12px) scale(1.02);
-                      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-                  }
+      /* Stronger hover effects */
+      .card-hover:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
 
-                  /* Enhanced floating animation */
-                  .floating-animation {
-                      animation: float 8s ease-in-out infinite;
-                  }
+      /* Enhanced floating animation */
+      .floating-animation {
+        animation: float 8s ease-in-out infinite;
+      }
 
-                  @keyframes float {
-                      0%, 100% {
-                          transform: translateY(0px) rotate(0deg);
-                      }
-                      25% {
-                          transform: translateY(-15px) rotate(2deg);
-                      }
-                      50% {
-                          transform: translateY(-25px) rotate(0deg);
-                      }
-                      75% {
-                          transform: translateY(-15px) rotate(-2deg);
-                      }
-                  }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-15px) rotate(2deg);
+        }
+        50% {
+          transform: translateY(-25px) rotate(0deg);
+        }
+        75% {
+          transform: translateY(-15px) rotate(-2deg);
+        }
+      }
 
-                  /* Parallax Background */
-                  .parallax-bg {
-                      background-attachment: fixed;
-                      background-position: center;
-                      background-repeat: no-repeat;
-                      background-size: cover;
-                  }
+      /* Parallax Background */
+      .parallax-bg {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
 
-                  /* Scroll Progress Bar */
-                  .scroll-progress {
-                      position: fixed;
-                      top: 0;
-                      left: 0;
-                      width: 0%;
-                      height: 3px;
-                      background: linear-gradient(90deg, #ff6b35, #f7931e);
-                      z-index: 9999;
-                      transition: width 0.1s ease-out;
-                  }
+      /* Scroll Progress Bar */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #ff6b35, #f7931e);
+        z-index: 9999;
+        transition: width 0.1s ease-out;
+      }
 
-                  /* Scroll to Top Button */
-                  .scroll-to-top {
-                      position: fixed;
-                      bottom: 30px;
-                      right: 30px;
-                      width: 50px;
-                      height: 50px;
-                      background: linear-gradient(135deg, #ff6b35, #f7931e);
-                      border-radius: 50%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      cursor: pointer;
-                      opacity: 0;
-                      visibility: hidden;
-                      transition: all 0.3s ease;
-                      z-index: 1000;
-                      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-                  }
+      /* Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #ff6b35, #f7931e);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+      }
 
-                  .scroll-to-top.visible {
-                      opacity: 1;
-                      visibility: visible;
-                  }
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
 
-                  .scroll-to-top:hover {
-                      transform: translateY(-3px);
-                      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-                  }
+      .scroll-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+      }
 
-                  /* Smooth scrolling */
-                  html {
-                      scroll-behavior: smooth;
-                  }
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
 
-                  /* Staggered animation delays */
-                  .scroll-delay-1 { transition-delay: 0.1s; }
-                  .scroll-delay-2 { transition-delay: 0.2s; }
-                  .scroll-delay-3 { transition-delay: 0.3s; }
-                  .scroll-delay-4 { transition-delay: 0.4s; }
-                  .scroll-delay-5 { transition-delay: 0.5s; }
-                  .scroll-delay-6 { transition-delay: 0.6s; }
+      /* Staggered animation delays */
+      .scroll-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .scroll-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .scroll-delay-3 {
+        transition-delay: 0.3s;
+      }
+      .scroll-delay-4 {
+        transition-delay: 0.4s;
+      }
+      .scroll-delay-5 {
+        transition-delay: 0.5s;
+      }
+      .scroll-delay-6 {
+        transition-delay: 0.6s;
+      }
 
-                  /* Header Typography Improvements */
-                  header nav a {
-                      letter-spacing: 0.025em;
-                      font-weight: 600;
-                      text-rendering: optimizeLegibility;
-                      -webkit-font-smoothing: antialiased;
-                      -moz-osx-font-smoothing: grayscale;
-                  }
+      /* Header Typography Improvements */
+      header nav a {
+        letter-spacing: 0.025em;
+        font-weight: 600;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-                  header h1 {
-                      text-rendering: optimizeLegibility;
-                      -webkit-font-smoothing: antialiased;
-                      -moz-osx-font-smoothing: grayscale;
-                      letter-spacing: -0.025em;
-                  }
+      header h1 {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: -0.025em;
+      }
 
-                  header p {
-                      text-rendering: optimizeLegibility;
-                      -webkit-font-smoothing: antialiased;
-                      -moz-osx-font-smoothing: grayscale;
-                  }
+      header p {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-                  /* Improve button text readability */
-                  .bg-gradient-to-r {
-                      text-rendering: optimizeLegibility;
-                      -webkit-font-smoothing: antialiased;
-                      -moz-osx-font-smoothing: grayscale;
-                  }
+      /* Improve button text readability */
+      .bg-gradient-to-r {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-                  /* Refined motion system */
-                  .reveal-smooth {
-                      opacity: 0;
-                      transform: translateY(24px) scale(0.98);
-                      transition: opacity 600ms ease, transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
-                      will-change: transform, opacity;
-                  }
-                  .reveal-smooth.is-visible {
-                      opacity: 1;
-                      transform: translateY(0) scale(1);
-                  }
-                  .tilt {
-                      transform-style: preserve-3d;
-                      transition: transform 300ms ease, box-shadow 300ms ease;
-                      will-change: transform;
-                  }
-                  .tilt:hover {
-                      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-                  }
-                  .magnetic {
-                      position: relative;
-                      transition: transform 160ms ease-out;
-                      will-change: transform;
-                  }
-                  .parallax-lite {
-                      will-change: transform;
-                  }
+      /* Refined motion system */
+      .reveal-smooth {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+        transition: opacity 600ms ease,
+          transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: transform, opacity;
+      }
+      .reveal-smooth.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      .tilt {
+        transform-style: preserve-3d;
+        transition: transform 300ms ease, box-shadow 300ms ease;
+        will-change: transform;
+      }
+      .tilt:hover {
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+      }
+      .magnetic {
+        position: relative;
+        transition: transform 160ms ease-out;
+        will-change: transform;
+      }
+      .parallax-lite {
+        will-change: transform;
+      }
 
-                  /* Motion accessibility */
-                  @media (prefers-reduced-motion: reduce) {
-                      *, *::before, *::after {
-                          animation-duration: 0.001ms !important;
-                          animation-iteration-count: 1 !important;
-                          transition-duration: 0.001ms !important;
-                          scroll-behavior: auto !important;
-                      }
-                  }
-                  .text-white{
-                      color: white;
-                  }
-                  .title{
-                      font-size: 20px;
-                      text-align: center;
-                      font-weight: bold;
-                      padding-bottom: 10px;
+      /* Motion accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+      .text-white {
+        color: white;
+      }
+      .title {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        padding-bottom: 10px;
+      }
+      .color-main {
+        color: #f97316 !important;
+      }
+      .body_center {
+        transform: translateY(-50%);
+      }
+      .bottom_100 {
+        bottom: 100px !important;
+      }
+      .color_1 {
+        color: #faaa17 !important;
+      }
+      .text_black {
+        color: black !important;
+      }
+      .pointer {
+        cursor: pointer;
+      }
+      .font_30 {
+        font-size: 30px !important;
+      }
+      .color_sub {
+        color: #1f5099 !important;
+      }
+      .color_sub1 {
+        color: rgb(253 224 71) !important;
+      }
+      .h_60 {
+        height: 150px;
+      }
+      .p-5 {
+        height: auto;
+      }
+      .font-20 {
+        font-size: 25px !important;
+        text-shadow: 2px 2px 2px #b1a6a6;
+      }
+      .black_shadow {
+        text-shadow: 2px 3px 2px rgb(87, 84, 84);
+      }
+      .white_shadow {
+        text-shadow: 2px 3px 2px rgb(255, 255, 255);
+      }
+      
+      /* Enhanced readability for blurred background */
+      .blur-enhanced-text {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        font-weight: 600;
+      }
+      
+      .blur-enhanced-white {
+        color: white !important;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        font-weight: 600;
+      }
+      
+      .blur-enhanced-dark {
+        color: #1a1a1a !important;
+        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+      }
+      
+      /* Button Bands Styling */
+      .button-band {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(0);
+      }
+      
+      .button-band:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      
+      .button-band-primary {
+        background: linear-gradient(135deg, #f97316, #dc2626);
+        box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+      }
+      
+      .button-band-primary:hover {
+        background: linear-gradient(135deg, #ea580c, #b91c1c);
+        box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+      }
+      
+      .button-band-secondary {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .button-band-secondary:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+      
+      .button-band-tertiary {
+        background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        border: 1px solid #e2e8f0;
+      }
+      
+      .button-band-tertiary:hover {
+        background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+        border-color: #cbd5e1;
+      }
+      
+      /* Stats Cards Enhancement */
+      .stats-card {
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+      
+      .stats-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        border-color: rgba(249, 115, 22, 0.2);
+      }
+        .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; border-radius: 50%; }
 
-                  }
-                  .color-main{
-                      color: #f97316  !important;
-                  }
-                  .body_center{
-                      transform: translateY(-50%);
-                  }
-                  .bottom_100{
-                      bottom: 100px !important;
-                  }
-                  .color_1{
-                      color: #faaa17 !important;
-                  }
-                  .text_black{
-                      color: black !important;
-                  }
-                  .pointer{
-                      cursor: pointer;
-                  }
-                  .font_30{
-                      font-size: 30px !important;
-                  }
-                  .color_sub{
-                      color: #1F5099 !important;
-                  }
-                  .color_sub1{
-                      color: rgb(253 224 71) !important;
-                  }
-                  .h_60{
-                      height: 150px;
-                  }
-                  .p-5{
-                      height: auto;
-                  }
-                  .font-20{
-                      font-size: 25px !important;
-                      text-shadow: 2px 2px 2px #b1a6a6 ;
-                  }
-                  .black_shadow{
-                      text-shadow: 2px 3px 2px rgb(87, 84, 84);
-                  }
-                  .white_shadow{
-                      text-shadow: 2px 3px 2px rgb(255, 255, 255);
-                  }
     </style>
     <link rel="stylesheet" href="index.css" />
   </head>
@@ -707,70 +957,92 @@
       </div>
     </header>
     <!-- Hero Section -->
-    <section
-      class="gradient-bg from-orange-500 to-orange-600 text-white py-16 sm:py-24 backdrop-blur-md"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="mb-6">
-              <span
-                class="bg-orange-400 bg-opacity-30 text-orange-100 text-sm font-medium px-4 py-2 rounded-full"
-                >フランチャイズ募集中</span
-              >
-            </div>
-            <h1
-              class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight"
-            >
-              あなたの地域で<br />
-              <span class="text-orange-200">カフェ会</span>を始めませんか？
-            </h1>
-            <p class="text-xl text-orange-100 mb-8 leading-relaxed">
+    <section class="relative">
+      <!-- Background Image Section -->
+      <div class="gradient-bg h-96 sm:h-[500px] lg:h-[600px] flex items-center justify-center">
+        <div class="text-center text-white z-10">
+          <div class="mb-6">
+            <span class="bg-orange-400 bg-opacity-30 text-orange-100 text-sm font-medium px-4 py-2 rounded-full blur-enhanced-white">
+              フランチャイズ募集中
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight blur-enhanced-white">
+            あなたの地域で<br />
+            <span class="text-orange-200 blur-enhanced-white">カフェ会</span>を始めませんか？
+          </h1>
+        </div>
+      </div>
+      
+      <!-- Text Content Below Background -->
+      <div class="bg-white py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <p class="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
               地域に笑顔と出会いの場を広げる、やりがいのあるビジネスです。未経験でも安心のサポート体制で、あなたの成功をバックアップします。
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <button
-                class="bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold hover:bg-orange-50 transition-colors text-lg"
-              >
+          </div>
+          
+          <!-- Button Bands Bundle -->
+          <div class="space-y-6">
+            <!-- Primary Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button class="button-band button-band-primary text-white px-8 py-4 rounded-xl font-semibold text-lg">
                 今すぐ応募する
               </button>
-              <button
-                class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-orange-600 transition-colors"
-              >
+              <button class="button-band border-2 border-orange-500 text-orange-600 px-8 py-4 rounded-xl font-semibold hover:bg-orange-500 hover:text-white">
                 詳細資料をダウンロード
               </button>
             </div>
+            
+            <!-- Secondary Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-3">
+              <button class="button-band button-band-secondary bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium">
+                無料相談
+              </button>
+              <button class="button-band button-band-secondary bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium">
+                成功事例を見る
+              </button>
+              <button class="button-band button-band-secondary bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg font-medium">
+                料金プラン
+              </button>
+              <button class="button-band button-band-secondary bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium">
+                よくある質問
+              </button>
+            </div>
+            
+            <!-- Tertiary Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-2">
+              <button class="button-band button-band-tertiary text-gray-700 px-4 py-2 rounded-lg text-sm font-medium">
+                資料請求
+              </button>
+              <button class="button-band button-band-tertiary text-gray-700 px-4 py-2 rounded-lg text-sm font-medium">
+                オンライン説明会
+              </button>
+              <button class="button-band button-band-tertiary text-gray-700 px-4 py-2 rounded-lg text-sm font-medium">
+                個別面談
+              </button>
+              <button class="button-band button-band-tertiary text-gray-700 px-4 py-2 rounded-lg text-sm font-medium">
+                体験参加
+              </button>
+              <button class="button-band button-band-tertiary text-gray-700 px-4 py-2 rounded-lg text-sm font-medium">
+                お問い合わせ
+              </button>
+            </div>
           </div>
-          <div class="relative">
-            <img
-              src="./img/eve (2).png"
-              alt="カフェ会の様子"
-              class="rounded-2xl shadow-2xl"
-            />
-            <div
-              class="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-lg"
-            >
-              <div class="flex items-center">
-                <div class="bg-green-100 p-3 rounded-full mr-4">
-                  <svg
-                    class="w-6 h-6 text-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                    ></path>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm text-gray-600">月収目安</p>
-                  <p class="text-xl font-bold text-gray-900">¥50,000〜</p>
-                </div>
-              </div>
+          
+          <!-- Stats Section -->
+          <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            <div class="stats-card bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl">
+              <div class="text-3xl font-bold text-orange-600 mb-2">200+</div>
+              <div class="text-gray-600">活躍中の主催者</div>
+            </div>
+            <div class="stats-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+              <div class="text-3xl font-bold text-green-600 mb-2">1,500+</div>
+              <div class="text-gray-600">開催イベント数</div>
+            </div>
+            <div class="stats-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+              <div class="text-3xl font-bold text-blue-600 mb-2">98%</div>
+              <div class="text-gray-600">主催者満足度</div>
             </div>
           </div>
         </div>
@@ -1844,421 +2116,4 @@
       </div>
     </footer>
   </body>
-</html>
-<script>
-  // Performance optimization variables
-  let isScrolling = false;
-  let scrollTimeout;
-  let isPageVisible = true;
-
-  // Throttle function to limit function calls
-  function throttle(func, limit) {
-    let inThrottle;
-    return function () {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => (inThrottle = false), limit);
-      }
-    };
-  }
-
-  // Debounce function to delay function calls
-  function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-
-  // Optimized scroll progress bar update
-  function updateScrollProgress() {
-    if (!isPageVisible) return;
-
-    const scrollProgress = document.getElementById("scrollProgress");
-    const scrollTop = window.pageYOffset;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
-    scrollProgress.style.width = scrollPercent + "%";
-  }
-
-  // Optimized scroll to top button toggle
-  function toggleScrollToTop() {
-    if (!isPageVisible) return;
-
-    const scrollToTopBtn = document.getElementById("scrollToTop");
-    const shouldShow = window.pageYOffset > 300;
-
-    if (shouldShow && !scrollToTopBtn.classList.contains("visible")) {
-      scrollToTopBtn.classList.add("visible");
-    } else if (!shouldShow && scrollToTopBtn.classList.contains("visible")) {
-      scrollToTopBtn.classList.remove("visible");
-    }
-  }
-
-  // Optimized header background change
-  let headerChangeTimeout = null;
-  function setHeaderLinkColors(isSolid) {
-    const header = document.querySelector("header");
-    const navLinks = header ? header.querySelectorAll("nav a") : [];
-    const menuBtn = header
-      ? header.querySelector("button.lg\\:hidden, button.md\\:hidden, button")
-      : null;
-    navLinks.forEach((a) => {
-      a.classList.remove(
-        "text-white",
-        "text-gray-50",
-        "text-gray-800",
-        "text-slate-800"
-      );
-      a.classList.add(isSolid ? "text-gray-800" : "text-slate-800");
-    });
-    if (menuBtn) {
-      menuBtn.classList.remove("text-white", "text-slate-700", "text-gray-800");
-      menuBtn.classList.add(isSolid ? "text-slate-700" : "text-gray-800");
-    }
-  }
-  function handleHeaderScroll() {
-    if (!isPageVisible) return;
-    const header = document.querySelector("header");
-    const shouldChange = window.scrollY > 100;
-    if (headerChangeTimeout) clearTimeout(headerChangeTimeout);
-    headerChangeTimeout = setTimeout(() => {
-      if (!header) return;
-      if (shouldChange && !header.classList.contains("bg-white/98")) {
-        header.classList.add("backdrop-blur-xl");
-        header.classList.add("text-white");
-        header.classList.remove("bg-white/95");
-        setHeaderLinkColors(true);
-      } else if (
-        !shouldChange &&
-        header.classList.contains("backdrop-blur-xl")
-      ) {
-        header.classList.add("backdrop-blur-xl");
-        header.classList.add("text-white");
-        header.classList.remove("backdrop-blur-xl");
-        setHeaderLinkColors(false);
-      }
-    }, 250);
-  }
-
-  // Consolidated scroll handler with throttling (parallax disabled)
-  function handleScroll() {
-    if (!isPageVisible) return;
-
-    // Update elements immediately (throttled) - no parallax effect
-    updateScrollProgress();
-    toggleScrollToTop();
-    handleHeaderScroll();
-    handleScrollAnimations();
-  }
-
-  // Smooth scroll to top
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
-  // Enhanced scroll-based animation system (triggers on both up and down scroll)
-  let lastScrollY = 0;
-  let scrollDirection = "down";
-  let animationElements = [];
-  let animationTimeout = null;
-  let revealObserver;
-  let parallaxNodes = [];
-  let sections = [];
-
-  function isElementInSection(el, section) {
-    if (!el || !section) return false;
-    return section.contains(el);
-  }
-  function isSectionFullyRevealed(section) {
-    if (!section) return true;
-    const targets = section.querySelectorAll(
-      ".scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-bounce-in, .scroll-spin-in, .scroll-flip-in, .scroll-wave-in, .reveal-smooth"
-    );
-    if (!targets.length) return true;
-    for (const t of targets) {
-      const visibleA = t.classList.contains("visible");
-      const visibleB = t.classList.contains("is-visible");
-      if (!visibleA && !visibleB) return false;
-    }
-    return true;
-  }
-  function getActiveSection() {
-    if (!sections.length) return null;
-    const vh = window.innerHeight || 800;
-    // Prefer the first section that intersects viewport and is not fully revealed
-    for (const s of sections) {
-      const rect = s.getBoundingClientRect();
-      const intersects = rect.top < vh * 0.7 && rect.bottom > vh * 0.15;
-      if (intersects && !isSectionFullyRevealed(s)) return s;
-    }
-    // Otherwise, the first not fully revealed section below viewport
-    for (const s of sections) {
-      if (!isSectionFullyRevealed(s)) return s;
-    }
-    // All revealed
-    return null;
-  }
-
-  function initScrollAnimations() {
-    animationElements = document.querySelectorAll(
-      ".scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-bounce-in, .scroll-spin-in, .scroll-flip-in, .scroll-wave-in"
-    );
-    sections = Array.from(document.querySelectorAll("section"));
-
-    // Initial check for elements in viewport
-    checkElementsInView();
-
-    // Reveal-on-intersect for subtle elements
-    revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const activeSection = getActiveSection();
-          if (
-            entry.isIntersecting &&
-            (!activeSection || isElementInSection(entry.target, activeSection))
-          ) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    document
-      .querySelectorAll(".reveal-smooth")
-      .forEach((el) => revealObserver.observe(el));
-
-    // Collect parallax nodes
-    parallaxNodes = Array.from(document.querySelectorAll(".parallax-lite"));
-  }
-
-  function checkElementsInView() {
-    const windowHeight = window.innerHeight;
-    const scrollY = window.scrollY;
-    const activeSection = getActiveSection();
-
-    animationElements.forEach((element, index) => {
-      if (activeSection && !isElementInSection(element, activeSection)) {
-        return; // Gate: only reveal elements within the active section
-      }
-      const rect = element.getBoundingClientRect();
-
-      // Check if element is in viewport (with some margin)
-      const isInView = rect.top < windowHeight - 50 && rect.bottom > 50;
-
-      if (isInView && !element.classList.contains("visible")) {
-        // Add visible class with staggered delay based on scroll direction
-        const delay =
-          scrollDirection === "down"
-            ? index * 1 + Math.random() * 15
-            : index * 1 + Math.random() * 10;
-
-        setTimeout(() => {
-          element.classList.add("visible");
-        }, delay);
-      } else if (!isInView && element.classList.contains("visible")) {
-        // Remove visible class when out of view (for re-triggering)
-        element.classList.remove("visible");
-      }
-    });
-  }
-
-  function handleScrollAnimations() {
-    const currentScrollY = window.scrollY;
-
-    // Determine scroll direction
-    if (currentScrollY > lastScrollY) {
-      scrollDirection = "down";
-    } else if (currentScrollY < lastScrollY) {
-      scrollDirection = "up";
-    }
-
-    lastScrollY = currentScrollY;
-
-    // Add scroll direction classes to body for CSS targeting
-    document.body.classList.remove("scroll-up", "scroll-down");
-    document.body.classList.add(`scroll-${scrollDirection}`);
-
-    // Throttle animation checks for better performance
-    if (animationTimeout) {
-      clearTimeout(animationTimeout);
-    }
-
-    animationTimeout = setTimeout(() => {
-      checkElementsInView();
-    }, 16); // ~60fps
-
-    // If current active section is fully revealed, trigger next section on next scroll frame
-    const active = getActiveSection();
-    if (active && isSectionFullyRevealed(active)) {
-      // Nudge to allow next section to become active on subsequent calls
-      // No-op here; getActiveSection will pick the next one once active is fully revealed
-    }
-
-    // Lightweight parallax
-    if (parallaxNodes.length) {
-      parallaxNodes.forEach((node) => {
-        const speed = parseFloat(
-          node.getAttribute("data-parallax-speed") || "0.2"
-        );
-        const offset = currentScrollY * speed;
-        node.style.transform = `translate3d(0, ${offset}px, 0)`;
-      });
-    }
-  }
-
-  // Subtle tilt for elements with data-tilt
-  function initTiltEffects() {
-    const tiltElements = document.querySelectorAll("[data-tilt]");
-    tiltElements.forEach((el) => {
-      let rect;
-      const onEnter = () => {
-        rect = el.getBoundingClientRect();
-      };
-      const onMove = (e) => {
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(
-          x * 8
-        ).toFixed(2)}deg)`;
-      };
-      const onLeave = () => {
-        el.style.transform = "rotateX(0deg) rotateY(0deg)";
-      };
-      el.addEventListener("mouseenter", onEnter);
-      el.addEventListener("mousemove", onMove);
-      el.addEventListener("mouseleave", onLeave);
-    });
-  }
-
-  // Magnetic buttons/links
-  function initMagnetic() {
-    const magneticEls = document.querySelectorAll("[data-magnetic]");
-    magneticEls.forEach((el) => {
-      let rect;
-      const onEnter = () => {
-        rect = el.getBoundingClientRect();
-      };
-      const onMove = (e) => {
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `translate(${x * 8}px, ${y * 8}px)`;
-      };
-      const onLeave = () => {
-        el.style.transform = "translate(0, 0)";
-      };
-      el.addEventListener("mouseenter", onEnter);
-      el.addEventListener("mousemove", onMove);
-      el.addEventListener("mouseleave", onLeave);
-    });
-  }
-
-  // Counter animation for stats (unchanged - already optimized)
-  function animateCounters() {
-    const counters = document.querySelectorAll(
-      ".glass-effect .text-2xl, .glass-effect .text-3xl"
-    );
-
-    const counterObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const counter = entry.target;
-            const target = parseInt(counter.textContent.replace(/[^\d]/g, ""));
-            const suffix = counter.textContent.replace(/[\d]/g, "");
-
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= target) {
-                counter.textContent = target + suffix;
-                clearInterval(timer);
-              } else {
-                counter.textContent = Math.floor(current) + suffix;
-              }
-            }, 20);
-
-            counterObserver.unobserve(counter);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    counters.forEach((counter) => counterObserver.observe(counter));
-  }
-
-  // Page visibility API to pause animations when tab is not active
-  function handleVisibilityChange() {
-    isPageVisible = !document.hidden;
-
-    if (!isPageVisible) {
-      // Cancel any pending timeouts when page becomes hidden
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-    }
-  }
-
-  // Initialize all scroll effects with optimized event listeners
-  function initScrollEffects() {
-    // Single optimized scroll event listener with passive option
-    window.addEventListener("scroll", throttle(handleScroll, 16), {
-      passive: true,
-    });
-
-    // Page visibility change listener
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    // Scroll to top button click
-    document
-      .getElementById("scrollToTop")
-      .addEventListener("click", scrollToTop);
-
-    // Initialize animations
-    initScrollAnimations();
-    animateCounters();
-    initTiltEffects();
-    initMagnetic();
-    // Initialize header link colors based on initial position
-    setHeaderLinkColors(window.scrollY > 100);
-  }
-
-  // Initialize when DOM is loaded
-  document.addEventListener("DOMContentLoaded", initScrollEffects);
-
-  // Smooth scrolling for anchor links (unchanged)
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
-  });
-
-  // Cleanup on page unload
-  window.addEventListener("beforeunload", () => {
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-  });
-</script>
+</html> 
