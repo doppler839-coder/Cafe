@@ -708,6 +708,39 @@
       }
       .white_shadow {
         text-shadow: 2px 3px 2px rgb(255, 255, 255);
+      } 
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background: url("./img/bg4.png");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        min-height: 100vh; 
+      }
+
+      .bg_w {
+        font-family: "Noto Sans JP", sans-serif;
+        background: url("./img/bg4.png");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        min-height: 100vh; 
+        
+      }
+      .h_400{
+        height: 200px;
+        position: relative;
+        right: 0;
+        width: 300px;
+        background-color: transparent !important;
+        backdrop-filter: blur(2px);
+      }
+      .p_0{
+          position: absolute;
+          left: 0;
+          bottom: 0%;
+          /* transform: translateY(-100%); */
+          
       }
     </style>
   </head>
@@ -824,237 +857,412 @@
     </header>
 
     <!-- Hero Section -->
- <section class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-12 md:py-16">
-        <div>
-          <img src="">
-        </div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">お問い合わせ</h1>
-            <p class="text-lg md:text-xl opacity-90 mb-8">
-                ご質問やご不明な点がございましたら、お気軽にお問い合わせください
-            </p>
-        </div>
+    <section
+      class=" text-white py-12 md:py-16 bg_w"
+    >
+      <div>
+        <img src="" />
+      </div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">お問い合わせ</h1>
+        <p class="text-lg md:text-xl opacity-90 mb-8">
+          ご質問やご不明な点がございましたら、お気軽にお問い合わせください
+        </p>
+      </div>
     </section>
 
     <!-- Contact Methods -->
-    <section class="py-8 md:py-12">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <!-- Email -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="h-6 w-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">メール</h3>
-                    <p class="text-gray-600 text-sm mb-4">24時間受付中</p>
-                    <a href="mailto:info@cafekai.jp" class="text-orange-600 hover:text-orange-700 font-medium">info@cafekai.jp</a>
-                </div>
-
-                <!-- Phone -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">電話</h3>
-                    <p class="text-gray-600 text-sm mb-4">平日 10:00-18:00</p>
-                    <a href="tel:03-1234-5678" class="text-green-600 hover:text-green-700 font-medium">03-1234-5678</a>
-                </div>
-
-                <!-- LINE -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">LINE</h3>
-                    <p class="text-gray-600 text-sm mb-4">友達追加で簡単連絡</p>
-                    <a href="#" class="text-green-600 hover:text-green-700 font-medium">@cafekai</a>
-                </div>
+    <section class="py-8 md:py-12 p_0">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <!-- Email -->
+          <div
+            class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center h_400"
+          >
+            <div
+              class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="h-6 w-6 text-orange-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
             </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">メール</h3>
+            <p class="text-gray-600 text-sm mb-4">24時間受付中</p>
+            <a
+              href="mailto:info@cafekai.jp"
+              class="text-orange-600 hover:text-orange-700 font-medium"
+              >info@cafekai.jp</a
+            >
+          </div>
+
+          <!-- Phone -->
+          <div
+            class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center h_400"
+          >
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="h-6 w-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">電話</h3>
+            <p class="text-gray-600 text-sm mb-4">平日 10:00-18:00</p>
+            <a
+              href="tel:03-1234-5678"
+              class="text-green-600 hover:text-green-700 font-medium"
+              >03-1234-5678</a
+            >
+          </div>
+
+          <!-- LINE -->
+          <div
+            class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center h_400"
+          >
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="h-6 w-6 text-green-600"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"
+                />
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">LINE</h3>
+            <p class="text-gray-600 text-sm mb-4">友達追加で簡単連絡</p>
+            <a href="#" class="text-green-600 hover:text-green-700 font-medium"
+              >@cafekai</a
+            >
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Form Section -->
     <section class="py-8 md:py-12 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">お問い合わせフォーム</h2>
-                <p class="text-gray-600">下記フォームよりお気軽にお問い合わせください。2営業日以内にご返信いたします。</p>
-            </div>
-
-            <form class="space-y-6">
-                <!-- Inquiry Type -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">お問い合わせ種別 <span class="text-red-500">*</span></label>
-                    <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
-                        <option value="">選択してください</option>
-                        <option value="participant">参加者として</option>
-                        <option value="organizer">主催者として</option>
-                        <option value="franchise">加盟について</option>
-                        <option value="technical">技術的な問題</option>
-                        <option value="other">その他</option>
-                    </select>
-                </div>
-
-                <!-- Name -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">お名前 <span class="text-red-500">*</span></label>
-                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="山田太郎">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">フリガナ</label>
-                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="ヤマダタロウ">
-                    </div>
-                </div>
-
-                <!-- Contact Info -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
-                        <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="example@email.com">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">電話番号</label>
-                        <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="090-1234-5678">
-                    </div>
-                </div>
-
-                <!-- Region -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">都道府県</label>
-                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
-                            <option value="">選択してください</option>
-                            <option value="tokyo">東京都</option>
-                            <option value="osaka">大阪府</option>
-                            <option value="kanagawa">神奈川県</option>
-                            <option value="other">その他</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">市区町村</label>
-                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="渋谷区">
-                    </div>
-                </div>
-
-                <!-- Subject -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">件名 <span class="text-red-500">*</span></label>
-                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="お問い合わせの件名を入力してください">
-                </div>
-
-                <!-- Message -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">お問い合わせ内容 <span class="text-red-500">*</span></label>
-                    <textarea rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500" placeholder="お問い合わせ内容を詳しくご記入ください"></textarea>
-                </div>
-
-                <!-- Privacy Policy -->
-                <div class="flex items-start">
-                    <input type="checkbox" class="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded">
-                    <label class="ml-2 text-sm text-gray-600">
-                        <a href="/privacy" class="text-orange-600 hover:text-orange-700 underline">プライバシーポリシー</a>に同意します <span class="text-red-500">*</span>
-                    </label>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="text-center">
-                    <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
-                        送信する
-                    </button>
-                </div>
-            </form>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            お問い合わせフォーム
+          </h2>
+          <p class="text-gray-600">
+            下記フォームよりお気軽にお問い合わせください。2営業日以内にご返信いたします。
+          </p>
         </div>
+
+        <form class="space-y-6">
+          <!-- Inquiry Type -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >お問い合わせ種別 <span class="text-red-500">*</span></label
+            >
+            <select
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+            >
+              <option value="">選択してください</option>
+              <option value="participant">参加者として</option>
+              <option value="organizer">主催者として</option>
+              <option value="franchise">加盟について</option>
+              <option value="technical">技術的な問題</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+
+          <!-- Name -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >お名前 <span class="text-red-500">*</span></label
+              >
+              <input
+                type="text"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                placeholder="山田太郎"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >フリガナ</label
+              >
+              <input
+                type="text"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                placeholder="ヤマダタロウ"
+              />
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >メールアドレス <span class="text-red-500">*</span></label
+              >
+              <input
+                type="email"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                placeholder="example@email.com"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >電話番号</label
+              >
+              <input
+                type="tel"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                placeholder="090-1234-5678"
+              />
+            </div>
+          </div>
+
+          <!-- Region -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >都道府県</label
+              >
+              <select
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              >
+                <option value="">選択してください</option>
+                <option value="tokyo">東京都</option>
+                <option value="osaka">大阪府</option>
+                <option value="kanagawa">神奈川県</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >市区町村</label
+              >
+              <input
+                type="text"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                placeholder="渋谷区"
+              />
+            </div>
+          </div>
+
+          <!-- Subject -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >件名 <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              placeholder="お問い合わせの件名を入力してください"
+            />
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >お問い合わせ内容 <span class="text-red-500">*</span></label
+            >
+            <textarea
+              rows="6"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              placeholder="お問い合わせ内容を詳しくご記入ください"
+            ></textarea>
+          </div>
+
+          <!-- Privacy Policy -->
+          <div class="flex items-start">
+            <input
+              type="checkbox"
+              class="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
+            />
+            <label class="ml-2 text-sm text-gray-600">
+              <a
+                href="/privacy"
+                class="text-orange-600 hover:text-orange-700 underline"
+                >プライバシーポリシー</a
+              >に同意します <span class="text-red-500">*</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button
+              type="submit"
+              class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+            >
+              送信する
+            </button>
+          </div>
+        </form>
+      </div>
     </section>
 
     <!-- FAQ Link Section -->
     <section class="py-8 md:py-12 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">お問い合わせ前に</h2>
-            <p class="text-gray-600 mb-8">
-                よくある質問をご確認いただくと、すぐに解決できる場合があります
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">参加者向けFAQ</h3>
-                    <p class="text-gray-600 text-sm mb-4">
-                        イベント参加に関するよくある質問
-                    </p>
-                    <a href="/faq#participant" class="text-blue-600 hover:text-blue-700 font-medium">確認する →</a>
-                </div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          お問い合わせ前に
+        </h2>
+        <p class="text-gray-600 mb-8">
+          よくある質問をご確認いただくと、すぐに解決できる場合があります
+        </p>
 
-                <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 mb-2">主催者向けFAQ</h3>
-                    <p class="text-gray-600 text-sm mb-4">
-                        加盟・主催に関するよくある質問
-                    </p>
-                    <a href="/faq#organizer" class="text-green-600 hover:text-green-700 font-medium">確認する →</a>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="h-6 w-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
             </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">
+              参加者向けFAQ
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              イベント参加に関するよくある質問
+            </p>
+            <a
+              href="/faq#participant"
+              class="text-blue-600 hover:text-blue-700 font-medium"
+              >確認する →</a
+            >
+          </div>
+
+          <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="h-6 w-6 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">
+              主催者向けFAQ
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              加盟・主催に関するよくある質問
+            </p>
+            <a
+              href="/faq#organizer"
+              class="text-green-600 hover:text-green-700 font-medium"
+              >確認する →</a
+            >
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Office Information -->
     <section class="py-8 md:py-12 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">会社情報</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Company Info -->
-                <div class="bg-gray-50 rounded-lg p-6">
-                    <h3 class="text-lg font-medium text-gray-900 mb-4">株式会社カフェ会</h3>
-                    <div class="space-y-3 text-sm text-gray-600">
-                        <div class="flex">
-                            <span class="w-20 font-medium">住所:</span>
-                            <span>〒150-0002<br>東京都渋谷区渋谷1-1-1<br>渋谷ビル10F</span>
-                        </div>
-                        <div class="flex">
-                            <span class="w-20 font-medium">電話:</span>
-                            <span>03-1234-5678</span>
-                        </div>
-                        <div class="flex">
-                            <span class="w-20 font-medium">FAX:</span>
-                            <span>03-1234-5679</span>
-                        </div>
-                        <div class="flex">
-                            <span class="w-20 font-medium">営業時間:</span>
-                            <span>平日 10:00-18:00<br>（土日祝日は休業）</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Map -->
-                <div class="bg-gray-200 rounded-lg h-80 flex items-center justify-center">
-                    <div class="text-center text-gray-500">
-                        <svg class="h-12 w-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <p class="text-sm">Google Maps</p>
-                        <p class="text-xs">渋谷駅より徒歩5分</p>
-                    </div>
-                </div>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            会社情報
+          </h2>
         </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Company Info -->
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">
+              株式会社カフェ会
+            </h3>
+            <div class="space-y-3 text-sm text-gray-600">
+              <div class="flex">
+                <span class="w-20 font-medium">住所:</span>
+                <span
+                  >〒150-0002<br />東京都渋谷区渋谷1-1-1<br />渋谷ビル10F</span
+                >
+              </div>
+              <div class="flex">
+                <span class="w-20 font-medium">電話:</span>
+                <span>03-1234-5678</span>
+              </div>
+              <div class="flex">
+                <span class="w-20 font-medium">FAX:</span>
+                <span>03-1234-5679</span>
+              </div>
+              <div class="flex">
+                <span class="w-20 font-medium">営業時間:</span>
+                <span>平日 10:00-18:00<br />（土日祝日は休業）</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div
+            class="bg-gray-200 rounded-lg h-80 flex items-center justify-center"
+          >
+            <div class="text-center text-gray-500">
+              <svg
+                class="h-12 w-12 mx-auto mb-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                ></path>
+              </svg>
+              <p class="text-sm">Google Maps</p>
+              <p class="text-xs">渋谷駅より徒歩5分</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
