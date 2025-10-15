@@ -31,7 +31,7 @@
         display: flex;
       }
       .auto {
-        margin: auto;
+        margin: auto; 
       }
       .bg-logo {
         background: url("./img/カフェ会＠！メインロゴ-01.png");
@@ -2115,5 +2115,66 @@
         </div>
       </div>
     </footer>
+    <style>
+      /* Material-like elevated app bar and surface tint on scroll */
+      header {
+        transition: background-color 200ms ease, box-shadow 200ms ease,
+          backdrop-filter 200ms ease;
+      }
+      body.md-scrolled header {
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: var(--md-elevation-2);
+        -webkit-backdrop-filter: saturate(1.1) blur(6px);
+        backdrop-filter: saturate(1.1) blur(6px);
+      }
+      /* Optional: very subtle surface lift for sections when scrolled */
+      body.md-scrolled section.md-surface,
+      body.md-scrolled .md-surface {
+        box-shadow: var(--md-elevation-1);
+      }
+      /* Animate on scroll movement */
+      @keyframes md-elevate-pulse {
+        0% { box-shadow: var(--md-elevation-1); }
+        100% { box-shadow: var(--md-elevation-2); }
+      }
+      @keyframes md-surface-lift {
+        0% { transform: translateY(0); box-shadow: none; }
+        100% { transform: translateY(-2px); box-shadow: var(--md-elevation-1); }
+      }
+      body.md-scrolling header {
+        animation: md-elevate-pulse 180ms ease-out;
+      }
+      body.md-scrolling section.md-surface,
+      body.md-scrolling .md-surface {
+        animation: md-surface-lift 220ms ease-out;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        header { transition: none; }
+      }
+    </style>
+    <script>
+      (function () {
+        var body = document.body;
+        var scrollingTimer = null;
+        var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) return;
+        function update() {
+          var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+          if (y > 4) {
+            body.classList.add('md-scrolled');
+          } else {
+            body.classList.remove('md-scrolled');
+          }
+          // Trigger transient scroll animation state
+          body.classList.add('md-scrolling');
+          if (scrollingTimer) window.clearTimeout(scrollingTimer);
+          scrollingTimer = window.setTimeout(function () {
+            body.classList.remove('md-scrolling');
+          }, 200);
+        }
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+      })();
+    </script>
   </body>
 </html> 
