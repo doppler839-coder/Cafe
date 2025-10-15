@@ -8,65 +8,138 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="animations.css" />
     <style>
-        body { font-family: 'Noto Sans JP', sans-serif; }
-        .bg-logo { background: url("./img/カフェ会＠！メインロゴ-01.png"); background-position: center; background-size: cover; border-radius: 50%; }
-        /* Material-style typography and colors */
-        :root {
-            --md-primary: #f97316;
-            --md-on-surface: #1d1b20;
-            --md-on-surface-variant: #49454f;
-            --md-outline: #cac4d0;
-        }
-        html, body { color: var(--md-on-surface); letter-spacing: 0.01em; }
-        h1, h2, h3, h4, h5, h6 { color: var(--md-on-surface); font-weight: 700; letter-spacing: -0.015em; }
-        h3, h4, h5, h6 { font-weight: 600; }
-        small, .text-sm { color: var(--md-on-surface-variant); }
-        a { color: var(--md-primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-        a:hover { color: #ea580c; }
-        .text-gray-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; }
-        .border-gray-200 { border-color: var(--md-outline) !important; }
-        .border-gray-300 { border-color: var(--md-outline) !important; }
-        .text-gray-900 { color: var(--md-on-surface) !important; }
-        /* Material-inspired search UI */
-        .elev-1 { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-        .elev-2 { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-        .search-surface {
-            background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
-            backdrop-filter: saturate(1.2) blur(8px);
-            border: 1px solid rgba(255,255,255,0.6);
-        }
-        .chip { transition: all 160ms ease; }
-        .chip.selected { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(249,115,22,0.25); }
-        .field-focus:focus { box-shadow: 0 0 0 4px rgba(249,115,22,0.15); }
-        .glass-input { background: rgba(255,255,255,0.85); }
-        @media (prefers-reduced-motion: reduce) {
-            .chip, .elev-1, .elev-2 { transition: none !important; }
-        }
-
-        /* Scroll-driven motion */
-        .reveal-smooth { opacity: 0; transform: translateY(24px) scale(0.98); transition: opacity 600ms ease, transform 800ms cubic-bezier(0.22, 1, 0.36, 1); will-change: transform, opacity; }
-        .reveal-smooth.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-        .tilt { transform-style: preserve-3d; transition: transform 300ms ease, box-shadow 300ms ease; will-change: transform; }
-        .parallax-lite { will-change: transform; }
-        
-        /* Rhythmic letter motion */
-        .rhythm-char { display: inline-block; will-change: transform; }
-        @media (prefers-reduced-motion: reduce) {
-            .rhythm-char { transform: none !important; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal-smooth { transition: none !important; }
-            .tilt { transition: none !important; }
-        }
-        .flex{
-            display: flex;
-        }
-        .auto{
-            margin: auto;
-        }
-        .b_50{
-            border-radius: 50%;
-        }
+ body { 
+                font-family: 'Noto Sans JP', sans-serif; 
+                position: relative;
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+            
+            /* Flowing Background System */
+            .flowing-bg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                overflow: hidden;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+            }
+            
+            .flowing-bg-layer {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                opacity: 0;
+                transition: opacity 2s ease-in-out;
+                animation: flow-drift 20s ease-in-out infinite;
+            }
+            
+            .flowing-bg-layer.active {
+                opacity: 1;
+            }
+            
+            .flowing-bg-layer:nth-child(1) {
+                /* background-image: url("./img/bg2.png"); */
+                animation-delay: 0s;
+            }
+            
+            .flowing-bg-layer:nth-child(2) {
+                /* background-image: url("./img/bg3.png"); */
+                animation-delay: 6.67s;
+            }
+            
+            .flowing-bg-layer:nth-child(3) {
+                /* background-image: url("./img/bg4.png"); */
+                animation-delay: 13.33s;
+            }
+            
+            /* Flowing drift animation */
+            @keyframes flow-drift {
+                0%, 100% {
+                    transform: translateX(0px) translateY(0px) scale(1);
+                }
+                25% {
+                    transform: translateX(-10px) translateY(-5px) scale(1.02);
+                }
+                50% {
+                    transform: translateX(5px) translateY(-10px) scale(1.01);
+                }
+                75% {
+                    transform: translateX(-5px) translateY(5px) scale(1.03);
+                }
+            }
+            
+            /* Background transition overlay */
+            .flowing-bg::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, 
+                    rgba(0, 0, 0, 0.1) 0%, 
+                    rgba(255, 107, 53, 0.05) 25%, 
+                    rgba(0, 0, 0, 0.05) 50%, 
+                    rgba(255, 107, 53, 0.08) 75%, 
+                    rgba(0, 0, 0, 0.1) 100%);
+                animation: flow-overlay 15s ease-in-out infinite;
+                z-index: 1;
+            }
+            
+            @keyframes flow-overlay {
+                0%, 100% {
+                    opacity: 0.3;
+                    transform: translateX(0px) translateY(0px);
+                }
+                50% {
+                    opacity: 0.6;
+                    transform: translateX(20px) translateY(-10px);
+                }
+            }
+            
+            /* Enhanced flowing effects for background layers */
+            .flowing-bg-layer {
+                will-change: transform, opacity;
+            }
+            
+            .flowing-bg-layer:nth-child(1) {
+                animation: flow-drift 20s ease-in-out infinite, flow-fade-1 18s ease-in-out infinite;
+            }
+            
+            .flowing-bg-layer:nth-child(2) {
+                animation: flow-drift 20s ease-in-out infinite, flow-fade-2 18s ease-in-out infinite;
+            }
+            
+            .flowing-bg-layer:nth-child(3) {
+                animation: flow-drift 20s ease-in-out infinite, flow-fade-3 18s ease-in-out infinite;
+            }
+            
+            /* Individual fade animations for each layer */
+            @keyframes flow-fade-1 {
+                0%, 33.33% { opacity: 1; }
+                33.34%, 100% { opacity: 0; }
+            }
+            
+            @keyframes flow-fade-2 {
+                0%, 33.33% { opacity: 0; }
+                33.34%, 66.66% { opacity: 1; }
+                66.67%, 100% { opacity: 0; }
+            }
+            
+            @keyframes flow-fade-3 {
+                0%, 66.66% { opacity: 0; }
+                66.67%, 100% { opacity: 1; }
+            }
             /* Material-style typography and colors */
             :root {
                 --md-primary: #f97316; /* aligns with existing orange brand */
@@ -86,8 +159,8 @@
             a { color: var(--md-primary); text-decoration-thickness: 1px; text-underline-offset: 3px; }
             a:hover { color: #ea580c; }
             /* Map tailwind grays to Material on-surface-variant subtly */
-            /* .text-slate-600, .text-gray-500, .text-gray-400 { color: var(--md-on-surface-variant) !important; } */
-            .text-slate-600, .text-gray-500, .text-gray-400 { color: white !important; font-weight: bold; }
+            /* .text-slate-600, .text-gray-500, .text-gray-600 { color: var(--md-on-surface-variant) !important; } */
+            .text-slate-600, .text-gray-500, .text-gray-600 { color: var(--md-on-surface-variant) !important; font-weight: bold; }
             .border-gray-200 { border-color: var(--md-outline) !important; }
             .border-gray-300 { border-color: var(--md-outline) !important; }
             /* .text-slate-800 { color: var(--md-on-surface) !important; } */
@@ -597,9 +670,433 @@
             .white_shadow{
                 text-shadow: 2px 3px 2px rgb(255, 255, 255);
             }
+            
+            /* Autoflow Effect for Picture Group */
+            .picture_group {
+                position: relative;
+                overflow: hidden;
+                border-radius: 12px;
+            }
+            
+            .autoflow-container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .autoflow-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0;
+                transition: opacity 1.5s ease-in-out;
+                border-radius: 12px;
+            }
+            
+            .autoflow-image.active {
+                opacity: 1;
+            }
+            
+            .autoflow-image.fade-out {
+                opacity: 0;
+            }
+            
+            /* Autoflow animation keyframes */
+            @keyframes autoflow-fade {
+                0% { opacity: 0; transform: scale(1.05); }
+                10% { opacity: 1; transform: scale(1); }
+                90% { opacity: 1; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0.95); }
+            }
+            
+            .autoflow-image.animate {
+                animation: autoflow-fade 6s ease-in-out infinite;
+            }
+            
+            .autoflow-image.animate:nth-child(1) {
+                animation-delay: 0s;
+            }
+            
+            .autoflow-image.animate:nth-child(2) {
+                animation-delay: 1.5s;
+            }
+            
+            .autoflow-image.animate:nth-child(3) {
+                animation-delay: 3s;
+            }
+            
+            .autoflow-image.animate:nth-child(4) {
+                animation-delay: 4.5s;
+            }
+            
+            /* Hover pause effect */
+            .picture_group:hover .autoflow-image.animate {
+                animation-play-state: paused;
+            }
+            
+            /* Autoflow indicators */
+            .autoflow-indicators {
+                position: absolute;
+                bottom: 16px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 8px;
+                z-index: 10;
+            }
+            
+            .autoflow-indicator {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .autoflow-indicator.active {
+                background: rgba(255, 255, 255, 1);
+                transform: scale(1.2);
+            }
+            
+            .autoflow-indicator:hover {
+                background: rgba(255, 255, 255, 0.8);
+            }
+            
+            /* Natural Flowing Effect for img_flow class */
+            .img_flow {
+                position: relative;
+                overflow: visible;
+                perspective: 1000px;
+            }
+            
+            .img_flow img {
+                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                transform-origin: center;
+                will-change: transform, filter, box-shadow;
+                position: relative;
+                z-index: 1;
+                border-radius: 8px;
+            }
+            
+            .img_flow img:hover {
+                transform: translateY(-12px) scale(1.08) rotate(2deg) translateZ(20px);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+                filter: brightness(1.15) saturate(1.2) contrast(1.05);
+                z-index: 10;
+            }
+            
+            /* Flowing wave animation */
+            .img_flow img:nth-child(1) {
+                animation: flow-wave-1 8s ease-in-out infinite;
+            }
+            
+            .img_flow img:nth-child(2) {
+                animation: flow-wave-2 8s ease-in-out infinite;
+                animation-delay: 1s;
+            }
+            
+            .img_flow img:nth-child(3) {
+                animation: flow-wave-3 8s ease-in-out infinite;
+                animation-delay: 2s;
+            }
+            
+            .img_flow img:nth-child(4) {
+                animation: flow-wave-4 8s ease-in-out infinite;
+                animation-delay: 3s;
+            }
+            
+            /* Keyframes for flowing wave animations */
+            @keyframes flow-wave-1 {
+                0%, 100% { 
+                    transform: translateY(0px) rotate(0deg) scale(1) translateZ(0px);
+                }
+                25% { 
+                    transform: translateY(-8px) rotate(1deg) scale(1.03) translateZ(10px);
+                }
+                50% { 
+                    transform: translateY(-12px) rotate(0deg) scale(1.05) translateZ(15px);
+                }
+                75% { 
+                    transform: translateY(-8px) rotate(-1deg) scale(1.03) translateZ(10px);
+                }
+            }
+            
+            @keyframes flow-wave-2 {
+                0%, 100% { 
+                    transform: translateY(0px) rotate(0deg) scale(1) translateZ(0px);
+                }
+                25% { 
+                    transform: translateY(-6px) rotate(-0.8deg) scale(1.02) translateZ(8px);
+                }
+                50% { 
+                    transform: translateY(-10px) rotate(0deg) scale(1.04) translateZ(12px);
+                }
+                75% { 
+                    transform: translateY(-6px) rotate(0.8deg) scale(1.02) translateZ(8px);
+                }
+            }
+            
+            @keyframes flow-wave-3 {
+                0%, 100% { 
+                    transform: translateY(0px) rotate(0deg) scale(1) translateZ(0px);
+                }
+                25% { 
+                    transform: translateY(-4px) rotate(1.2deg) scale(1.01) translateZ(6px);
+                }
+                50% { 
+                    transform: translateY(-8px) rotate(0deg) scale(1.03) translateZ(10px);
+                }
+                75% { 
+                    transform: translateY(-4px) rotate(-1.2deg) scale(1.01) translateZ(6px);
+                }
+            }
+            
+            @keyframes flow-wave-4 {
+                0%, 100% { 
+                    transform: translateY(0px) rotate(0deg) scale(1) translateZ(0px);
+                }
+                25% { 
+                    transform: translateY(-7px) rotate(-1.5deg) scale(1.02) translateZ(9px);
+                }
+                50% { 
+                    transform: translateY(-11px) rotate(0deg) scale(1.04) translateZ(14px);
+                }
+                75% { 
+                    transform: translateY(-7px) rotate(1.5deg) scale(1.02) translateZ(9px);
+                }
+            }
+            
+            /* Pause animation on hover */
+            .img_flow:hover img {
+                animation-play-state: paused;
+            }
+            
+            /* Enhanced flowing effect with subtle glow */
+            .img_flow img::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, 
+                    rgba(255, 107, 53, 0.1) 0%, 
+                    rgba(255, 107, 53, 0.05) 50%, 
+                    rgba(255, 107, 53, 0.1) 100%);
+                opacity: 0;
+                transition: opacity 0.6s ease;
+                border-radius: 8px;
+                z-index: -1;
+            }
+            
+            .img_flow img:hover::before {
+                opacity: 1;
+            }
+            
+            /* Smooth entrance animation for img_flow container */
+            .img_flow {
+                animation: flow-entrance 1.2s ease-out;
+            }
+            
+            @keyframes flow-entrance {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.95);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+            
+            /* Enhanced flowing effect with continuous motion */
+            .img_flow::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, 
+                    transparent 30%, 
+                    rgba(255, 107, 53, 0.03) 50%, 
+                    transparent 70%);
+                animation: flow-shimmer 6s ease-in-out infinite;
+                pointer-events: none;
+                z-index: 0;
+            }
+            
+            @keyframes flow-shimmer {
+                0%, 100% {
+                    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                }
+                50% {
+                    transform: translateX(100%) translateY(100%) rotate(45deg);
+                }
+            }
+            
+            /* Add subtle breathing effect to the container */
+            .img_flow {
+                animation: flow-entrance 1.2s ease-out, flow-breathe 4s ease-in-out infinite;
+            }
+            
+            @keyframes flow-breathe {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.02);
+                }
+            }
+            
+            /* Scroll-based Effects */
+            .scroll-reveal {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            
+            .scroll-reveal.visible {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            
+            .scroll-reveal-left {
+                opacity: 0;
+                transform: translateX(-80px) rotate(-5deg);
+                transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            
+            .scroll-reveal-left.visible {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+            
+            .scroll-reveal-right {
+                opacity: 0;
+                transform: translateX(80px) rotate(5deg);
+                transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            
+            .scroll-reveal-right.visible {
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+            
+            .scroll-scale {
+                opacity: 0;
+                transform: scale(0.3) rotate(180deg);
+                transition: all 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+            
+            .scroll-scale.visible {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+            
+            .scroll-fade-up {
+                opacity: 0;
+                transform: translateY(100px);
+                transition: all 0.6s ease-out;
+            }
+            
+            .scroll-fade-up.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            /* Parallax Effects */
+            .parallax-slow {
+                transform: translateY(var(--scroll-slow, 0px));
+            }
+            
+            .parallax-medium {
+                transform: translateY(var(--scroll-medium, 0px));
+            }
+            
+            .parallax-fast {
+                transform: translateY(var(--scroll-fast, 0px));
+            }
+            
+            /* Background Parallax */
+            .flowing-bg-layer {
+                transform: translateY(var(--bg-parallax, 0px)) scale(var(--bg-scale, 1));
+            }
+            
+            /* Scroll Progress Effects */
+            .scroll-progress {
+                background: linear-gradient(90deg, 
+                    #ff6b35 0%, 
+                    #f7931e 25%, 
+                    #ff6b35 50%, 
+                    #f7931e 75%, 
+                    #ff6b35 100%);
+                background-size: 200% 100%;
+                animation: progress-flow 3s ease-in-out infinite;
+            }
+            
+            @keyframes progress-flow {
+                0%, 100% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+            }
+            
+            /* Scroll-triggered glow effects */
+            .scroll-glow {
+                box-shadow: 0 0 0 rgba(255, 107, 53, 0);
+                transition: box-shadow 0.6s ease;
+            }
+            
+            .scroll-glow.visible {
+                box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+            }
+            
+            /* Scroll-based rotation */
+            .scroll-rotate {
+                transform: rotate(var(--scroll-rotation, 0deg));
+                transition: transform 0.1s ease-out;
+            }
+            
+            /* Scroll-based scale */
+            .scroll-scale-dynamic {
+                transform: scale(var(--scroll-scale, 1));
+                transition: transform 0.1s ease-out;
+            }
+            
+            /* Staggered animations */
+            .scroll-stagger-1 { transition-delay: 0.1s; }
+            .scroll-stagger-2 { transition-delay: 0.2s; }
+            .scroll-stagger-3 { transition-delay: 0.3s; }
+            .scroll-stagger-4 { transition-delay: 0.4s; }
+            .scroll-stagger-5 { transition-delay: 0.5s; }
+            .scroll-stagger-6 { transition-delay: 0.6s; }
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- Flowing Background System -->
+    <div class="flowing-bg">
+        <div class="flowing-bg-layer active"></div>
+        <div class="flowing-bg-layer"></div>
+        <div class="flowing-bg-layer"></div>
+    </div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </div>
+    
     <!-- Header -->
     <header class="shadow-xl border-b border-orange-200 sticky top-0 z-50 md-elevation-2 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -610,7 +1107,7 @@
                         </div>
                         <div>
                             <h1 class="text-xl md:text-2xl font-bold bg-gradient-to-r  bg-clip-text text-transparent tracking-tight leading-tight color-main">カフェ会＠！</h1>
-                            <p class="text-xs text-slate-600 hidden md:block font-medium tracking-wide text_black">地域コミュニティプラットフォーム</p>
+                            <p class="text-xs text-gray-600 hidden md:block font-medium tracking-wide">地域コミュニティプラットフォーム</p>
                         </div>
                     </a>
                 </div>
@@ -673,72 +1170,28 @@
     </nav>
 
     <!-- Search Toolbar -->
-    <section class="py-6 sm:py-8 bg-gradient-to-br from-orange-50 to-rose-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="search-surface elev-1 rounded-2xl p-4 sm:p-6">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-end">
-                    <!-- Query -->
-                    <div class="lg:col-span-5">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">キーワード検索</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                            </div>
-                            <input id="searchQuery" type="text" placeholder="例: 渋谷 カフェ会 読書会" class="glass-input field-focus w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none" />
-                        </div>
-                    </div>
-                    <!-- Area -->
-                    <div class="lg:col-span-3">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">エリア</label>
-                        <select id="searchArea" class="glass-input field-focus w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none">
-                            <option value="">指定なし</option>
-                            <option value="東京">東京</option>
-                            <option value="大阪">大阪</option>
-                            <option value="神奈川">神奈川</option>
-                            <option value="愛知">愛知</option>
-                            <option value="福岡">福岡</option>
-                        </select>
-                    </div>
-                    <!-- Date -->
-                    <div class="lg:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">開催日</label>
-                        <input id="searchDate" type="date" class="glass-input field-focus w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none" />
-                    </div>
-                    <!-- Price -->
-                    <div class="lg:col-span-2">
-                        <label class="block text-sm font-medium text-gray-700 mb-2 flex items-center justify-between">
-                            <span>上限価格</span>
-                            <span id="priceLabel" class="text-gray-500 text-xs">—</span>
-                        </label>
-                        <input id="searchPrice" type="range" min="0" max="5000" step="500" value="5000" class="w-full" />
-                    </div>
-                </div>
 
-                <!-- Categories as chips -->
-                <div class="mt-4 flex flex-wrap gap-2">
-                    <button data-chip="カフェ会" class="chip px-3 py-1.5 rounded-full bg-orange-100 text-orange-800 text-sm hover:bg-orange-200">カフェ会</button>
-                    <button data-chip="読書会" class="chip px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm hover:bg-blue-200">読書会</button>
-                    <button data-chip="料理教室" class="chip px-3 py-1.5 rounded-full bg-green-100 text-green-800 text-sm hover:bg-green-200">料理教室</button>
-                    <button data-chip="友活" class="chip px-3 py-1.5 rounded-full bg-rose-100 text-rose-800 text-sm hover:bg-rose-200">友活</button>
-                </div>
-
-                <div class="mt-4 flex items-center gap-3">
-                    <button id="applySearch" class="elev-2 bg-orange-600 hover:bg-orange-700 text-white px-5 py-2.5 rounded-xl font-semibold">検索する</button>
-                    <button id="resetSearch" class="px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50">リセット</button>
-                    <span id="resultCount" class="text-sm text-gray-500 ml-auto">— 件ヒット</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Hero Section -->
-    <section class="bg-white parallax-lite" data-parallax-speed="0.2">
+    <section class="bg-white scroll-reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal-smooth">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Event Images -->
-                <div class="space-y-4 tilt" data-tilt>
-                    <div class="relative">
-                        <img src="./img/eve (3).png" alt="渋谷カフェ会メイン画像" class="w-full h-80 sm:h-96 object-cover">
+                <div class="space-y-4 scroll-reveal-left">
+                    <div class="relative picture_group w-full h-80 sm:h-96 parallax-slow">
+                        <div class="autoflow-container">
+                            <img src="./img/1.png" alt="渋谷カフェ会画像1" class="autoflow-image animate">
+                            <img src="./img/2.png" alt="渋谷カフェ会画像2" class="autoflow-image animate">
+                            <img src="./img/3.png" alt="渋谷カフェ会画像3" class="autoflow-image animate">
+                            <img src="./img/4.png" alt="渋谷カフェ会画像4" class="autoflow-image animate">
+                        </div>
+                        
+                        <!-- Autoflow Indicators -->
+                        <div class="autoflow-indicators">
+                            <div class="autoflow-indicator active" data-slide="0"></div>
+                            <div class="autoflow-indicator" data-slide="1"></div>
+                            <div class="autoflow-indicator" data-slide="2"></div>
+                            <div class="autoflow-indicator" data-slide="3"></div>
+                        </div>
+                        
                         <div class="absolute top-4 left-4">
                             <span class="bg-orange-500 text-white text-sm font-medium px-3 py-1 rounded-full">募集中</span>
                         </div>
@@ -752,31 +1205,31 @@
                     </div>
                     
                     <!-- Thumbnail Gallery -->
-                    <div class="grid grid-cols-4 gap-2">
+                    <div class="grid grid-cols-4 gap-2 img_flow">
                         <img src="./img/eve (2).png" alt="カフェ内観" class="w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
                         <img src="./img/eve (4).png" alt="コーヒー" class="w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
                         <img src="./img/eve (5).png" alt="参加者の様子" class="w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
                         <div class="w-full h-20 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-200 transition-colors">
-                            <span class="text-sm text-gray-600 font-medium">+3枚</span>
+                            <span class="text-sm text-gray-800 font-medium">+3枚</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Event Info -->
-                <div class="space-y-6 reveal-smooth">
+                <div class="space-y-6 scroll-reveal-right">
                     <div>
                         <div class="flex items-center mb-3">
                             <span class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1 rounded-full">カフェ会</span>
-                            <span class="ml-3 text-sm text-gray-500">東京・渋谷区</span>
+                            <span class="ml-3 text-sm text-gray-700">東京・渋谷区</span>
                         </div>
                         <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">渋谷で気軽なカフェ会 - 新しい出会いを求める方歓迎</h1>
                         <p class="text-gray-600 leading-relaxed">おしゃれなカフェで気軽に交流できるイベントです。初参加の方も大歓迎！年齢や職業を問わず、新しい出会いや友達作りを求める方にぴったりのイベントです。リラックスした雰囲気の中で、コーヒーを飲みながら楽しい時間を過ごしましょう。</p>
                     </div>
 
                     <!-- Event Details -->
-                    <div class="bg-gray-50 rounded-xl p-6 space-y-4 reveal-smooth">
+                    <div class="bg-gray-50 rounded-xl p-6 space-y-4">
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                             <div>
@@ -786,7 +1239,7 @@
                         </div>
                         
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
@@ -798,7 +1251,7 @@
                         </div>
                         
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
                             </svg>
                             <div>
@@ -809,7 +1262,7 @@
                         </div>
                         
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                             <div>
@@ -821,7 +1274,7 @@
                     </div>
 
                     <!-- Organizer Info -->
-                    <div class="bg-white border border-gray-200 rounded-xl p-6 reveal-smooth">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">主催者</h3>
                         <div class="flex items-center">
                             <img src="./img/ava_mana.png" alt="田中太郎" class="w-16 h-16 rounded-full mr-4">
@@ -843,7 +1296,7 @@
                     </div>
 
                     <!-- Quick Reservation CTA -->
-                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-6 reveal-smooth">
+                    <div class="bg-orange-50 border border-orange-200 rounded-xl p-6">
                         <div class="text-center">
                             <h3 class="text-lg font-semibold text-gray-900 mb-2">今すぐ予約する</h3>
                             <p class="text-sm text-gray-600 mb-4">登録不要で簡単予約！</p>
@@ -858,12 +1311,12 @@
     </section>
 
     <!-- Event Description & Map -->
-    <section class="bg-white border-t border-gray-200 parallax-lite" data-parallax-speed="0.12">
+    <section class="bg-white border-t border-gray-200 scroll-reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 reveal-smooth">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <!-- Detailed Description -->
-                <div class="reveal-smooth">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">イベント詳細</h2>
+                <div class="scroll-reveal-left">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 scroll-glow">イベント詳細</h2>
                     
                     <div class="space-y-6">
                         <div>
@@ -943,11 +1396,11 @@
                 </div>
 
                 <!-- Map & Location -->
-                <div class="reveal-smooth">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">開催場所</h2>
+                <div class="scroll-reveal-right">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 scroll-glow">開催場所</h2>
                     
                     <!-- Google Maps Embed -->
-                    <div class="bg-gray-200 rounded-xl h-80 mb-6 flex items-center justify-center tilt" data-tilt>
+                    <div class="bg-gray-200 rounded-xl h-80 mb-6 flex items-center justify-center">
                         <div class="text-center text-gray-500">
                             <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -958,7 +1411,7 @@
                         </div>
                     </div>
                     
-                    <div class="bg-gray-50 rounded-xl p-6 reveal-smooth">
+                    <div class="bg-gray-50 rounded-xl p-6">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">アクセス情報</h3>
                         <div class="space-y-3">
                             <div>
@@ -987,8 +1440,8 @@
     </section>
 
     <!-- Reservation Form -->
-    <section class="bg-gray-50 py-12 sm:py-16 animated-section scroll-scale-in  visible">
-        <div class="bg-gray-50 py-12 sm:py-16 animated-section">
+    <section class="bg-gray-50 py-12 sm:py-16">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">予約フォーム</h2>
                 <p class="text-gray-600">登録不要で簡単予約！必要な情報を入力してください。</p>
@@ -1059,7 +1512,7 @@
     </section>
 
     <!-- Reviews Section -->
-    <section class="bg-white py-12 sm:py-16">
+    <section class="bg-white py-12 sm:py-16 scroll-reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">参加者レビュー</h2>
@@ -1088,7 +1541,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Review 1 -->
-                <div class="bg-gray-50 rounded-xl p-6">
+                <div class="bg-gray-50 rounded-xl p-6 scroll-scale scroll-stagger-1">
                     <div class="flex items-center mb-4">
                         <img src="./img/ava2.png" alt="レビュアー" class="w-10 h-10 rounded-full mr-3">
                         <div>
@@ -1119,7 +1572,7 @@
                 </div>
                 
                 <!-- Review 2 -->
-                <div class="bg-gray-50 rounded-xl p-6">
+                <div class="bg-gray-50 rounded-xl p-6 scroll-scale scroll-stagger-2">
                     <div class="flex items-center mb-4">
                         <img src="./img/ava1.jpg" alt="レビュアー" class="w-10 h-10 rounded-full mr-3">
                         <div>
@@ -1150,7 +1603,7 @@
                 </div>
                 
                 <!-- Review 3 -->
-                <div class="bg-gray-50 rounded-xl p-6">
+                <div class="bg-gray-50 rounded-xl p-6 scroll-scale scroll-stagger-3">
                     <div class="flex items-center mb-4">
                         <img src="./img/ava3.jpg" alt="レビュアー" class="w-10 h-10 rounded-full mr-3">
                         <div>
@@ -1188,13 +1641,13 @@
     </section>
 
     <!-- Related Events -->
-    <section class="bg-gray-50 py-12 sm:py-16 parallax-lite" data-parallax-speed="0.08">
+    <section class="bg-gray-50 py-12 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center">関連するイベント</h2>
             
-            <div id="relatedGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Related Event 1 -->
-                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow reveal-smooth tilt" data-tilt data-title="新宿読書交流会" data-category="読書会" data-area="東京 新宿区" data-price="2000" data-date="2024-12-28">
+                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <img src="./img/eve (2).png" alt="読書会" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -1211,8 +1664,8 @@
                 </div>
                 
                 <!-- Related Event 2 -->
-                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow reveal-smooth tilt" data-tilt data-title="世田谷料理教室" data-category="料理教室" data-area="東京 世田谷区" data-price="3500" data-date="2024-12-29">
-                    <img src="./img/eve (5).png" alt="料理教室" class="w-full h-48 object-cover">
+                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="./img/eve (5).png"" alt="料理教室" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex items-center mb-3">
                             <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">料理教室</span>
@@ -1228,7 +1681,7 @@
                 </div>
                 
                 <!-- Related Event 3 -->
-                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow reveal-smooth tilt" data-tilt data-title="六本木カフェ会" data-category="カフェ会" data-area="東京 港区" data-price="1800" data-date="2024-12-30">
+                <div class="bg-white shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                     <img src="./img/eve (7).png" alt="カフェ会" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex items-center mb-3">
@@ -1245,9 +1698,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
+    </section>    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -1257,7 +1708,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-orange-400">カフェ会＠！</h3>
-                            <p class="text-sm text-gray-400">地域コミュニティプラットフォーム</p>
+                            <p class="text-sm text-gray-300">地域コミュニティプラットフォーム</p>
                         </div>
                     </div>
                     <p class="text-gray-300 mb-6 leading-relaxed">
@@ -1297,181 +1748,285 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-600">
                 <p>&copy; 2024 カフェ会＠！ All rights reserved. | 地域に笑顔と出会いの場を広げるコミュニティプラットフォーム</p>
             </div>
         </div>
     </footer>
     
-    <!-- Search Script -->
+    <!-- Scroll Effects Script -->
     <script>
-        (function(){ 
-            const q = document.getElementById('searchQuery');
-            const area = document.getElementById('searchArea');
-            const date = document.getElementById('searchDate');
-            const price = document.getElementById('searchPrice');
-            const priceLabel = document.getElementById('priceLabel');
-            const chips = Array.from(document.querySelectorAll('[data-chip]'));
-            const applyBtn = document.getElementById('applySearch');
-            const resetBtn = document.getElementById('resetSearch');
-            const resultCount = document.getElementById('resultCount');
-            const cards = Array.from(document.querySelectorAll('#relatedGrid > div[data-title]'));
-
-            const state = { categories: new Set() };
-
-            function normalize(s){
-                return (s || '').toString().toLowerCase();
-            }
-
-            function matches(card){
-                const t = normalize(card.getAttribute('data-title')) + ' ' + normalize(card.getAttribute('data-category')) + ' ' + normalize(card.getAttribute('data-area'));
-                const query = normalize(q.value);
-                if (query && !t.includes(query)) return false;
-
-                const a = normalize(area.value);
-                if (a && !normalize(card.getAttribute('data-area')).includes(a)) return false;
-
-                const dSel = date.value ? new Date(date.value) : null;
-                if (dSel) {
-                    const dCard = new Date(card.getAttribute('data-date'));
-                    if (isFinite(dCard) && dCard.toDateString() !== dSel.toDateString()) return false;
-                }
-
-                const pMax = parseInt(price.value, 10) || 5000;
-                const pCard = parseInt(card.getAttribute('data-price'), 10) || 0;
-                if (pCard > pMax) return false;
-
-                if (state.categories.size) {
-                    const cat = card.getAttribute('data-category');
-                    if (!state.categories.has(cat)) return false;
-                }
-                return true;
-            }
-
-            function apply(){
-                let visible = 0;
-                cards.forEach(c => {
-                    const ok = matches(c);
-                    c.style.display = ok ? '' : 'none';
-                    if (ok) visible++;
-                });
-                resultCount.textContent = visible + ' 件ヒット';
-                priceLabel.textContent = '¥' + (parseInt(price.value,10)||0).toLocaleString();
-            }
-
-            chips.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const key = btn.getAttribute('data-chip');
-                    if (state.categories.has(key)) { state.categories.delete(key); btn.classList.remove('selected'); }
-                    else { state.categories.add(key); btn.classList.add('selected'); }
-                    apply();
-                });
-            });
-            applyBtn.addEventListener('click', apply);
-            resetBtn.addEventListener('click', () => {
-                q.value = '';
-                area.value = '';
-                date.value = '';
-                price.value = 5000;
-                state.categories.clear();
-                chips.forEach(b=>b.classList.remove('selected'));
-                apply();
-            });
-            q.addEventListener('input', apply);
-            area.addEventListener('change', apply);
-            date.addEventListener('change', apply);
-            price.addEventListener('input', apply);
-
-            // initial
-            apply();
-        
-            // Scroll-driven motion: reveal/tilt/parallax
-            let lastY = 0;
-            let dir = 'down';
-            const revealObserver = new IntersectionObserver((entries)=>{
-                entries.forEach(entry=>{
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        revealObserver.unobserve(entry.target);
-                    }
-                })
-            }, { threshold: 0.15 });
-
-            document.querySelectorAll('.reveal-smooth').forEach(el=>revealObserver.observe(el));
-
-            // lightweight parallax
-            const parallaxNodes = Array.from(document.querySelectorAll('.parallax-lite'));
-            function onScroll(){
-                const y = window.scrollY;
-                dir = y > lastY ? 'down' : 'up';
-                lastY = y;
-                if (parallaxNodes.length) {
-                    const vh = window.innerHeight || 800;
-                    parallaxNodes.forEach(node => {
-                        const speed = parseFloat(node.getAttribute('data-parallax-speed')||'0.1');
-                        const rect = node.getBoundingClientRect();
-                        // Offset relative to viewport center, clamped to avoid layout overlap
-                        const rel = (rect.top + rect.height/2) - (vh/2);
-                        const raw = -rel * speed * 0.1; // subtle
-                        const clamped = Math.max(-18, Math.min(18, raw));
-                        node.style.transform = `translate3d(0, ${clamped.toFixed(1)}px, 0)`;
-                    });
-                }
-            }
-            window.addEventListener('scroll', onScroll, { passive: true });
-
-            // tilt
-            function initTilt(){
-                const tiltEls = document.querySelectorAll('[data-tilt]');
-                tiltEls.forEach(el=>{
-                    let rect;
-                    const onEnter = ()=>{ rect = el.getBoundingClientRect(); };
-                    const onMove = (e)=>{
-                        const x = (e.clientX - rect.left)/rect.width - 0.5;
-                        const y = (e.clientY - rect.top)/rect.height - 0.5;
-                        el.style.transform = `rotateX(${(-y*6).toFixed(2)}deg) rotateY(${(x*8).toFixed(2)}deg)`;
-                    };
-                    const onLeave = ()=>{ el.style.transform = 'rotateX(0) rotateY(0)'; };
-                    el.addEventListener('mouseenter', onEnter);
-                    el.addEventListener('mousemove', onMove);
-                    el.addEventListener('mouseleave', onLeave);
-                });
-            }
-            initTilt();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll reveal elements
+            const scrollRevealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-scale, .scroll-fade-up, .scroll-glow');
             
-            // Rhythmic letter motion: split target headings into spans and animate on scroll
-            const rhythmTargets = [
-                ...document.querySelectorAll('h1, h2, h3')
-            ];
-            rhythmTargets.forEach(node => {
-                if (node.dataset.rhythmized === '1') return;
-                node.dataset.rhythmized = '1';
-                const text = node.textContent;
-                node.textContent = '';
-                Array.from(text).forEach((ch, idx) => {
-                    const span = document.createElement('span');
-                    span.className = 'rhythm-char';
-                    span.style.transition = 'transform 80ms linear';
-                    span.dataset.i = String(idx);
-                    span.textContent = ch;
-                    node.appendChild(span);
+            // Parallax elements
+            const parallaxElements = document.querySelectorAll('.parallax-slow, .parallax-medium, .parallax-fast');
+            
+            // Background parallax
+            const bgLayers = document.querySelectorAll('.flowing-bg-layer');
+            
+            // Scroll progress bar
+            const scrollProgress = document.getElementById('scrollProgress');
+            
+            // Throttle function for performance
+            function throttle(func, limit) {
+                let inThrottle;
+                return function() {
+                    const args = arguments;
+                    const context = this;
+                    if (!inThrottle) {
+                        func.apply(context, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                }
+            }
+            
+            // Intersection Observer for scroll reveals
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
                 });
+            }, observerOptions);
+            
+            // Observe all scroll reveal elements
+            scrollRevealElements.forEach(element => {
+                observer.observe(element);
             });
-
-            function animateLetters(){
-                const y = window.scrollY || 0;
-                const amp = 4; // px
-                const freq = 0.06; // wave speed
-                const chars = document.querySelectorAll('.rhythm-char');
-                chars.forEach((el) => {
-                    const i = parseInt(el.dataset.i || '0', 10);
-                    const offset = Math.sin((y * freq) + (i * 0.35)) * amp;
-                    el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+            
+            // Scroll handler for parallax and progress
+            function handleScroll() {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                const rate2 = scrolled * -0.3;
+                const rate3 = scrolled * -0.1;
+                const rate4 = scrolled * -0.2;
+                
+                // Update CSS custom properties for parallax
+                document.documentElement.style.setProperty('--scroll-slow', rate3 + 'px');
+                document.documentElement.style.setProperty('--scroll-medium', rate2 + 'px');
+                document.documentElement.style.setProperty('--scroll-fast', rate + 'px');
+                document.documentElement.style.setProperty('--bg-parallax', rate4 + 'px');
+                document.documentElement.style.setProperty('--bg-scale', 1 + (scrolled * 0.0001));
+                
+                // Update scroll progress
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolledPercent = (winScroll / height) * 100;
+                scrollProgress.style.width = scrolledPercent + '%';
+                
+                // Dynamic rotation based on scroll
+                const rotation = scrolled * 0.1;
+                document.documentElement.style.setProperty('--scroll-rotation', rotation + 'deg');
+                
+                // Dynamic scale based on scroll
+                const scale = 1 + (scrolled * 0.00005);
+                document.documentElement.style.setProperty('--scroll-scale', scale);
+            }
+            
+            // Throttled scroll handler
+            const throttledScrollHandler = throttle(handleScroll, 16); // ~60fps
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', throttledScrollHandler);
+            
+            // Initial call
+            handleScroll();
+            
+            // Add scroll-based glow effects
+            function updateGlowEffects() {
+                const scrolled = window.pageYOffset;
+                const glowElements = document.querySelectorAll('.scroll-glow');
+                
+                glowElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible) {
+                        const distanceFromCenter = Math.abs(rect.top + rect.height/2 - window.innerHeight/2);
+                        const maxDistance = window.innerHeight/2;
+                        const glowIntensity = Math.max(0, 1 - (distanceFromCenter / maxDistance));
+                        
+                        element.style.boxShadow = `0 0 ${30 * glowIntensity}px rgba(255, 107, 53, ${0.3 * glowIntensity})`;
+                    }
                 });
             }
-            window.addEventListener('scroll', animateLetters, { passive: true });
-            animateLetters();
-        })();
+            
+            // Update glow effects on scroll
+            window.addEventListener('scroll', throttle(updateGlowEffects, 16));
+            
+            // Add scroll-triggered animations for specific elements
+            function addScrollAnimations() {
+                const animatedElements = document.querySelectorAll('.scroll-rotate, .scroll-scale-dynamic');
+                
+                animatedElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible) {
+                        const scrollProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
+                        const rotation = scrollProgress * 360;
+                        const scale = 0.8 + (scrollProgress * 0.4);
+                        
+                        element.style.setProperty('--scroll-rotation', rotation + 'deg');
+                        element.style.setProperty('--scroll-scale', scale);
+                    }
+                });
+            }
+            
+            // Update scroll animations
+            window.addEventListener('scroll', throttle(addScrollAnimations, 16));
+        });
     </script>
+    
+    <!-- Flowing Background Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgLayers = document.querySelectorAll('.flowing-bg-layer');
+            let currentBgIndex = 0;
+            let bgTransitionInterval;
+            
+            // Function to transition to next background
+            function transitionToNextBg() {
+                // Remove active class from current background
+                bgLayers[currentBgIndex].classList.remove('active');
+                
+                // Move to next background
+                currentBgIndex = (currentBgIndex + 1) % bgLayers.length;
+                
+                // Add active class to new background
+                bgLayers[currentBgIndex].classList.add('active');
+            }
+            
+            // Start the background transition cycle
+            function startBgTransitions() {
+                bgTransitionInterval = setInterval(transitionToNextBg, 6000); // Change every 6 seconds
+            }
+            
+            // Pause transitions on hover (optional)
+            const flowingBg = document.querySelector('.flowing-bg');
+            flowingBg.addEventListener('mouseenter', function() {
+                clearInterval(bgTransitionInterval);
+            });
+            
+            flowingBg.addEventListener('mouseleave', function() {
+                startBgTransitions();
+            });
+            
+            // Initialize background transitions
+            startBgTransitions();
+            
+            // Add smooth entrance effect
+            setTimeout(() => {
+                flowingBg.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+    
+    <!-- Autoflow Effect Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pictureGroup = document.querySelector('.picture_group');
+            const images = pictureGroup.querySelectorAll('.autoflow-image');
+            const indicators = pictureGroup.querySelectorAll('.autoflow-indicator');
+            let currentSlide = 0;
+            let autoflowInterval;
+            
+            // Function to update indicators
+            function updateIndicators(activeIndex) {
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === activeIndex);
+                });
+            }
+            
+            // Function to show specific slide
+            function showSlide(slideIndex) {
+                images.forEach((img, index) => {
+                    img.classList.remove('active');
+                    if (index === slideIndex) {
+                        img.classList.add('active');
+                    }
+                });
+                updateIndicators(slideIndex);
+                currentSlide = slideIndex;
+            }
+            
+            // Function to start autoflow
+            function startAutoflow() {
+                autoflowInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % images.length;
+                    showSlide(currentSlide);
+                }, 1500); // Change slide every 1.5 seconds
+            }
+            
+            // Function to stop autoflow
+            function stopAutoflow() {
+                clearInterval(autoflowInterval);
+            }
+            
+            // Initialize - show first image
+            showSlide(0);
+            
+            // Start autoflow
+            startAutoflow();
+            
+            // Pause on hover
+            pictureGroup.addEventListener('mouseenter', stopAutoflow);
+            pictureGroup.addEventListener('mouseleave', startAutoflow);
+            
+            // Indicator click handlers
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopAutoflow();
+                    showSlide(index);
+                    // Restart autoflow after a delay
+                    setTimeout(startAutoflow, 3000);
+                });
+            });
+            
+            // Touch/swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            pictureGroup.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoflow();
+            });
+            
+            pictureGroup.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe left - next slide
+                        currentSlide = (currentSlide + 1) % images.length;
+                    } else {
+                        // Swipe right - previous slide
+                        currentSlide = (currentSlide - 1 + images.length) % images.length;
+                    }
+                    showSlide(currentSlide);
+                }
+                
+                // Restart autoflow after swipe
+                setTimeout(startAutoflow, 3000);
+            }
+        });
+    </script>
+    
+    <!-- Search Script -->
 </body>
 </html>
