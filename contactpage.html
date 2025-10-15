@@ -764,6 +764,14 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
         font-weight: 600;
       }
+      .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-100%);
+        width: 800px;
+        place-items: center;
+      }
     </style>
   </head>
   <body class="bg-gray-50">
@@ -880,12 +888,9 @@
 
     <!-- Hero Section -->
     <section class="text-white py-12 md:py-16 bg_w">
-      <div>
-        <img src="" />
-      </div>
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center center">
         <h1 class="text-3xl md:text-4xl font-bold mb-4 text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight blur-enhanced-white">お問い合わせ</h1>
-        <p class="text-lg md:text-xl opacity-100 text-black">
+        <p class="text-lg md:text-xl opacity-100 text-black ">
           ご質問やご不明な点がございましたら、お気軽にお問い合わせください
         </p>
       </div>
